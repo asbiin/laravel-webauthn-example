@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "asbiin/laravel-webauthn",
-            "version": "0.4.0",
+            "version": "0.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/asbiin/laravel-webauthn.git",
-                "reference": "074e1f5a1fc3ec6256146fbc6785d6ddbf7e5bcf"
+                "reference": "5afc14beb62eafb4853ba1deb94ac6845193a295"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/asbiin/laravel-webauthn/zipball/074e1f5a1fc3ec6256146fbc6785d6ddbf7e5bcf",
-                "reference": "074e1f5a1fc3ec6256146fbc6785d6ddbf7e5bcf",
+                "url": "https://api.github.com/repos/asbiin/laravel-webauthn/zipball/5afc14beb62eafb4853ba1deb94ac6845193a295",
+                "reference": "5afc14beb62eafb4853ba1deb94ac6845193a295",
                 "shasum": ""
             },
             "require": {
@@ -71,7 +71,7 @@
                 "security",
                 "webauthn"
             ],
-            "time": "2019-04-18T11:25:54+00:00"
+            "time": "2019-04-18T18:40:59+00:00"
         },
         {
             "name": "beberlei/assert",
