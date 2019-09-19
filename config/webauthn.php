@@ -180,8 +180,8 @@ return [
     */
 
     'public_key_credential_parameters' => [
-         \Webauthn\PublicKeyCredentialParameters::ALGORITHM_ES256,
-         \Webauthn\PublicKeyCredentialParameters::ALGORITHM_RS256,
+         \Cose\Algorithms::COSE_ALGORITHM_ES256,
+         \Cose\Algorithms::COSE_ALGORITHM_RS256,
     ],
 
     /*
