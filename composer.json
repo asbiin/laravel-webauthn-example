@@ -12,7 +12,7 @@
         "asbiin/laravel-webauthn": "^0.6",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.0",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^2.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
