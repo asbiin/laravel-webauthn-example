@@ -9,7 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.1.3",
-        "asbiin/laravel-webauthn": "^0.6",
+        "asbiin/laravel-webauthn": "^0.7",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^2.0"

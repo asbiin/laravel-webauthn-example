@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a250c152545df57bac1c8968ee8f7e38",
+    "content-hash": "18b636333a2fd820fae43883a295df65",
     "packages": [
         {
             "name": "asbiin/laravel-webauthn",
-            "version": "0.6.4",
+            "version": "0.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/asbiin/laravel-webauthn.git",
-                "reference": "508d72b32ae127e4494a25903458d11a25328477"
+                "reference": "f4ce201d4571e01fa949fcd17cc78409b8bca817"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/asbiin/laravel-webauthn/zipball/508d72b32ae127e4494a25903458d11a25328477",
-                "reference": "508d72b32ae127e4494a25903458d11a25328477",
+                "url": "https://api.github.com/repos/asbiin/laravel-webauthn/zipball/f4ce201d4571e01fa949fcd17cc78409b8bca817",
+                "reference": "f4ce201d4571e01fa949fcd17cc78409b8bca817",
                 "shasum": ""
             },
             "require": {
@@ -80,20 +80,20 @@
                 "security",
                 "webauthn"
             ],
-            "time": "2019-11-16T20:05:03+00:00"
+            "time": "2019-12-05T16:03:49+00:00"
         },
         {
             "name": "beberlei/assert",
-            "version": "v3.2.6",
+            "version": "v3.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/beberlei/assert.git",
-                "reference": "99508be011753690fe108ded450f5caaae180cfa"
+                "reference": "d63a6943fc4fd1a2aedb65994e3548715105abcf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/beberlei/assert/zipball/99508be011753690fe108ded450f5caaae180cfa",
-                "reference": "99508be011753690fe108ded450f5caaae180cfa",
+                "url": "https://api.github.com/repos/beberlei/assert/zipball/d63a6943fc4fd1a2aedb65994e3548715105abcf",
+                "reference": "d63a6943fc4fd1a2aedb65994e3548715105abcf",
                 "shasum": ""
             },
             "require": {
@@ -142,7 +142,7 @@
                 "assertion",
                 "validation"
             ],
-            "time": "2019-10-10T10:33:57+00:00"
+            "time": "2019-12-19T17:51:41+00:00"
         },
         {
             "name": "clue/stream-filter",
@@ -1464,16 +1464,16 @@
         },
         {
             "name": "php-http/discovery",
-            "version": "1.7.0",
+            "version": "1.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/discovery.git",
-                "reference": "e822f86a6983790aa17ab13aa7e69631e86806b6"
+                "reference": "2e0ad94833ec8473280454590a9011a0cd2dfc56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/discovery/zipball/e822f86a6983790aa17ab13aa7e69631e86806b6",
-                "reference": "e822f86a6983790aa17ab13aa7e69631e86806b6",
+                "url": "https://api.github.com/repos/php-http/discovery/zipball/2e0ad94833ec8473280454590a9011a0cd2dfc56",
+                "reference": "2e0ad94833ec8473280454590a9011a0cd2dfc56",
                 "shasum": ""
             },
             "require": {
@@ -1525,20 +1525,20 @@
                 "message",
                 "psr7"
             ],
-            "time": "2019-06-30T09:04:27+00:00"
+            "time": "2019-12-27T19:51:10+00:00"
         },
         {
             "name": "php-http/httplug",
-            "version": "v2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/httplug.git",
-                "reference": "b3842537338c949f2469557ef4ad4bdc47b58603"
+                "reference": "72d2b129a48f0490d55b7f89be0d6aa0597ffb06"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/httplug/zipball/b3842537338c949f2469557ef4ad4bdc47b58603",
-                "reference": "b3842537338c949f2469557ef4ad4bdc47b58603",
+                "url": "https://api.github.com/repos/php-http/httplug/zipball/72d2b129a48f0490d55b7f89be0d6aa0597ffb06",
+                "reference": "72d2b129a48f0490d55b7f89be0d6aa0597ffb06",
                 "shasum": ""
             },
             "require": {
@@ -1548,13 +1548,13 @@
                 "psr/http-message": "^1.0"
             },
             "require-dev": {
-                "henrikbjorn/phpspec-code-coverage": "^1.0",
-                "phpspec/phpspec": "^2.4"
+                "friends-of-phpspec/phpspec-code-coverage": "^4.1",
+                "phpspec/phpspec": "^4.3.4|^5.0|^6.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev"
+                    "dev-master": "2.x-dev"
                 }
             },
             "autoload": {
@@ -1582,7 +1582,7 @@
                 "client",
                 "http"
             ],
-            "time": "2018-10-31T09:14:44+00:00"
+            "time": "2019-12-27T10:07:11+00:00"
         },
         {
             "name": "php-http/message",
@@ -4281,16 +4281,16 @@
         },
         {
             "name": "web-token/jwt-core",
-            "version": "v2.1.1",
+            "version": "v2.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-core.git",
-                "reference": "8c21beab49db69f0a62a50840e6b97cf5bfa8dee"
+                "reference": "3e794092db3d85737dcc5ce2a21beeeaf801cd85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-token/jwt-core/zipball/8c21beab49db69f0a62a50840e6b97cf5bfa8dee",
-                "reference": "8c21beab49db69f0a62a50840e6b97cf5bfa8dee",
+                "url": "https://api.github.com/repos/web-token/jwt-core/zipball/3e794092db3d85737dcc5ce2a21beeeaf801cd85",
+                "reference": "3e794092db3d85737dcc5ce2a21beeeaf801cd85",
                 "shasum": ""
             },
             "require": {
@@ -4356,20 +4356,20 @@
                 "jwt",
                 "symfony"
             ],
-            "time": "2019-10-31T22:59:58+00:00"
+            "time": "2019-12-27T22:22:20+00:00"
         },
         {
             "name": "web-token/jwt-signature",
-            "version": "v2.1.1",
+            "version": "v2.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-signature.git",
-                "reference": "35d5874162c952195124b2ae5b92678c32be6777"
+                "reference": "4c4d43e4fb266578b54c8407f3aeb4f060e4630e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-token/jwt-signature/zipball/35d5874162c952195124b2ae5b92678c32be6777",
-                "reference": "35d5874162c952195124b2ae5b92678c32be6777",
+                "url": "https://api.github.com/repos/web-token/jwt-signature/zipball/4c4d43e4fb266578b54c8407f3aeb4f060e4630e",
+                "reference": "4c4d43e4fb266578b54c8407f3aeb4f060e4630e",
                 "shasum": ""
             },
             "require": {
@@ -4436,7 +4436,7 @@
                 "jwt",
                 "symfony"
             ],
-            "time": "2019-10-31T22:59:58+00:00"
+            "time": "2019-12-27T22:22:20+00:00"
         }
     ],
     "packages-dev": [
