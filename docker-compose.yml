@@ -1,0 +1,55 @@
+version: "3.4"
+
+services:
+  app:
+    build: .
+    restart: always
+    environment:
+      - APP_ENV=production
+      - APP_KEY=
+      - VIRTUAL_HOST=localhost
+      - HSTS=off
+    volumes:
+      - webauthn_data:/var/www/html/database
+    networks:
+      - proxy-tier
+      - default
+
+  proxy:
+    build: ./.docker/proxy
+    restart: always
+    ports:
+      - 443:443
+    volumes:
+      - webauthn_certs:/etc/nginx/certs:ro
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    environment:
+      - HSTS=off
+    networks:
+      - proxy-tier
+    depends_on:
+      - omgwtfssl
+
+  omgwtfssl:
+    image: paulczar/omgwtfssl
+    restart: "no"
+    volumes:
+      - webauthn_certs:/certs
+    environment:
+      - SSL_SUBJECT=localhost
+      - CA_SUBJECT=my@example.com
+      - SSL_KEY=/certs/localhost.key
+      - SSL_CSR=/certs/localhost.csr
+      - SSL_CERT=/certs/localhost.crt
+      - HSTS=off
+    networks:
+      - proxy-tier
+
+volumes:
+  webauthn_data:
+    name: webauthn_data
+  webauthn_certs:
+    name: webauthn_certs
+
+networks:
+  proxy-tier:
