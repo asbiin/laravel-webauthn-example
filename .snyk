@@ -392,3 +392,5 @@ patch:
         patched: '2020-05-08T11:41:10.181Z'
     - laravel-mix > @babel/preset-env > @babel/plugin-transform-exponentiation-operator > @babel/helper-builder-binary-assignment-operator-visitor > @babel/helper-explode-assignable-expression > @babel/traverse > @babel/helper-function-name > @babel/helper-get-function-arity > @babel/types > lodash:
         patched: '2020-05-08T11:41:10.181Z'
+    - laravel-mix > babel-merge > @babel/core > @babel/helper-module-transforms > @babel/helper-replace-supers > @babel/traverse > @babel/helper-function-name > @babel/template > @babel/types > lodash:
+        patched: '2020-05-08T13:50:39.366Z'
