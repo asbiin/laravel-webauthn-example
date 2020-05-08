@@ -3,6 +3,16 @@ Laravel-WebAuthn example application
 
 This is an example use of [asbiin/laravel-webauthn](https://github.com/asbiin/laravel-webauthn) package.
 
+# Demo
+
+Try this application on [this live demo app](https://laravel-webauthn-example.herokuapp.com/).
+
+- Just register with any email
+- Then add a WebAuthn key
+- Next login will ask to confirm the key
+
+*Database is drop every day on this demo instance.*
+
 
 # Installation
 
@@ -24,7 +34,8 @@ You can use an sqlite database, just put `DB_CONNECTION=sqlite` in the `.env` fi
     touch database/database.sqlite
     ```
 
-* Then you need to point you webserver to the `public` directory. Follow instructions on the [Laravel documentation](https://laravel.com/docs/5.8/installation#configuration). Be aware WebAuthn will only works on HTTPS mode, so you will need to set your webserver with https.
+* Then run lyou need to point you webserver to the `public` directory. Follow instructions on the [Laravel documentation](https://laravel.com/docs/5.8/installation#configuration).
+* Be aware WebAuthn protocol only works on HTTPS mode, so you will need to set your webserver with https.
 
 
 # Usage
@@ -36,6 +47,6 @@ Got to `https://localhost/webauthn/register` to register a new key.
 
 Author: [Alexis Saettler](https://github.com/asbiin)
 
-Copyright © 2019.
+Copyright © 2019-2020.
 
 Licensed under the MIT License. [View license](/LICENSE).
