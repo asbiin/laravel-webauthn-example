@@ -24,7 +24,6 @@ In order to test the application, you need to:
     ```sh
     composer install
     npm install
-    npm run production
     cp .env.example .env
     php artisan key:generate
     ```
