@@ -23,6 +23,8 @@ In order to test the application, you need to:
 * Install packages and configuration:
     ```sh
     composer install
+    yarn install
+    yarn prod
     cp .env.example .env
     php artisan key:generate
     ```
