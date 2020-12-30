@@ -11,7 +11,7 @@
     "postinstall": "npm run production",
     "snyk-protect": "snyk protect",
     "prepare": "npm run snyk-protect"
-},
+  },
   "devDependencies": {
     "axios": "^0.19",
     "bootstrap": "^4.5.3",
@@ -26,6 +26,9 @@
     "snyk": "^1.437.3",
     "vue": "^2.6.12",
     "vue-template-compiler": "^2.6.12"
+  },
+  "engines": {
+    "node": "12.x"
   },
   "snyk": true
 }
