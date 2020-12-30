@@ -8,8 +8,7 @@
     "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
     "prod": "npm run production",
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "heroku-prebuild": "npm install",
-    "heroku-postbuild": "npm run production",
+    "heroku-postbuild": "yarn run production",
     "snyk-protect": "snyk protect",
     "prepare": "npm run snyk-protect"
   },
@@ -27,10 +26,6 @@
     "snyk": "^1.437.3",
     "vue": "^2.6.12",
     "vue-template-compiler": "^2.6.12"
-  },
-  "engines": {
-    "node": "12.x",
-    "npm": "6.x"
   },
   "snyk": true
 }
