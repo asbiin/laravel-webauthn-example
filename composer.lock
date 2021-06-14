@@ -899,16 +899,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v8.44.0",
+            "version": "v8.46.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "7b3b27dc8911ab02a69731af2ba97b5130b2ddb8"
+                "reference": "a18266c612e0e6aba5e0174b3c873d2d217dccfb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/7b3b27dc8911ab02a69731af2ba97b5130b2ddb8",
-                "reference": "7b3b27dc8911ab02a69731af2ba97b5130b2ddb8",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/a18266c612e0e6aba5e0174b3c873d2d217dccfb",
+                "reference": "a18266c612e0e6aba5e0174b3c873d2d217dccfb",
                 "shasum": ""
             },
             "require": {
@@ -990,7 +990,7 @@
                 "orchestra/testbench-core": "^6.8",
                 "pda/pheanstalk": "^4.0",
                 "phpunit/phpunit": "^8.5.8|^9.3.3",
-                "predis/predis": "^1.1.1",
+                "predis/predis": "^1.1.2",
                 "symfony/cache": "^5.1.4"
             },
             "suggest": {
@@ -1063,7 +1063,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2021-05-27T16:46:06+00:00"
+            "time": "2021-06-08T13:36:46+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -1787,16 +1787,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.48.1",
+            "version": "2.49.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "8d1f50f1436fb4b05e7127360483dd9c6e73da16"
+                "reference": "93d9db91c0235c486875d22f1e08b50bdf3e6eee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/8d1f50f1436fb4b05e7127360483dd9c6e73da16",
-                "reference": "8d1f50f1436fb4b05e7127360483dd9c6e73da16",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/93d9db91c0235c486875d22f1e08b50bdf3e6eee",
+                "reference": "93d9db91c0235c486875d22f1e08b50bdf3e6eee",
                 "shasum": ""
             },
             "require": {
@@ -1876,7 +1876,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-05-26T22:08:38+00:00"
+            "time": "2021-06-02T07:31:40+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -3843,16 +3843,16 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v5.3.0",
+            "version": "v5.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "31f25d99b329a1461f42bcef8505b54926a30be6"
+                "reference": "8827b90cf8806e467124ad476acd15216c2fceb6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/31f25d99b329a1461f42bcef8505b54926a30be6",
-                "reference": "31f25d99b329a1461f42bcef8505b54926a30be6",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/8827b90cf8806e467124ad476acd15216c2fceb6",
+                "reference": "8827b90cf8806e467124ad476acd15216c2fceb6",
                 "shasum": ""
             },
             "require": {
@@ -3896,7 +3896,7 @@
             "description": "Defines an object-oriented layer for the HTTP specification",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/http-foundation/tree/v5.3.0"
+                "source": "https://github.com/symfony/http-foundation/tree/v5.3.1"
             },
             "funding": [
                 {
@@ -3912,20 +3912,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-05-26T17:43:10+00:00"
+            "time": "2021-06-02T09:32:00+00:00"
         },
         {
             "name": "symfony/http-kernel",
-            "version": "v5.3.0",
+            "version": "v5.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-kernel.git",
-                "reference": "f8e8f5391b6909e2f0ba8c12220ab7af3050eb4f"
+                "reference": "74eb022e3bac36b3d3a897951a98759f2b32b864"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/f8e8f5391b6909e2f0ba8c12220ab7af3050eb4f",
-                "reference": "f8e8f5391b6909e2f0ba8c12220ab7af3050eb4f",
+                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/74eb022e3bac36b3d3a897951a98759f2b32b864",
+                "reference": "74eb022e3bac36b3d3a897951a98759f2b32b864",
                 "shasum": ""
             },
             "require": {
@@ -4008,7 +4008,7 @@
             "description": "Provides a structured process for converting a Request into a Response",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/http-kernel/tree/v5.3.0"
+                "source": "https://github.com/symfony/http-kernel/tree/v5.3.1"
             },
             "funding": [
                 {
@@ -4024,7 +4024,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-05-31T10:44:03+00:00"
+            "time": "2021-06-02T10:07:12+00:00"
         },
         {
             "name": "symfony/mime",
@@ -8605,5 +8605,5 @@
         "php": "^7.3"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }
