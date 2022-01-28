@@ -38,6 +38,10 @@
     "LOG_CHANNEL": {
       "description": "Log channel where logs are pushed.",
       "value": "errorlog"
+    },
+    "APP_TRUST_PROXIES": {
+      "description": "Trust proxies.",
+      "value": "*"
     }
   }
 }
