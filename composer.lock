@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/asbiin/laravel-webauthn.git",
-                "reference": "e1aa4e97e001d0805447c66783fd648256f4712f"
+                "reference": "39fce692b158b94d77170c7fd232426b0c0636ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/asbiin/laravel-webauthn/zipball/e1aa4e97e001d0805447c66783fd648256f4712f",
-                "reference": "e1aa4e97e001d0805447c66783fd648256f4712f",
+                "url": "https://api.github.com/repos/asbiin/laravel-webauthn/zipball/39fce692b158b94d77170c7fd232426b0c0636ff",
+                "reference": "39fce692b158b94d77170c7fd232426b0c0636ff",
                 "shasum": ""
             },
             "require": {
@@ -98,7 +98,7 @@
                     "url": "https://github.com/asbiin"
                 }
             ],
-            "time": "2022-01-28T23:11:22+00:00"
+            "time": "2022-01-28T23:41:18+00:00"
         },
         {
             "name": "asm89/stack-cors",
