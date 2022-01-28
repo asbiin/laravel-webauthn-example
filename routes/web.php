@@ -1,6 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +16,18 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
 });
 
-Auth::routes();
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/validate2fa', [\App\Http\Controllers\Validate2faController::class, 'show'])->name('validate2fa');
+});
 
-Route::middleware(['auth', 'webauthn'])->group(function () {
-    Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware(['auth:sanctum', 'verified', 'mfa'])->group(function () {
+    Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'show'])->name('dashboard');
 });

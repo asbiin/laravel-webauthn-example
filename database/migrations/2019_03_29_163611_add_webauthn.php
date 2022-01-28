@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddWebauthn extends Migration
 {
@@ -14,7 +14,7 @@ class AddWebauthn extends Migration
     public function up()
     {
         Schema::create('webauthn_keys', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->bigInteger('user_id')->unsigned();
 
             $table->string('name')->default('key');
@@ -25,7 +25,7 @@ class AddWebauthn extends Migration
             $table->text('trustPath');
             $table->text('aaguid');
             $table->text('credentialPublicKey');
-            $table->integer('counter');
+            $table->bigInteger('counter')->unsigned();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
@@ -40,6 +40,6 @@ class AddWebauthn extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('webauthn');
+        Schema::dropIfExists('webauthn_keys');
     }
 }
