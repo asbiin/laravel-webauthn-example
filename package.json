@@ -7,7 +7,11 @@
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
         "prod": "npm run production",
-        "production": "mix --production"
+        "production": "mix --production",
+        "heroku-postbuild": "yarn run production"
+    },
+    "engines": {
+        "node": "16.x"
     },
     "devDependencies": {
         "@inertiajs/inertia": "^0.10.0",
