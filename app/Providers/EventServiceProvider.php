@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Listeners\RegisteredHandler;
 use App\Listeners\TwoFactorAuthenticationHandler;
+use App\Listeners\WebauthnLoginHandler;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
