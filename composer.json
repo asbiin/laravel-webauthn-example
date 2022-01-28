@@ -11,7 +11,7 @@
         }
     },
     "require": {
-        "php": "^7.3|^8.0",
+        "php": "^8.0",
         "asbiin/laravel-webauthn": "dev-v2rebuild",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
