@@ -12,6 +12,9 @@
     },
     "require": {
         "php": "^8.0",
+        "ext-bcmath": "*",
+        "ext-gmp": "*",
+        "ext-intl": "*",
         "asbiin/laravel-webauthn": "dev-v2rebuild",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
