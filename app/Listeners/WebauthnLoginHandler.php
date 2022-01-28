@@ -15,7 +15,9 @@ class WebauthnLoginHandler
      */
     public function handle(WebauthnLogin $event)
     {
-        $this->registerTwoFactor($event->user);
+        if ($event->user instanceof \App\Models\User && $event->user->hasEnabledTwoFactorAuthentication()) {
+            $this->registerTwoFactor($event->user);
+        }
     }
 
     /**

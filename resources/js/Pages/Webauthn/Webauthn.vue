@@ -232,7 +232,7 @@
                         this.$refs.create.close();
                     },
                     onError: (error) => {
-                        this.errorMessage = error.message ? error.message : error.response.data.webauthn;
+                        this.errorMessage = error.message ? error.message : error.data.errors.webauthn;
                     }
                 });
             },
@@ -257,7 +257,7 @@
                         }
                     },
                     onError: (error) => {
-                        this.errorMessage = error.message ? error.message : error.response.data.webauthn;
+                        this.errorMessage = error.message ? error.message : error.data.errors.data;
                     }
                 });
             },
