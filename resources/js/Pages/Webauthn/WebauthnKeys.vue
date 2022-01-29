@@ -66,7 +66,7 @@
         </div>
     </div>
 
-    <webauthn-create-modal :errorMessage="errorMessage" :form="registerForm" @start="startRegister" @register="registerWaitForKey" ref="create" />
+    <webauthn-create-modal :errorMessage="errorMessage" :form="registerForm" @start="start" @register="registerWaitForKey" ref="create" />
     <webauthn-delete-modal :keyid="keyBeingDeleted" @close="keyBeingDeleted = null" />
     <webauthn-update-modal :keyid="keyBeingUpdated" :name="nameUpdate" @close="keyBeingUpdated = null" />
 </div>
@@ -82,9 +82,9 @@
     import JetSecondaryButton from '@/Jetstream/SecondaryButton.vue'
     import JetConfirmsPassword from '@/Jetstream/ConfirmsPassword.vue'
     import JetButton from '@/Jetstream/Button.vue'
-    import WebauthnCreateModal from './WebauthnCreateModal.vue'
-    import WebauthnDeleteModal from './WebauthnDeleteModal.vue'
-    import WebauthnUpdateModal from './WebauthnUpdateModal.vue'
+    import WebauthnCreateModal from './Partials/WebauthnCreateModal.vue'
+    import WebauthnDeleteModal from './Partials/WebauthnDeleteModal.vue'
+    import WebauthnUpdateModal from './Partials/WebauthnUpdateModal.vue'
     import * as WebAuthn from '../../../../vendor/asbiin/laravel-webauthn/resources/js/webauthn.js';
     import { useForm } from '@inertiajs/inertia-vue3'
 
@@ -176,7 +176,7 @@
                 this.$refs.create.open();
             },
 
-            startRegister() {
+            start() {
                 this.errorMessage = '';
                 this.registerForm.clearErrors();
             },

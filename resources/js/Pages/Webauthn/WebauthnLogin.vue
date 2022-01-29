@@ -27,7 +27,7 @@
     import JetInputError from '@/Jetstream/InputError.vue'
     import JetAuthenticationCard from '@/Jetstream/AuthenticationCard.vue'
     import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo.vue'
-    import WebauthnWaitForKey from './WebauthnWaitForKey.vue'
+    import WebauthnWaitForKey from './Partials/WebauthnWaitForKey.vue'
     import * as WebAuthn from '../../../../vendor/asbiin/laravel-webauthn/resources/js/webauthn.js';
     import { useForm } from '@inertiajs/inertia-vue3'
 
@@ -68,7 +68,7 @@
                 this.errorMessage = this.notSupportedMessage();
             }
 
-            this.loginWaitForKey(this.publicKey);
+            this.start();
         },
 
         methods: {
@@ -92,6 +92,10 @@
                     default:
                         return '';
                 }
+            },
+
+            start() {
+                this.loginWaitForKey(this.publicKey);
             },
 
             loginWaitForKey(publicKey) {
