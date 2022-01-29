@@ -1,57 +1,65 @@
 {
     "name": "asbiin/laravel-webauthn-example",
     "type": "project",
-    "description": "Example use of asbiin/laravel-webauthn.",
-    "keywords": [
-        "framework",
-        "laravel"
-    ],
+    "description": "Example application for asbiin/laravel-webauthn",
+    "keywords": ["laravel", "webauthn"],
     "license": "MIT",
+    "repositories": {
+        "local": {
+            "type": "vcs",
+            "url": "https://github.com/asbiin/laravel-webauthn"
+        }
+    },
     "require": {
-        "php": "^7.3",
-        "asbiin/laravel-webauthn": "^1.0",
-        "fideloper/proxy": "^4.0",
-        "laravel/framework": "^8.0",
-        "laravel/tinker": "^2.0",
-        "laravel/ui": "^2.0"
+        "php": "^8.0",
+        "ext-bcmath": "*",
+        "ext-gmp": "*",
+        "ext-intl": "*",
+        "ext-redis": "*",
+        "asbiin/laravel-webauthn": "dev-v2rebuild",
+        "fruitcake/laravel-cors": "^2.0",
+        "guzzlehttp/guzzle": "^7.4",
+        "guzzlehttp/psr7": "^2.1",
+        "inertiajs/inertia-laravel": "^0.4.3",
+        "laravel/framework": "^8.65",
+        "laravel/jetstream": "^2.5",
+        "laravel/sanctum": "^2.11",
+        "laravel/tinker": "^2.5",
+        "psr/log": "^1.1",
+        "tightenco/ziggy": "^1.0",
+        "web-token/jwt-key-mgmt": "^2.2",
+        "web-token/jwt-signature-algorithm-ecdsa": "^2.2",
+        "web-token/jwt-signature-algorithm-eddsa": "^2.2",
+        "web-token/jwt-signature-algorithm-rsa": "^2.2"
     },
     "require-dev": {
-        "beyondcode/laravel-dump-server": "^1.0",
-        "fakerphp/faker": "^1.10",
-        "mockery/mockery": "^1.0",
-        "nunomaduro/collision": "^5.0",
-        "phpunit/phpunit": "^9.0"
-    },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true
-    },
-    "extra": {
-        "laravel": {
-            "dont-discover": []
-        }
+        "barryvdh/laravel-debugbar": "^3.6",
+        "facade/ignition": "^2.5",
+        "fakerphp/faker": "^1.9.1",
+        "laravel/sail": "^1.0.1",
+        "mockery/mockery": "^1.4.4",
+        "nunomaduro/collision": "^5.10",
+        "phpunit/phpunit": "^9.5.10"
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
-        },
-        "classmap": [
-            "database/seeds",
-            "database/factories"
-        ]
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
     },
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
         }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
@@ -59,5 +67,17 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ]
-    }
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
