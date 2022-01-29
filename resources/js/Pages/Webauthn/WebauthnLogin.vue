@@ -59,7 +59,6 @@
         mounted() {
             this.errorMessage = '';
             this.webauthn = new WebAuthn((name, message) => {
-                this.$refs.create.stop();
                 this.errorMessage = this._errorMessage(name, message);
             });
 
