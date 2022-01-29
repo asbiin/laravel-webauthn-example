@@ -15,7 +15,7 @@
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Name
                         </th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:block">
                             Last use
                         </th>
                         <th scope="col" class="relative px-6 py-3">
@@ -35,7 +35,7 @@
                                 {{ key.name }}
                             </strong>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap time">
+                        <td class="px-6 py-4 whitespace-nowrap time hidden md:block">
                             <span v-if="key.counter > 0" class="text-sm text-gray-500">
                                 {{ key.updated_at }}
                             </span>
