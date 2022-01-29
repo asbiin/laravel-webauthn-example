@@ -4,6 +4,7 @@ namespace App\Listeners;
 
 use LaravelWebauthn\Events\WebauthnLogin;
 use Illuminate\Contracts\Auth\Authenticatable as User;
+use Illuminate\Support\Facades\Log;
 
 class WebauthnLoginHandler
 {
@@ -15,8 +16,12 @@ class WebauthnLoginHandler
      */
     public function handle(WebauthnLogin $event)
     {
-        if ($event->user instanceof \App\Models\User && $event->user->hasEnabledTwoFactorAuthentication()) {
-            $this->registerTwoFactor($event->user);
+        if ($event->user instanceof \App\Models\User) {
+            Log::info("Webauthn login: {$event->user->name} {$event->user->email}");
+
+            if ($event->user->hasEnabledTwoFactorAuthentication()) {
+                $this->registerTwoFactor($event->user);
+            }
         }
     }
 

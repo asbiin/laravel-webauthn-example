@@ -3,15 +3,7 @@
     <div v-if="!isSupported">
         {{ notSupportedMessage() }}
     </div>
-    <div v-else-if="method === 'login'">
-        <jet-input-error :message="authForm.errors.data" class="mt-2" />
-        <webauthn-wait-for-key
-            :error-message="errorMessage"
-            :form="authForm"
-            @retry="start()"
-        />
-    </div>
-    <div v-else-if="method === 'register-modal'" class="p-6 sm:px-20 bg-white border-b border-gray-200">
+    <div v-else class="p-6 sm:px-20 bg-white border-b border-gray-200">
         <h1>
             Manage your Webauthn Keys
         </h1>
@@ -86,7 +78,6 @@
     import JetDialogModal from '@/Jetstream/DialogModal.vue'
     import JetLabel from '@/Jetstream/Label.vue'
     import JetInput from '@/Jetstream/Input.vue'
-    import JetInputError from '@/Jetstream/InputError.vue'
     import JetDangerButton from '@/Jetstream/DangerButton.vue'
     import JetSecondaryButton from '@/Jetstream/SecondaryButton.vue'
     import JetConfirmsPassword from '@/Jetstream/ConfirmsPassword.vue'
@@ -94,7 +85,6 @@
     import WebauthnCreateModal from './WebauthnCreateModal.vue'
     import WebauthnDeleteModal from './WebauthnDeleteModal.vue'
     import WebauthnUpdateModal from './WebauthnUpdateModal.vue'
-    import WebauthnWaitForKey from './WebauthnWaitForKey.vue'
     import * as WebAuthn from '../../../../vendor/asbiin/laravel-webauthn/resources/js/webauthn.js';
     import { useForm } from '@inertiajs/inertia-vue3'
 
@@ -104,7 +94,6 @@
             JetDialogModal,
             JetLabel,
             JetInput,
-            JetInputError,
             JetDangerButton,
             JetSecondaryButton,
             JetConfirmsPassword,
@@ -112,7 +101,6 @@
             WebauthnCreateModal,
             WebauthnDeleteModal,
             WebauthnUpdateModal,
-            WebauthnWaitForKey,
         },
 
         props: {
@@ -124,10 +112,6 @@
                 type: Object,
                 default: null,
             },
-            method: {
-                type: String,
-                default: '',
-            },
         },
 
         data() {
@@ -136,7 +120,6 @@
                 errorMessage: '',
                 webauthn: null,
 
-                authForm: useForm(),
                 registerForm: useForm({
                     name: '',
                 }),
@@ -153,11 +136,16 @@
         },
 
         mounted() {
+            this.errorMessage = '';
             this.webauthn = new WebAuthn((name, message) => {
                 this.$refs.create.stop();
                 this.errorMessage = this._errorMessage(name, message);
             });
-            this.start();
+
+            if (! this.webauthn.webAuthnSupport()) {
+                this.isSupported = false;
+                this.errorMessage = this.notSupportedMessage();
+            }
         },
 
         methods: {
@@ -180,24 +168,6 @@
                         return 'WebAuthn only supports secure connections. Please load this page with https scheme.';
                     default:
                         return '';
-                }
-            },
-
-            start() {
-                this.errorMessage = '';
-
-                if (! this.webauthn.webAuthnSupport()) {
-                    this.isSupported = false;
-                    this.errorMessage = this.notSupportedMessage();
-                }
-
-                switch(this.method) {
-                    case 'register':
-                        this.registerWaitForKey(this.publicKey);
-                        break;
-                    case 'login':
-                        this.loginWaitForKey(this.publicKey);
-                        break;
                 }
             },
 
@@ -233,31 +203,6 @@
                     },
                     onError: (error) => {
                         this.errorMessage = error.message ? error.message : error.data.errors.webauthn;
-                    }
-                });
-            },
-
-            loginWaitForKey(publicKey) {
-                this.$nextTick(() => this.webauthn.sign(
-                    publicKey,
-                    (data) => { this.webauthnLoginCallback(data); }
-                ));
-            },
-
-            webauthnLoginCallback(data) {
-                this.authForm.transform(() => ({
-                    data: JSON.stringify(data)
-                }))
-                .post(route('webauthn.auth'), {
-                    preserveScroll: true,
-                    preserveState: true,
-                    onSuccess: (response) => {
-                        if (response.data.callback) {
-                            this.$nextTick(() => { window.location = response.data.callback; });
-                        }
-                    },
-                    onError: (error) => {
-                        this.errorMessage = error.message ? error.message : error.data.errors.data;
                     }
                 });
             },

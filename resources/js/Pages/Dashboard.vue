@@ -10,7 +10,7 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <welcome />
-                    <webauthn :webauthnKeys="webauthnKeys" :method="'register-modal'" />
+                    <webauthn-keys :webauthnKeys="webauthnKeys" />
                 </div>
             </div>
         </div>
@@ -32,7 +32,7 @@
     import { defineComponent } from 'vue'
     import AppLayout from '@/Layouts/AppLayout.vue'
     import Welcome from '@/Jetstream/Welcome.vue'
-    import Webauthn from './Webauthn/Webauthn.vue'
+    import WebauthnKeys from './Webauthn/WebauthnKeys.vue'
     import { Link } from '@inertiajs/inertia-vue3';
 
     export default defineComponent({
@@ -40,7 +40,7 @@
             AppLayout,
             Welcome,
             Link,
-            Webauthn,
+            WebauthnKeys,
         },
 
         props: {
