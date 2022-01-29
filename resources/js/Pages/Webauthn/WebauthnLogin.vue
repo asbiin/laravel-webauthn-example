@@ -94,6 +94,7 @@
             },
 
             start() {
+                this.errorMessage = '';
                 this.loginWaitForKey(this.publicKey);
             },
 
