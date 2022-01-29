@@ -18,14 +18,19 @@
         "ext-redis": "*",
         "asbiin/laravel-webauthn": "dev-v2rebuild",
         "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
+        "guzzlehttp/guzzle": "^7.4",
+        "guzzlehttp/psr7": "^2.1",
         "inertiajs/inertia-laravel": "^0.4.3",
         "laravel/framework": "^8.65",
         "laravel/jetstream": "^2.5",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "psr/log": "^1.1",
-        "tightenco/ziggy": "^1.0"
+        "tightenco/ziggy": "^1.0",
+        "web-token/jwt-key-mgmt": "^2.2",
+        "web-token/jwt-signature-algorithm-ecdsa": "^2.2",
+        "web-token/jwt-signature-algorithm-eddsa": "^2.2",
+        "web-token/jwt-signature-algorithm-rsa": "^2.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",
