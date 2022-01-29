@@ -42,6 +42,6 @@ class NewUserAlert extends Notification
     {
         return (new MailMessage)
             ->subject('New registration')
-            ->greeting('A new user just registered');
+            ->greeting("New user: {$this->user->name} {$this->user->email}");
     }
 }

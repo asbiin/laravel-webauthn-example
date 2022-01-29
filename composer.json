@@ -1,8 +1,8 @@
 {
-    "name": "laravel/laravel",
+    "name": "asbiin/laravel-webauthn-example",
     "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "description": "Example application for asbiin/laravel-webauthn",
+    "keywords": ["laravel", "webauthn"],
     "license": "MIT",
     "repositories": {
         "local": {
@@ -15,6 +15,7 @@
         "ext-bcmath": "*",
         "ext-gmp": "*",
         "ext-intl": "*",
+        "ext-redis": "*",
         "asbiin/laravel-webauthn": "dev-v2rebuild",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
