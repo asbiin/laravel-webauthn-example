@@ -58,11 +58,11 @@
         </div>
 
         <div class="mt-8 text-2xl">
-            <jet-confirms-password @confirmed="showRegisterModal">
-                <jet-button type="button">
+            <!-- <jet-confirms-password @confirmed="showRegisterModal"> -->
+                <jet-button type="button" @click="showRegisterModal">
                     Register a new WebAuthn key
                 </jet-button>
-            </jet-confirms-password>
+            <!-- </jet-confirms-password> -->
         </div>
     </div>
 
