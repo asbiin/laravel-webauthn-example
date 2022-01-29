@@ -53,7 +53,9 @@ class WebauthnLoginHandler
     {
         $request = request();
 
-        $this->guard->login($user, $request->remember());
+        $remember = $request->session()->pull('login.remember', false);
+
+        $this->guard->login($user, $remember);
 
         $request->session()->regenerate();
     }
