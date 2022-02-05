@@ -4,19 +4,13 @@
     "description": "Example application for asbiin/laravel-webauthn",
     "keywords": ["laravel", "webauthn"],
     "license": "MIT",
-    "repositories": {
-        "local": {
-            "type": "vcs",
-            "url": "https://github.com/asbiin/laravel-webauthn"
-        }
-    },
     "require": {
         "php": "^8.0",
         "ext-bcmath": "*",
         "ext-gmp": "*",
         "ext-intl": "*",
         "ext-redis": "*",
-        "asbiin/laravel-webauthn": "dev-v2rebuild",
+        "asbiin/laravel-webauthn": "^2.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.4",
         "guzzlehttp/psr7": "^2.1",
