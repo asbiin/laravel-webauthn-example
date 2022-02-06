@@ -20,7 +20,7 @@
     }
   ],
   "scripts": {
-    "postdeploy": "php artisan migrate --force -vvv"
+    "postdeploy": "php artisan setup --force -vvv"
   },
   "env": {
     "APP_KEY": {
