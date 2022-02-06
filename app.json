@@ -36,12 +36,16 @@
       "value": "false"
     },
     "LOG_CHANNEL": {
-      "description": "Log channel where logs are pushed.",
+      "description": "Log channel where logs are pushed. Default to 'errorlog' on heroku.",
       "value": "errorlog"
     },
     "APP_TRUST_PROXIES": {
       "description": "Trust proxies.",
       "value": "*"
+    },
+    "DB_CONNECTION": {
+      "description": "Database connection. Default to 'pgsql' on heroku.",
+      "value": "pgsql"
     }
   }
 }

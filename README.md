@@ -13,6 +13,10 @@ Try this application on [this live demo app](https://laravel-webauthn-example.he
 
 **Accounts are automatically deleted after 24h on this demo instance.**
 
+## Deploy on heroku
+
+You can also [![deploy it to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/asbiin/laravel-webauthn-example/tree/main)
+
 
 # Installation
 
