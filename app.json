@@ -46,6 +46,10 @@
     "DB_CONNECTION": {
       "description": "Database connection. Default to 'pgsql' on heroku.",
       "value": "pgsql"
+    },
+    "CACHE_DRIVER": {
+      "description": "Cache connection. Default to 'database' on heroku.",
+      "value": "database"
     }
   }
 }
