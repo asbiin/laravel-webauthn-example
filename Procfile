@@ -1,2 +1,2 @@
 web: vendor/bin/heroku-php-apache2 public/
-release: php artisan migrate --force -vvv
+release: php artisan setup --force -vvv
