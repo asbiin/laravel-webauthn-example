@@ -19,6 +19,7 @@
         "laravel/jetstream": "^2.5",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "php-http/discovery": "^1.14",
         "psr/log": "^1.1",
         "tightenco/ziggy": "^1.0",
         "web-token/jwt-key-mgmt": "^2.2",
@@ -33,7 +34,8 @@
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^5.10",
-        "phpunit/phpunit": "^9.5.10"
+        "phpunit/phpunit": "^9.5.10",
+        "roave/security-advisories": "dev-master"
     },
     "autoload": {
         "psr-4": {
