@@ -60,8 +60,13 @@ return [
     */
 
     'providers' => [
+        // 'users' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\User::class,
+        // ],
+
         'users' => [
-            'driver' => 'eloquent',
+            'driver' => 'webauthn',
             'model' => App\Models\User::class,
         ],
 
@@ -93,6 +98,13 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+
+        // 'webauthn' => [
+        //     'provider' => 'users', // The user provider using WebAuthn.
+        //     'table' => 'web_authn_recoveries', // The table to store the recoveries.
+        //     'expire' => 60,
+        //     'throttle' => 60,
+        // ],
     ],
 
     /*

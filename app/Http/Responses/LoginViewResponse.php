@@ -2,6 +2,8 @@
 
 namespace App\Http\Responses;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Response;
 use Inertia\Inertia;
 use LaravelWebauthn\Http\Responses\LoginViewResponse as LoginViewResponseBase;
 
@@ -15,10 +17,11 @@ class LoginViewResponse extends LoginViewResponseBase
      */
     public function toResponse($request)
     {
-        $publicKey = $this->publicKeyRequest($request);
-
-        return Inertia::render('Webauthn/WebauthnLogin', [
-            'publicKey' => $publicKey
-        ])->toResponse($request);
+        return $request->wantsJson()
+            ? Response::json(['publicKey' => $this->publicKey])
+            : Inertia::render('Webauthn/WebauthnLogin', [
+                'publicKey' => $this->publicKey,
+                'remember' => Auth::guard()->viaRemember(),
+            ])->toResponse($request);
     }
 }

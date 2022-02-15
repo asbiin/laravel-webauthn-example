@@ -193,7 +193,7 @@
 
                 this.registerForm.transform((form) => ({
                     ...form,
-                    register: JSON.stringify(data)
+                    ...data
                 }))
                 .post(route('webauthn.store'), {
                     preserveScroll: true,

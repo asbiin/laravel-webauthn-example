@@ -119,13 +119,13 @@
                 this.error = '';
 
                 this.$emit('start')
-                axios.get(route('webauthn.create'))
+                axios.post(route('webauthn.store.options'))
                     .then((response) => {
                         this.registerWaitForKey(response.data.publicKey);
                     })
                     .catch((error) => {
                         this.stop();
-                        this.error = error.response.data.errors.register[0];
+                        this.error = error.response.data.errors[0];
                     });
             },
 
