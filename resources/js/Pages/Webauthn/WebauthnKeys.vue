@@ -146,6 +146,11 @@
                 this.isSupported = false;
                 this.errorMessage = this.notSupportedMessage();
             }
+
+            if (this.publicKey) {
+                this.showRegisterModal();
+                this.registerWaitForKey(this.publicKey);
+            }
         },
 
         methods: {

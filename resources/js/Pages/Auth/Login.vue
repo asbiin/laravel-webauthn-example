@@ -1,10 +1,12 @@
 <template>
     <Head title="Log in" />
 
-    <webauthn-login v-if="webauthn"
+    <webauthn-login v-show="publicKey"
+        :publicKey="publicKey"
         :email="form.email" :remember="form.remember"
+        @error="onError"
         ref="webauthn" />
-    <jet-authentication-card v-else>
+    <jet-authentication-card>
         <template #logo>
             <jet-authentication-card-logo />
         </template>
@@ -56,11 +58,13 @@
     import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo.vue'
     import JetButton from '@/Jetstream/Button.vue'
     import JetInput from '@/Jetstream/Input.vue'
+    import JetInputError from '@/Jetstream/InputError.vue'
     import JetCheckbox from '@/Jetstream/Checkbox.vue'
     import JetLabel from '@/Jetstream/Label.vue'
     import JetValidationErrors from '@/Jetstream/ValidationErrors.vue'
     import { Head, Link } from '@inertiajs/inertia-vue3';
     import WebauthnLogin from '../Webauthn/WebauthnLogin.vue';
+    import { useForm } from '@inertiajs/inertia-vue3'
 
     export default defineComponent({
         components: {
@@ -69,6 +73,7 @@
             JetAuthenticationCardLogo,
             JetButton,
             JetInput,
+            JetInputError,
             JetCheckbox,
             JetLabel,
             JetValidationErrors,
@@ -77,28 +82,37 @@
         },
 
         props: {
-            canResetPassword: Boolean,
-            status: String
+            canResetPassword: {
+                type: Boolean,
+                default: true
+            },
+            status: {
+                type: String,
+                default: null
+            },
+            publicKey: {
+                type: Object,
+                default: null
+            }
         },
 
         data() {
             return {
                 passwordless: false,
-                webauthn: false,
                 error: '',
-                form: this.$inertia.form({
+                form: useForm({
                     email: '',
                     password: '',
-                    remember: false
+                    remember: true
                 })
             }
         },
 
         methods: {
             submit(passwordless) {
+                this.form.clearErrors();
                 this.passwordless = passwordless;
                 if (passwordless) {
-                    this.webauthn = true;
                     this.$nextTick(() => this.$refs.webauthn.start());
                 } else {
                     this.form
@@ -110,6 +124,10 @@
                             onFinish: () => this.form.reset('password'),
                         });
                 }
+            },
+
+            onError(event) {
+                this.$page.props.errors = event;
             },
         }
     })

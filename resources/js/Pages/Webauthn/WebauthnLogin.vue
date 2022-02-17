@@ -44,6 +44,8 @@
             WebauthnWaitForKey,
         },
 
+        emits: ['error'],
+
         props: {
             publicKey: {
                 type: Object,
@@ -122,15 +124,26 @@
             },
 
             webauthnLoginPrepare() {
-                axios.post(/*route().current('webauthn.login') ? route('webauthn.confirm.options') :*/ route('webauthn.auth.options'), {
-                        email: this.email,
-                    })
-                    .then((response) => {
-                        this.loginWaitForKey(response.data.publicKey);
-                    })
-                    .catch((error) => {
-                        this.error = error.response.data.errors.register[0];
-                    });
+                useForm().transform(() => ({
+                    email: this.email,
+                    remember: this.remember
+                }))
+                .post(route('webauthn.auth.options'), {
+                    preserveScroll: true,
+                    preserveState: true,
+                    onSuccess: (response) => {
+                        if (response.data !== undefined) {
+                            this.loginWaitForKey(response.data.publicKey);
+                        } else {
+                            this.$nextTick(() => this.loginWaitForKey(response.props.publicKey));
+                        }
+                    },
+                    onError: (error) => {
+                        this.error = error.response.data.errors;
+                        this.$emit('error', error.response.data.errors);
+                        this.stop();
+                    }
+                });
             },
 
             loginWaitForKey(publicKey) {
@@ -146,12 +159,12 @@
                     ...data,
                     remember: this.remember ? 'on' : ''
                 }))
-                .post(/*route().current('webauthn.login') ? route('webauthn.confirm') :*/ route('webauthn.auth'), {
+                .post(route('webauthn.auth'), {
                     preserveScroll: true,
                     preserveState: true,
                     onSuccess: (response) => {
                         this.stop();
-                        if (response.data.callback) {
+                        if (response.data.callback !== undefined) {
                             this.$nextTick(() => { window.location = response.data.callback; });
                         }
                     },
