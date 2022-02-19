@@ -5,7 +5,9 @@ namespace App\Listeners;
 use LaravelWebauthn\Events\WebauthnLogin;
 use Illuminate\Contracts\Auth\Authenticatable as User;
 use Illuminate\Contracts\Auth\StatefulGuard;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Laravel\Fortify\Features;
 
 class WebauthnLoginHandler
 {
@@ -35,11 +37,13 @@ class WebauthnLoginHandler
      */
     public function handle(WebauthnLogin $event)
     {
-        if ($event->user instanceof \App\Models\User) {
-            Log::info("Webauthn login: {$event->user->name} {$event->user->email}");
+        $user = $event->user;
+        if ($user instanceof \App\Models\User) {
+            Log::info("Webauthn login: {$user->name} {$user->email}");
 
-            if ($event->user->hasEnabledTwoFactorAuthentication()) {
-                $this->registerTwoFactor($event->user);
+            if (Features::enabled(Features::twoFactorAuthentication())
+                && $user->hasEnabledTwoFactorAuthentication()) {
+                $this->registerTwoFactor($user);
             }
         }
     }
@@ -51,12 +55,9 @@ class WebauthnLoginHandler
      */
     private function registerTwoFactor(User $user)
     {
-        $request = request();
-
-        $remember = $request->session()->pull('login.remember', false);
-
-        $this->guard->login($user, $remember);
-
-        $request->session()->regenerate();
+        session([
+            'login.id' => $user->getAuthIdentifier(),
+            'login.remember' => Auth::viaRemember(),
+        ]);
     }
 }
