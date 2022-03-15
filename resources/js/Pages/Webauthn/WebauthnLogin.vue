@@ -18,6 +18,9 @@
                 :form="authForm"
                 @retry="start()"
             />
+            <jet-button class="ml-2" @click="start()" v-show="!processing">
+                Retry
+            </jet-button>
         </div>
     </jet-authentication-card>
 </template>
@@ -25,6 +28,7 @@
 <script>
     import { defineComponent } from 'vue'
     import JetInputError from '@/Jetstream/InputError.vue'
+    import JetButton from '@/Jetstream/Button.vue'
     import JetAuthenticationCard from '@/Jetstream/AuthenticationCard.vue'
     import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo.vue'
     import WebauthnWaitForKey from './Partials/WebauthnWaitForKey.vue'
@@ -34,23 +38,36 @@
     export default defineComponent({
         components: {
             JetInputError,
+            JetButton,
             JetAuthenticationCard,
             JetAuthenticationCardLogo,
             WebauthnWaitForKey,
         },
+
+        emits: ['error'],
 
         props: {
             publicKey: {
                 type: Object,
                 default: null,
             },
+            email: {
+                type: String,
+                default: null,
+            },
+            remember: {
+                type: Boolean,
+                default: false,
+            },
         },
 
         data() {
             return {
+                publicKeyObject: null,
                 isSupported: true,
                 errorMessage: '',
                 webauthn: null,
+                processing: false,
 
                 authForm: useForm(),
             };
@@ -67,7 +84,10 @@
                 this.errorMessage = this.notSupportedMessage();
             }
 
-            this.start();
+            if (this.publicKey) {
+                this.processing = true;
+                this.loginWaitForKey(this.publicKey);
+            }
         },
 
         methods: {
@@ -94,8 +114,36 @@
             },
 
             start() {
+                this.processing = true;
                 this.errorMessage = '';
-                this.loginWaitForKey(this.publicKey);
+                this.webauthnLoginPrepare();
+            },
+
+            stop() {
+                this.processing = false;
+            },
+
+            webauthnLoginPrepare() {
+                useForm().transform(() => ({
+                    email: this.email,
+                    remember: this.remember
+                }))
+                .post(route('webauthn.auth.options'), {
+                    preserveScroll: true,
+                    preserveState: true,
+                    onSuccess: (response) => {
+                        if (response.data !== undefined) {
+                            this.loginWaitForKey(response.data.publicKey);
+                        } else {
+                            this.$nextTick(() => this.loginWaitForKey(response.props.publicKey));
+                        }
+                    },
+                    onError: (error) => {
+                        this.error = error.response.data.errors;
+                        this.$emit('error', error.response.data.errors);
+                        this.stop();
+                    }
+                });
             },
 
             loginWaitForKey(publicKey) {
@@ -106,19 +154,23 @@
             },
 
             webauthnLoginCallback(data) {
-                this.authForm.transform(() => ({
-                    data: JSON.stringify(data)
+                this.authForm
+                .transform(() => ({
+                    ...data,
+                    remember: this.remember ? 'on' : ''
                 }))
                 .post(route('webauthn.auth'), {
                     preserveScroll: true,
                     preserveState: true,
                     onSuccess: (response) => {
-                        if (response.data.callback) {
+                        this.stop();
+                        if (response.data.callback !== undefined) {
                             this.$nextTick(() => { window.location = response.data.callback; });
                         }
                     },
                     onError: (error) => {
-                        this.errorMessage = error.message ? error.message : error.data.errors.data;
+                        this.errorMessage = error.message ? error.message : error.data.errors[0];
+                        this.stop();
                     }
                 });
             },

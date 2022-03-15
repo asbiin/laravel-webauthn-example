@@ -48,6 +48,7 @@
     import JetSecondaryButton from '@/Jetstream/SecondaryButton.vue'
     import JetButton from '@/Jetstream/Button.vue'
     import WebauthnWaitForKey from './WebauthnWaitForKey.vue'
+    import { useForm } from '@inertiajs/inertia-vue3'
 
     export default defineComponent({
         components: {
@@ -119,14 +120,21 @@
                 this.error = '';
 
                 this.$emit('start')
-                axios.get(route('webauthn.create'))
-                    .then((response) => {
-                        this.registerWaitForKey(response.data.publicKey);
-                    })
-                    .catch((error) => {
+                useForm().post(route('webauthn.store.options'), {
+                    preserveScroll: true,
+                    preserveState: true,
+                    onSuccess:  (response) => {
+                        if (response.data !== undefined) {
+                            this.registerWaitForKey(response.data.publicKey);
+                        } else {
+                            this.$nextTick(() => this.registerWaitForKey(response.props.publicKey));
+                        }
+                    },
+                    onError: (error) => {
                         this.stop();
-                        this.error = error.response.data.errors.register[0];
-                    });
+                        this.error = error.response.data.errors[0];
+                    }
+                });
             },
 
             registerWaitForKey(publicKey) {

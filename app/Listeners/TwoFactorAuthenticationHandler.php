@@ -27,7 +27,7 @@ class TwoFactorAuthenticationHandler
     private function registerWebauthn(User $user)
     {
         if (Webauthn::enabled($user)) {
-            Webauthn::forceAuthenticate();
+            Webauthn::login($user);
         }
     }
 }

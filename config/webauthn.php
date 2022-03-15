@@ -15,30 +15,86 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Route Middleware
+    | Webauthn Guard
     |--------------------------------------------------------------------------
     |
-    | These middleware will be assigned to Webauthn routes, giving you
-    | the chance to add your own middleware to this list or change any of
-    | the existing middleware. Or, you can simply stick with this list.
+    | Here you may specify which authentication guard Webauthn will use while
+    | authenticating users. This value should correspond with one of your
+    | guards that is already present in your "auth" configuration file.
     |
     */
 
-    'middleware' => [
-        'web',
-        'auth',
-    ],
+    'guard' => 'web',
 
     /*
     |--------------------------------------------------------------------------
-    | Prefix path
+    | Username / Email
     |--------------------------------------------------------------------------
     |
-    | The uri prefix for all webauthn requests.
+    | This value defines which model attribute should be considered as your
+    | application's "username" field. Typically, this might be the email
+    | address of the users but you are free to change this value here.
+    |
+    */
+
+    'username' => 'email',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Fortify Routes Prefix / Subdomain
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify which prefix Fortify will assign to all the routes
+    | that it registers with the application. If necessary, you may change
+    | subdomain under which all of the Fortify routes will be available.
     |
     */
 
     'prefix' => 'webauthn',
+
+    'domain' => null,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Webauthn Routes Middleware
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify which middleware Webauthn will assign to the routes
+    | that it registers with the application. If necessary, you may change
+    | these middleware but typically this provided default is preferred.
+    |
+    */
+
+    'middleware' => ['web'],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Rate Limiting
+    |--------------------------------------------------------------------------
+    |
+    | By default, Webauthn will throttle logins to five requests per minute for
+    | every email and IP address combination. However, if you would like to
+    | specify a custom rate limiter to call then you may specify it here.
+    |
+    */
+
+    'limiters' => [
+        'login' => 'login',
+    ],
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Additional middleware to use on Webauthn key manage
+    |--------------------------------------------------------------------------
+    |
+    | .
+    |
+    */
+
+    'confirm' => [
+        'middleware' => null,
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -54,7 +110,7 @@ return [
     */
 
     'redirects' => [
-        'login' => null,
+        'login' => '/dashboard',
         'register' => '/dashboard',
     ],
 
@@ -208,5 +264,24 @@ return [
     */
 
     'user_verification' => 'preferred',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Userless (One touch, Typeless) login
+    |--------------------------------------------------------------------------
+    |
+    | By default, users must input their email to receive a list of credentials
+    | ID to use for authentication, but they can also login without specifying
+    | one if the device can remember them, allowing for true one-touch login.
+    |
+    | If required or preferred, login verification will be always required.
+    |
+    | See https://www.w3.org/TR/webauthn/#enum-residentKeyRequirement
+    |
+    | Supported: "null", "required", "preferred", "discouraged".
+    |
+    */
+
+    'userless' => null,
 
 ];

@@ -36,8 +36,8 @@
                             </strong>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap time hidden md:block">
-                            <span v-if="key.counter > 0" class="text-sm text-gray-500">
-                                {{ key.updated_at }}
+                            <span v-if="key.updated_at > key.created_at" class="text-sm text-gray-500">
+                                {{ new Date(Date.parse(key.updated_at)).toLocaleString('en-GB', { timeZone: 'UTC' }) }}
                             </span>
                             <em v-else class="text-sm text-gray-500">
                                 Never used
@@ -146,6 +146,11 @@
                 this.isSupported = false;
                 this.errorMessage = this.notSupportedMessage();
             }
+
+            if (this.publicKey) {
+                this.showRegisterModal();
+                this.registerWaitForKey(this.publicKey);
+            }
         },
 
         methods: {
@@ -193,7 +198,7 @@
 
                 this.registerForm.transform((form) => ({
                     ...form,
-                    register: JSON.stringify(data)
+                    ...data
                 }))
                 .post(route('webauthn.store'), {
                     preserveScroll: true,

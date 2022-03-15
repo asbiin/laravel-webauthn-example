@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Http\Responses\LoginViewResponse;
+use App\Http\Responses\RegisterViewResponse;
 use Illuminate\Support\ServiceProvider;
 use LaravelWebauthn\Services\Webauthn;
 
@@ -16,6 +17,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         Webauthn::loginViewResponseUsing(LoginViewResponse::class);
+        Webauthn::registerViewResponseUsing(RegisterViewResponse::class);
     }
 
     /**

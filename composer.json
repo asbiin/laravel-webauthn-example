@@ -10,7 +10,7 @@
         "ext-gmp": "*",
         "ext-intl": "*",
         "ext-redis": "*",
-        "asbiin/laravel-webauthn": "^2.0",
+        "asbiin/laravel-webauthn": "^3.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.4",
         "guzzlehttp/psr7": "^2.1",
