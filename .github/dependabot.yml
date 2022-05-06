@@ -6,8 +6,6 @@ updates:
     directory: "/"
     schedule:
       interval: weekly
-      time: "11:00"
-    open-pull-requests-limit: 10
     versioning-strategy: lockfile-only
     labels:
       - javascript
@@ -19,10 +17,18 @@ updates:
     directory: "/"
     schedule:
       interval: weekly
-      time: "11:00"
-    open-pull-requests-limit: 10
     versioning-strategy: lockfile-only
     labels:
       - php
+      - dependencies
+      - auto-squash
+
+  # Maintain dependencies for Github Actions
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+    labels:
+      - actions
       - dependencies
       - auto-squash
