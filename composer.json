@@ -21,6 +21,7 @@
         "laravel/tinker": "^2.5",
         "php-http/discovery": "^1.14",
         "psr/log": "^3.0",
+        "sentry/sentry-laravel": "^2.12",
         "tightenco/ziggy": "^1.0",
         "web-token/jwt-key-mgmt": "^3.0",
         "web-token/jwt-signature-algorithm-ecdsa": "^3.0",
