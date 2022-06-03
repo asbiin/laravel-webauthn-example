@@ -169,7 +169,7 @@
                         }
                     },
                     onError: (error) => {
-                        this.errorMessage = error.message ? error.message : error.data.errors[0];
+                        this.errorMessage = error.email ? error.email : error.data.errors[0];
                         this.stop();
                     }
                 });

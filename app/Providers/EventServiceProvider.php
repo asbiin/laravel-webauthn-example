@@ -41,9 +41,6 @@ class EventServiceProvider extends ServiceProvider
         WebauthnRegister::class => [
             WebauthnRegisterHandler::class,
         ],
-        WebauthnLoginFailed::class => [
-            LogFailedEvent::class,
-        ],
         WebauthnRegisterFailed::class => [
             LogFailedEvent::class,
         ],
