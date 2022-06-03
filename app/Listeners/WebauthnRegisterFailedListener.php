@@ -5,7 +5,7 @@ namespace App\Listeners;
 use LaravelWebauthn\Events\WebauthnRegisterFailed;
 use Illuminate\Support\Facades\Log;
 
-class LogFailedEvent
+class WebauthnRegisterFailedListener
 {
     /**
      * Handle the event.
