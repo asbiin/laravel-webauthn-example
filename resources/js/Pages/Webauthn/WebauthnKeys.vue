@@ -207,7 +207,7 @@
                         this.$refs.create.close();
                     },
                     onError: (error) => {
-                        this.errorMessage = error.message ? error.message : error.data.errors.webauthn;
+                        this.errorMessage = error.email ? error.email : error.data.errors.webauthn;
                     }
                 });
             },

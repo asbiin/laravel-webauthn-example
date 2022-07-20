@@ -4,15 +4,14 @@ namespace App\Providers;
 
 use App\Listeners\RegisteredHandler;
 use App\Listeners\TwoFactorAuthenticationHandler;
-use App\Listeners\LogFailedEvent;
 use App\Listeners\WebauthnLoginHandler;
 use App\Listeners\WebauthnRegisterHandler;
+use App\Listeners\WebauthnRegisterFailedListener;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use LaravelWebauthn\Events\WebauthnLogin;
-use LaravelWebauthn\Events\WebauthnLoginFailed;
 use LaravelWebauthn\Events\WebauthnRegister;
 use LaravelWebauthn\Events\WebauthnRegisterFailed;
 use LaravelWebauthn\Listeners\LoginViaRemember;
@@ -41,11 +40,8 @@ class EventServiceProvider extends ServiceProvider
         WebauthnRegister::class => [
             WebauthnRegisterHandler::class,
         ],
-        WebauthnLoginFailed::class => [
-            LogFailedEvent::class,
-        ],
         WebauthnRegisterFailed::class => [
-            LogFailedEvent::class,
+            WebauthnRegisterFailedListener::class,
         ],
     ];
 
