@@ -32,7 +32,7 @@
     import JetAuthenticationCard from '@/Jetstream/AuthenticationCard.vue'
     import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo.vue'
     import WebauthnWaitForKey from './Partials/WebauthnWaitForKey.vue'
-    import * as WebAuthn from '../../../../vendor/asbiin/laravel-webauthn/resources/js/webauthn.js';
+    import WebAuthn from '../../webauthn.js';
     import { useForm } from '@inertiajs/inertia-vue3'
 
     export default defineComponent({
