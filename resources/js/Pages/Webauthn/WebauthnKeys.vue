@@ -85,7 +85,7 @@
     import WebauthnCreateModal from './Partials/WebauthnCreateModal.vue'
     import WebauthnDeleteModal from './Partials/WebauthnDeleteModal.vue'
     import WebauthnUpdateModal from './Partials/WebauthnUpdateModal.vue'
-    import * as WebAuthn from '../../../../vendor/asbiin/laravel-webauthn/resources/js/webauthn.js';
+    import WebAuthn from '../../webauthn.js';
     import { useForm } from '@inertiajs/inertia-vue3'
 
     export default defineComponent({
