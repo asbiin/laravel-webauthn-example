@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Listeners\LoginListener;
 use App\Listeners\RegisteredHandler;
 use App\Listeners\TwoFactorAuthenticationHandler;
 use App\Listeners\WebauthnLoginHandler;
@@ -29,7 +30,7 @@ class EventServiceProvider extends ServiceProvider
             RegisteredHandler::class,
         ],
         Login::class => [
-            LoginViaRemember::class,
+            LoginListener::class,
         ],
         TwoFactorAuthenticationChallenged::class => [
             TwoFactorAuthenticationHandler::class,

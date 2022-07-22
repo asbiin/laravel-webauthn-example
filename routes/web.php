@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Validate2faController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -19,15 +21,17 @@ Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
     ]);
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('/validate2fa', [\App\Http\Controllers\Validate2faController::class, 'show'])->name('validate2fa');
+    Route::get('/validate2fa', [Validate2faController::class, 'show'])->name('validate2fa');
 });
 
-Route::middleware(['auth:sanctum', 'verified', 'mfa'])->group(function () {
-    Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'show'])->name('dashboard');
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
 });

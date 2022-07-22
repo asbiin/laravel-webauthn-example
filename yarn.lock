@@ -7,29 +7,34 @@
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.18.9.tgz#f2dde0c682ccc264a9a8595efd030a5cc8fd2539"
   integrity sha512-9uJveS9eY9DJ0t64YbIBZICtJy8a5QrDEVdiLCG97fVLpDTpGX7t8mMSb6OWw6Lrnjqj4O8zwjELX3dhoMgiBg==
 
-"@inertiajs/inertia-vue3@^0.5.1":
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/@inertiajs/inertia-vue3/-/inertia-vue3-0.5.2.tgz#0853296142bd60440bdc283836ea09718eb2f799"
-  integrity sha512-X9TiXTP4oVQ3bs4/yZz6O3vTTJ1f4W5EimhU9U/uUUfyU3IeWFk6yjNzkCb4D3FllMfKfX+inKIugQV1vb8asA==
+"@inertiajs/inertia-vue3@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@inertiajs/inertia-vue3/-/inertia-vue3-0.6.0.tgz#faabe590e5d7091ae6c54fc30da6c65ea3937222"
+  integrity sha512-qhPBtd/G0VS7vVVbYw1rrqKB6JqRusxqt+5ec2GLmK6t7fTlBBnZ3KsakmGZLSM1m1OGkNcfn4ifmCk3zfA8RQ==
   dependencies:
     lodash.clonedeep "^4.5.0"
     lodash.isequal "^4.5.0"
 
-"@inertiajs/inertia@^0.10.0":
-  version "0.10.1"
-  resolved "https://registry.yarnpkg.com/@inertiajs/inertia/-/inertia-0.10.1.tgz#8e415fd506c3ce5dbf8d206e1486ddee911cb46f"
-  integrity sha512-Ntyaerh07QnpIOxC+qsteUZ9OGVWfogpg3fCkSxciaX6AZyYLT6t7IFPkefPShb9LC2G4Woh1hel4t/pMr2vRQ==
+"@inertiajs/inertia@^0.11.0":
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/@inertiajs/inertia/-/inertia-0.11.0.tgz#873ec1283ad4db33b87b4c0e3011c2e5fc3e6cc1"
+  integrity sha512-QF4hctgFC+B/t/WClCwfOla+WoDE9iTltQJ0u+DCfjl0KdGoCvIxYiNtuH8h8oM+RQMb8orjbpW3pHapjYI5Vw==
   dependencies:
     axios "^0.21.1"
     deepmerge "^4.0.0"
     qs "^6.9.0"
 
-"@inertiajs/progress@^0.2.6":
+"@inertiajs/progress@^0.2.7":
   version "0.2.7"
   resolved "https://registry.yarnpkg.com/@inertiajs/progress/-/progress-0.2.7.tgz#b42ac849b6f227fe8a45a91d663719c5bd362131"
   integrity sha512-zxadfLlBPIUvTE9g5k71V/Ayzo8P9kEp4hV4UKywCC2kURufxV7bycbZqU1GeMCFGDT+VRrjXNl676Pwwa1HoQ==
   dependencies:
     nprogress "^0.2.0"
+
+"@inertiajs/server@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@inertiajs/server/-/server-0.1.0.tgz#bc48738b1c1c1f806bee6c9e9ea827cd03521e16"
+  integrity sha512-Ab1DqaRgW53nZq3sPN1AitHPJ1UoHiTRLbdGGgrswO6HhTYu6m7aewY80+YtiL1VEWGJfOumeNPqhnY+3/414w==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -52,14 +57,14 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@tailwindcss/forms@^0.4.0":
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/@tailwindcss/forms/-/forms-0.4.1.tgz#5a47ccd60490cbba84e662f2b9cf3d71a5126d17"
-  integrity sha512-gS9xjCmJjUBz/eP12QlENPLnf0tCx68oYE3mri0GMP5jdtVwLbGUNSRpjsp6NzLAZzZy3ueOwrcqB78Ax6Z84A==
+"@tailwindcss/forms@^0.5.2":
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/@tailwindcss/forms/-/forms-0.5.2.tgz#4ef45f9916dcb37838cbe7fecdcc4ba7a7c2ab59"
+  integrity sha512-pSrFeJB6Bg1Mrg9CdQW3+hqZXAKsBrSG9MAfFLKy1pVA4Mb4W7C0k7mEhlmS2Dfo/otxrQOET7NJiJ9RrS563w==
   dependencies:
     mini-svg-data-uri "^1.2.3"
 
-"@tailwindcss/typography@^0.5.0":
+"@tailwindcss/typography@^0.5.2":
   version "0.5.4"
   resolved "https://registry.yarnpkg.com/@tailwindcss/typography/-/typography-0.5.4.tgz#ad8c9e6808bae297bb7826742e4789f2a9f09a48"
   integrity sha512-QEdg40EmGvE7kKoDei8zr5sf4D1pIayHj4R31bH3lX8x2BtTiR+jNejYPOkhbmy3DXgkMF9jC8xqNiGFAuL9Sg==
@@ -73,7 +78,7 @@
   resolved "https://registry.yarnpkg.com/@vitejs/plugin-basic-ssl/-/plugin-basic-ssl-0.1.1.tgz#f76514820b4b901c43885eb489088c04ad9eb5d0"
   integrity sha512-UhfGAZ8HgIMEPktKF8k58Y1LSwuYs1i1O4HY8E+yiOoYM+rkaPFBZo1SOkRsZN8DZTw90Q+ZznPej1o/mtTisg==
 
-"@vitejs/plugin-vue@^3.0.1":
+"@vitejs/plugin-vue@^3.0.0":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@vitejs/plugin-vue/-/plugin-vue-3.0.1.tgz#b6af8f782485374bbb5fe09edf067a845bf4caae"
   integrity sha512-Ll9JgxG7ONIz/XZv3dssfoMUDu9qAnlJ+km+pBA0teYSXzwPCIzS/e1bmwNYl5dcQGs677D21amgfYAnzMl17A==
@@ -155,7 +160,7 @@
     "@vue/shared" "3.2.37"
     csstype "^2.6.8"
 
-"@vue/server-renderer@3.2.37":
+"@vue/server-renderer@3.2.37", "@vue/server-renderer@^3.2.31":
   version "3.2.37"
   resolved "https://registry.yarnpkg.com/@vue/server-renderer/-/server-renderer-3.2.37.tgz#840a29c8dcc29bddd9b5f5ffa22b95c0e72afdfc"
   integrity sha512-kLITEJvaYgZQ2h47hIzPh2K3jG8c1zCVbp/o/bzQOyvzaKiCquKS7AaioPI28GNxIsE/zSx+EwWYsNxDCX95MA==
@@ -200,7 +205,7 @@ arg@^5.0.2:
   resolved "https://registry.yarnpkg.com/arg/-/arg-5.0.2.tgz#c81433cc427c92c4dcf4865142dbca6f15acd59c"
   integrity sha512-PYjyFOLKQ9y57JvQ6QLo8dAgNqswh8M1RMJYdQduT6xbWSgK36P/Z/v+p888pM69jMMfS8Xd8F6I1kQ/I9HUGg==
 
-autoprefixer@^10.4.2:
+autoprefixer@^10.4.7:
   version "10.4.7"
   resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-10.4.7.tgz#1db8d195f41a52ca5069b7593be167618edbbedf"
   integrity sha512-ypHju4Y2Oav95SipEcCcI5J7CGPuvz8oat7sUtYj3ClK44bldfvtvcxK6IEK++7rqB7YchDGzweZIBG+SD0ZAA==
@@ -769,7 +774,7 @@ postcss@^7.0.1:
     picocolors "^0.2.1"
     source-map "^0.6.1"
 
-postcss@^8.1.10, postcss@^8.1.14, postcss@^8.4.14:
+postcss@^8.1.10, postcss@^8.4.14:
   version "8.4.14"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.14.tgz#ee9274d5622b4858c1007a74d76e42e56fd21caf"
   integrity sha512-E398TUmfAYFPBSdzgeieK2Y1+1cpdxJx8yXbK/m57nRhKSmk1GB2tO4lbLBtlkfPQTDKfe4Xqv1ASWPpayPEig==
@@ -871,7 +876,7 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
-tailwindcss@^3.0.0:
+tailwindcss@^3.1.0:
   version "3.1.6"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-3.1.6.tgz#bcb719357776c39e6376a8d84e9834b2b19a49f1"
   integrity sha512-7skAOY56erZAFQssT1xkpk+kWt2NrO45kORlxFPXUt3CiGsVPhH1smuH5XoDH6sGPXLyBv+zgCKA2HWBsgCytg==
@@ -939,7 +944,7 @@ vite@^3.0.2:
   optionalDependencies:
     fsevents "~2.3.2"
 
-vue@^3.0.5:
+vue@^3.2.31:
   version "3.2.37"
   resolved "https://registry.yarnpkg.com/vue/-/vue-3.2.37.tgz#da220ccb618d78579d25b06c7c21498ca4e5452e"
   integrity sha512-bOKEZxrm8Eh+fveCqS1/NkG/n6aMidsI6hahas7pa0w/l7jkbssJVsRhVDs07IdDq7h9KHswZOgItnwJAgtVtQ==

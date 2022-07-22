@@ -16,7 +16,17 @@ class DashboardController extends Controller
      */
     public function show(Request $request)
     {
-        $webauthnKeys = WebauthnKey::where('user_id', $request->user()->id)->get();
+        $webauthnKeys = $request->user()->webauthnKeys()
+            ->get()
+            ->map(function ($key) {
+                return [
+                    'id' => $key->id,
+                    'name' => $key->name,
+                    'type' => $key->type,
+                    'last_active' => $key->updated_at->diffForHumans(),
+                ];
+            })
+            ->toArray();
 
         return Inertia::render('Dashboard', [
             'webauthnKeys' => $webauthnKeys,
