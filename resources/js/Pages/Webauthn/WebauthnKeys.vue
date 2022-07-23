@@ -1,7 +1,7 @@
 
 <script setup>
 import { ref, nextTick, computed, onMounted } from 'vue';
-import { useForm } from '@inertiajs/inertia-vue3';
+import { useForm, Link } from '@inertiajs/inertia-vue3';
 import JetSecondaryButton from '@/Jetstream/SecondaryButton.vue';
 import JetButton from '@/Jetstream/Button.vue';
 import RegisterKey from './Partials/RegisterKey.vue';
@@ -125,7 +125,7 @@ const webauthnRegisterCallback = (data) => {
             </h1>
 
             <p v-if="webauthnKeys.length > 0" class="text-lg bg-teal-50 border-t-2 border-teal-200 rounded-b mb-4 px-4 py-8 shadow-md">
-                Try logging out and logging back in without password, just using your registered key!
+                Try <Link :href="route('logout')" method="post" class="underline">logging out</Link> and logging back in without password, just using your registered key!
             </p>
 
             <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">

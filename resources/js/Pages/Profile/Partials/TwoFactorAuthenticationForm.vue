@@ -40,7 +40,7 @@ watch(twoFactorEnabled, () => {
 const enableTwoFactorAuthentication = () => {
     enabling.value = true;
 
-    Inertia.post('/user/two-factor-authentication', {}, {
+    Inertia.post(route('two-factor.enable'), {}, {
         preserveScroll: true,
         onSuccess: () => Promise.all([
             showQrCode(),
@@ -55,25 +55,25 @@ const enableTwoFactorAuthentication = () => {
 };
 
 const showQrCode = () => {
-    return axios.get('/user/two-factor-qr-code').then(response => {
+    return axios.get(route('two-factor.qr-code')).then(response => {
         qrCode.value = response.data.svg;
     });
 };
 
 const showSetupKey = () => {
-    return axios.get('/user/two-factor-secret-key').then(response => {
+    return axios.get(route('two-factor.secret-key')).then(response => {
         setupKey.value = response.data.secretKey;
     });
 }
 
 const showRecoveryCodes = () => {
-    return axios.get('/user/two-factor-recovery-codes').then(response => {
+    return axios.get(route('two-factor.recovery-codes')).then(response => {
         recoveryCodes.value = response.data;
     });
 };
 
 const confirmTwoFactorAuthentication = () => {
-    confirmationForm.post('/user/confirmed-two-factor-authentication', {
+    confirmationForm.post(route('two-factor.confirm'), {
         errorBag: "confirmTwoFactorAuthentication",
         preserveScroll: true,
         preserveState: true,
@@ -87,14 +87,14 @@ const confirmTwoFactorAuthentication = () => {
 
 const regenerateRecoveryCodes = () => {
     axios
-        .post('/user/two-factor-recovery-codes')
+        .post(route('two-factor.recovery-codes'))
         .then(() => showRecoveryCodes());
 };
 
 const disableTwoFactorAuthentication = () => {
     disabling.value = true;
 
-    Inertia.delete('/user/two-factor-authentication', {
+    Inertia.delete(route('two-factor.disable'), {
         preserveScroll: true,
         onSuccess: () => {
             disabling.value = false;

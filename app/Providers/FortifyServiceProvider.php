@@ -10,6 +10,7 @@ use App\Actions\Fortify\UpdateUserPassword;
 use App\Actions\Fortify\UpdateUserProfileInformation;
 use App\Http\Controllers\LoginController;
 use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
@@ -44,6 +45,12 @@ class FortifyServiceProvider extends ServiceProvider
 
         Fortify::loginView(function ($request) {
             return app()->call(LoginController::class, ['request' => $request]);
+        });
+        Fortify::confirmPasswordsUsing(function ($user, ?string $password = null) {
+            return $user->password ? app(StatefulGuard::class)->validate([
+                'email' => $user->email,
+                'password' => $password,
+            ]) : true;
         });
 
         Fortify::createUsersUsing(CreateNewUser::class);
