@@ -1,5 +1,6 @@
 import './bootstrap';
 import '../css/app.css';
+
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
@@ -15,7 +16,6 @@ createInertiaApp({
         return createApp({ render: () => h(app, props) })
             .use(plugin)
             .use(ZiggyVue, Ziggy)
-            .mixin({ methods: { route } })
             .mount(el);
     },
 });

@@ -1,3 +1,14 @@
+<script setup>
+import { Head, Link } from '@inertiajs/inertia-vue3';
+
+defineProps({
+    canLogin: Boolean,
+    canRegister: Boolean,
+    laravelVersion: String,
+    phpVersion: String,
+});
+</script>
+
 <template>
     <Head title="Welcome" />
 
@@ -37,7 +48,20 @@
                                 This is a demo application for <a class="underline" href="https://github.com/asbiin/laravel-webauthn" rel="noopener" target="_blank">asbiin/laravel-webauthn</a>.<br/>
                                 <Link v-if="canRegister" :href="route('register')" class="underline">Register</Link> and add your Webauthn key.<br/>
                             </div>
-                            <div class="mt-2 text-gray-600 dark:text-gray-400 text-xl">
+                        </div>
+
+                        <div class="m-8">
+                            <Link :href="route('login')" class="text-lg text-gray-100 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition mr-4">
+                                Log in
+                            </Link>
+
+                            <Link v-if="canRegister" :href="route('register')" class="text-lg text-gray-100 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">
+                                Register
+                            </Link>
+                        </div>
+
+                        <div>
+                            <div class="text-teal-600 dark:text-teal-400 text-xl">
                                 <strong>Accounts are automatically deleted after 24h.</strong>
                             </div>
                         </div>
@@ -112,22 +136,3 @@
         }
     }
 </style>
-
-<script>
-    import { defineComponent } from 'vue'
-    import { Head, Link } from '@inertiajs/inertia-vue3';
-
-    export default defineComponent({
-        components: {
-            Head,
-            Link,
-        },
-
-        props: {
-            canLogin: Boolean,
-            canRegister: Boolean,
-            laravelVersion: String,
-            phpVersion: String,
-        }
-    })
-</script>
