@@ -29,5 +29,8 @@
         "vite": "^3.0.2",
         "vue": "^3.2.31"
     },
+    "resolutions": {
+        "autoprefixer": "10.4.5"
+    },
     "snyk": true
 }
