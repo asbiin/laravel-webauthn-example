@@ -15,7 +15,6 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 use LaravelWebauthn\Events\WebauthnLogin;
 use LaravelWebauthn\Events\WebauthnRegister;
 use LaravelWebauthn\Events\WebauthnRegisterFailed;
-use LaravelWebauthn\Listeners\LoginViaRemember;
 
 class EventServiceProvider extends ServiceProvider
 {

@@ -2,33 +2,13 @@
 
 namespace App\Listeners;
 
+use App\Notifications\KeyLoginAlert;
 use LaravelWebauthn\Events\WebauthnLogin;
-use Illuminate\Contracts\Auth\Authenticatable as User;
-use Illuminate\Contracts\Auth\StatefulGuard;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
-use Laravel\Fortify\Features;
+use Illuminate\Support\Facades\Notification;
 
 class WebauthnLoginHandler
 {
-    /**
-     * The guard implementation.
-     *
-     * @var \Illuminate\Contracts\Auth\StatefulGuard
-     */
-    protected $guard;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @param  \Illuminate\Contracts\Auth\StatefulGuard  $guard
-     * @return void
-     */
-    public function __construct(StatefulGuard $guard)
-    {
-        $this->guard = $guard;
-    }
-
     /**
      * Handle the event.
      *
@@ -41,23 +21,10 @@ class WebauthnLoginHandler
         if ($user instanceof \App\Models\User) {
             Log::info("Webauthn login: {$user->name} {$user->email}");
 
-            if (Features::enabled(Features::twoFactorAuthentication())
-                && $user->hasEnabledTwoFactorAuthentication()) {
-                $this->registerTwoFactor($user);
+            if ($event->eloquent && ($notifier = config('mail.notifier')) !== null) {
+                Notification::route('mail', $notifier)
+                    ->notify(new KeyLoginAlert($user));
             }
         }
-    }
-
-    /**
-     * Force register two factor login.
-     *
-     * @param  User  $user
-     */
-    private function registerTwoFactor(User $user)
-    {
-        session([
-            'login.id' => $user->getAuthIdentifier(),
-            'login.remember' => Auth::viaRemember(),
-        ]);
     }
 }
