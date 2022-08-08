@@ -864,9 +864,9 @@ side-channel@^1.0.4:
     object-inspect "^1.9.0"
 
 snyk@^1.797.0:
-  version "1.981.0"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.981.0.tgz#beebf3599e88354406a9037115f06631a5aca146"
-  integrity sha512-xCXJ74DBsy7vKRdNRJJ3HVFEOEZ2+9eIdRPrgIBQeFcn3zsFgmGo/dva3EN6im75lwxCgVIdKv00bDnM2wyZTA==
+  version "1.984.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.984.0.tgz#b1e55f02e412749a70337db39d4526989f90f805"
+  integrity sha512-e72gNXx6Epj1Tp8TEWoLJHEqkPTr370GvJQj/o73YlGFCILqfzFiFGq5cla8UffFM+mHEhuQDX4jAH53x2cqYA==
 
 source-map-js@^1.0.2:
   version "1.0.2"
