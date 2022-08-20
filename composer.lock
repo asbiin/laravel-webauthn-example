@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9ec591fb6bfa1cb85096d0fdd77e7c46",
+    "content-hash": "708e45b425cfe3de166122a43fa8655d",
     "packages": [
         {
             "name": "asbiin/laravel-webauthn",
@@ -8002,6 +8002,71 @@
                 "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/2.2.4"
             },
             "time": "2021-12-08T09:12:39+00:00"
+        },
+        {
+            "name": "vincentbean/laravel-plausible",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/VincentBean/laravel-plausible.git",
+                "reference": "9585158aee6fcb28cb572c714559356f82b557af"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/VincentBean/laravel-plausible/zipball/9585158aee6fcb28cb572c714559356f82b557af",
+                "reference": "9585158aee6fcb28cb572c714559356f82b557af",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.4",
+                "illuminate/contracts": "^8.37|^9.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.20"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "VincentBean\\LaravelPlausible\\LaravelPlausibleServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "VincentBean\\LaravelPlausible\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vincent Bean",
+                    "email": "info@vincentbean.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel Plausible",
+            "homepage": "https://github.com/vincentbean/laravel-plausible",
+            "keywords": [
+                "VincentBean",
+                "laravel",
+                "laravel-plausible"
+            ],
+            "support": {
+                "issues": "https://github.com/VincentBean/laravel-plausible/issues",
+                "source": "https://github.com/VincentBean/laravel-plausible/tree/1.2.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/VincentBean",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-04-08T11:31:12+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

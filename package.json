@@ -6,7 +6,7 @@
         "heroku-postbuild": "npm run build"
     },
     "engines": {
-        "node": "16.x"
+        "node": "18.x"
     },
     "devDependencies": {
         "@inertiajs/inertia": "^0.11.0",
