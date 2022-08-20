@@ -8628,7 +8628,7 @@
         },
         {
             "name": "web-token/jwt-signature-algorithm-ecdsa",
-            "version": "v3.0.6",
+            "version": "v3.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-signature-algorithm-ecdsa.git",
@@ -8686,7 +8686,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/web-token/jwt-signature-algorithm-ecdsa/tree/v3.0.6"
+                "source": "https://github.com/web-token/jwt-signature-algorithm-ecdsa/tree/v3.0.7"
             },
             "funding": [
                 {
