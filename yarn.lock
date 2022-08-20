@@ -74,9 +74,9 @@
     lodash.merge "^4.6.2"
 
 "@vitejs/plugin-basic-ssl@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@vitejs/plugin-basic-ssl/-/plugin-basic-ssl-0.1.1.tgz#f76514820b4b901c43885eb489088c04ad9eb5d0"
-  integrity sha512-UhfGAZ8HgIMEPktKF8k58Y1LSwuYs1i1O4HY8E+yiOoYM+rkaPFBZo1SOkRsZN8DZTw90Q+ZznPej1o/mtTisg==
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@vitejs/plugin-basic-ssl/-/plugin-basic-ssl-0.1.2.tgz#7177f9adc5384f1377b9b91b17ce7cdb8f422abd"
+  integrity sha512-EdwCHnbkakR6YPupySZm1WoCDRPaw9c5jObAo2pCRv8Ja2TESFC6Sc8RUOcKuihfjARDfszbBf+YEQwHY9s9wg==
 
 "@vitejs/plugin-vue@^3.0.0":
   version "3.0.3"
