@@ -234,6 +234,4 @@ return [
 
     ],
 
-    'trust_proxies' => env('APP_TRUST_PROXIES'),
-
 ];
