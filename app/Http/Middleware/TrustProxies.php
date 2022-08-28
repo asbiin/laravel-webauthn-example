@@ -8,14 +8,11 @@ use Illuminate\Http\Request;
 class TrustProxies extends Middleware
 {
     /**
-     * Get the trusted proxies.
+     * The trusted proxies for this application.
      *
-     * @return array|string|null
+     * @var array<int, string>|string|null
      */
-    protected function proxies()
-    {
-        return config('app.trust_proxies');
-    }
+    protected $proxies;
 
     /**
      * The headers that should be used to detect proxies.
