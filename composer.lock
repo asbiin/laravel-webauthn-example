@@ -273,26 +273,26 @@
         },
         {
             "name": "brick/math",
-            "version": "0.9.3",
+            "version": "0.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/brick/math.git",
-                "reference": "ca57d18f028f84f777b2168cd1911b0dee2343ae"
+                "reference": "459f2781e1a08d52ee56b0b1444086e038561e3f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brick/math/zipball/ca57d18f028f84f777b2168cd1911b0dee2343ae",
-                "reference": "ca57d18f028f84f777b2168cd1911b0dee2343ae",
+                "url": "https://api.github.com/repos/brick/math/zipball/459f2781e1a08d52ee56b0b1444086e038561e3f",
+                "reference": "459f2781e1a08d52ee56b0b1444086e038561e3f",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "php": "^7.1 || ^8.0"
+                "php": "^7.4 || ^8.0"
             },
             "require-dev": {
                 "php-coveralls/php-coveralls": "^2.2",
-                "phpunit/phpunit": "^7.5.15 || ^8.5 || ^9.0",
-                "vimeo/psalm": "4.9.2"
+                "phpunit/phpunit": "^9.0",
+                "vimeo/psalm": "4.25.0"
             },
             "type": "library",
             "autoload": {
@@ -317,19 +317,15 @@
             ],
             "support": {
                 "issues": "https://github.com/brick/math/issues",
-                "source": "https://github.com/brick/math/tree/0.9.3"
+                "source": "https://github.com/brick/math/tree/0.10.2"
             },
             "funding": [
                 {
                     "url": "https://github.com/BenMorel",
                     "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/brick/math",
-                    "type": "tidelift"
                 }
             ],
-            "time": "2021-08-15T20:50:18+00:00"
+            "time": "2022-08-10T22:54:19+00:00"
         },
         {
             "name": "clue/stream-filter",
@@ -8463,20 +8459,20 @@
         },
         {
             "name": "web-token/jwt-core",
-            "version": "v3.0.7",
+            "version": "3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-core.git",
-                "reference": "99205a4eb4c383fea2afa526b79eeb0967ad1491"
+                "reference": "4d956e786a4e35d54c74787ebff840a0311c5e83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-token/jwt-core/zipball/99205a4eb4c383fea2afa526b79eeb0967ad1491",
-                "reference": "99205a4eb4c383fea2afa526b79eeb0967ad1491",
+                "url": "https://api.github.com/repos/web-token/jwt-core/zipball/4d956e786a4e35d54c74787ebff840a0311c5e83",
+                "reference": "4d956e786a4e35d54c74787ebff840a0311c5e83",
                 "shasum": ""
             },
             "require": {
-                "brick/math": "^0.9",
+                "brick/math": "^0.9|^0.10",
                 "ext-json": "*",
                 "ext-mbstring": "*",
                 "fgrosse/phpasn1": "^2.0",
@@ -8527,7 +8523,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/web-token/jwt-core/tree/v3.0.7"
+                "source": "https://github.com/web-token/jwt-core/tree/3.1.1"
             },
             "funding": [
                 {
@@ -8535,7 +8531,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-05-30T12:05:48+00:00"
+            "time": "2022-08-04T21:04:09+00:00"
         },
         {
             "name": "web-token/jwt-key-mgmt",
@@ -8617,16 +8613,16 @@
         },
         {
             "name": "web-token/jwt-signature",
-            "version": "v3.0.7",
+            "version": "3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-signature.git",
-                "reference": "6006f38d2166414ff8d9ccc2f43dd5b1ecddc7ea"
+                "reference": "53dd6c8ad7b2d679721fe0d5b2b0b88c68c3dbce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-token/jwt-signature/zipball/6006f38d2166414ff8d9ccc2f43dd5b1ecddc7ea",
-                "reference": "6006f38d2166414ff8d9ccc2f43dd5b1ecddc7ea",
+                "url": "https://api.github.com/repos/web-token/jwt-signature/zipball/53dd6c8ad7b2d679721fe0d5b2b0b88c68c3dbce",
+                "reference": "53dd6c8ad7b2d679721fe0d5b2b0b88c68c3dbce",
                 "shasum": ""
             },
             "require": {
@@ -8682,7 +8678,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/web-token/jwt-signature/tree/v3.0.7"
+                "source": "https://github.com/web-token/jwt-signature/tree/3.1.1"
             },
             "funding": [
                 {
@@ -8690,7 +8686,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-05-30T12:05:48+00:00"
+            "time": "2022-08-04T21:04:09+00:00"
         },
         {
             "name": "web-token/jwt-signature-algorithm-ecdsa",
@@ -8834,20 +8830,20 @@
         },
         {
             "name": "web-token/jwt-signature-algorithm-rsa",
-            "version": "v3.0.7",
+            "version": "3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-signature-algorithm-rsa.git",
-                "reference": "de8d2a7800fdbbe6c112ecc5b14d70c70d2bc517"
+                "reference": "a9442dbfa19e50ada75da85736d6dbfb0b4e7283"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-token/jwt-signature-algorithm-rsa/zipball/de8d2a7800fdbbe6c112ecc5b14d70c70d2bc517",
-                "reference": "de8d2a7800fdbbe6c112ecc5b14d70c70d2bc517",
+                "url": "https://api.github.com/repos/web-token/jwt-signature-algorithm-rsa/zipball/a9442dbfa19e50ada75da85736d6dbfb0b4e7283",
+                "reference": "a9442dbfa19e50ada75da85736d6dbfb0b4e7283",
                 "shasum": ""
             },
             "require": {
-                "brick/math": "^0.9",
+                "brick/math": "^0.9|^0.10",
                 "ext-openssl": "*",
                 "php": ">=8.1",
                 "web-token/jwt-signature": "^3.0"
@@ -8897,7 +8893,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/web-token/jwt-signature-algorithm-rsa/tree/v3.0.7"
+                "source": "https://github.com/web-token/jwt-signature-algorithm-rsa/tree/3.1.1"
             },
             "funding": [
                 {
@@ -8905,7 +8901,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-02-27T09:13:59+00:00"
+            "time": "2022-08-04T21:04:09+00:00"
         },
         {
             "name": "webmozart/assert",
