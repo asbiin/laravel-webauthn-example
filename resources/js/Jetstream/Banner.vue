@@ -20,7 +20,7 @@ watch(message, async () => {
                         <span class="flex p-2 rounded-lg" :class="{ 'bg-indigo-600': style == 'success', 'bg-red-600': style == 'danger' }">
                             <svg
                                 v-if="style == 'success'"
-                                class="h-5 w-5 text-white"
+                                class="h-5 w-5 text-white dark:text-slate-900"
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
                                 viewBox="0 0 24 24"
@@ -36,7 +36,7 @@ watch(message, async () => {
 
                             <svg
                                 v-if="style == 'danger'"
-                                class="h-5 w-5 text-white"
+                                class="h-5 w-5 text-white dark:text-slate-900"
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
                                 viewBox="0 0 24 24"
@@ -51,7 +51,7 @@ watch(message, async () => {
                             </svg>
                         </span>
 
-                        <p class="ml-3 font-medium text-sm text-white truncate">
+                        <p class="ml-3 font-medium text-sm text-white dark:text-slate-900 truncate">
                             {{ message }}
                         </p>
                     </div>
@@ -65,7 +65,7 @@ watch(message, async () => {
                             @click.prevent="show = false"
                         >
                             <svg
-                                class="h-5 w-5 text-white"
+                                class="h-5 w-5 text-white dark:text-slate-900"
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
                                 viewBox="0 0 24 24"

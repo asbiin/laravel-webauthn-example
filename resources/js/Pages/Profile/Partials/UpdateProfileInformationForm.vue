@@ -37,10 +37,6 @@ const updateProfileInformation = () => {
     });
 };
 
-const sendEmailVerification = () => {
-    verificationLinkSent.value = true;
-};
-
 const selectNewPhoto = () => {
     photoInput.value.click();
 };
@@ -151,26 +147,6 @@ const clearPhotoFileInput = () => {
                     class="mt-1 block w-full"
                 />
                 <JetInputError :message="form.errors.email" class="mt-2" />
-
-                <div v-if="$page.props.jetstream.hasEmailVerification && user.email_verified_at === null">
-                    <p class="text-sm mt-2">
-                        Your email address is unverified.
-
-                        <Link
-                            :href="route('verification.send')"
-                            method="post"
-                            as="button"
-                            class="underline text-gray-600 hover:text-gray-900"
-                            @click.prevent="sendEmailVerification"
-                        >
-                            Click here to re-send the verification email.
-                        </Link>
-                    </p>
-
-                    <div v-show="verificationLinkSent" class="mt-2 font-medium text-sm text-green-600">
-                        A new verification link has been sent to your email address.
-                    </div>
-                </div>
             </div>
         </template>
 
