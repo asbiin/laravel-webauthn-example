@@ -102,7 +102,7 @@ defineProps({
                 </div>
 
                 <div class="flex items-center justify-end mt-4">
-                    <button type="button" class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 underline cursor-pointer" @click.prevent="toggleRecovery">
+                    <button type="button" class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-slate-100 underline cursor-pointer" @click.prevent="toggleRecovery">
                         <template v-if="! recovery">
                             Use a recovery code
                         </template>

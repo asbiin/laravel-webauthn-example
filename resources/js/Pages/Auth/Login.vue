@@ -66,7 +66,7 @@ const reload = () => {
         </div>
 
         <div v-if="publicKey && webauthn">
-            <div class="mb-4 text-lg text-gray-900 text-center">
+            <div class="mb-4 text-lg text-gray-900 dark:text-slate-100 text-center">
                 {{ userName }}
             </div>
             <div class="mb-4 max-w-xl text-gray-600 dark:text-gray-400">
@@ -108,12 +108,12 @@ const reload = () => {
             <div class="block mt-4">
                 <label class="flex items-center">
                     <JetCheckbox v-model:checked="form.remember" name="remember" />
-                    <span class="ml-2 text-sm text-gray-600">Remember me</span>
+                    <span class="ml-2 text-sm text-gray-600 dark:text-gray-200">Remember me</span>
                 </label>
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900">
+                <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900 dark:text-slate-100">
                     Forgot your password?
                 </Link>
 
