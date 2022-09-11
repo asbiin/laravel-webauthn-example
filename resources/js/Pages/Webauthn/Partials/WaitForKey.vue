@@ -13,8 +13,8 @@ defineEmits(['retry']);
 <template>
     <div>
         <div v-if="errorMessage !== ''" class="form-error-message mb3">
-            <div class="bg-red-100 border border-red-400 px-4 py-3 rounded relative" role="alert">
-                <p class="font-bold text-red-700">
+            <div class="bg-red-100 dark:bg-red-900 border border-red-400 dark:border-red-600 px-4 py-3 rounded relative" role="alert">
+                <p class="font-bold text-red-700 dark:text-red-300">
                     {{ errorMessage }}
                 </p>
                 <JetButton class="mt-4" @click="$emit('retry')">
@@ -24,8 +24,8 @@ defineEmits(['retry']);
         </div>
         <template v-else>
 
-            <div v-if="form.processing" class="bg-teal-100 border-t-4 border-teal-500 rounded-b mb-4 px-4 py-8 shadow-md dark:shadow-gray-700 flex" role="alert">
-                <div class="text-teal-800 mr-2">
+            <div v-if="form.processing" class="bg-teal-100 dark:bg-teal-900 border-t-4 border-teal-500 rounded-b mb-4 px-4 py-8 shadow-md dark:shadow-gray-700 flex" role="alert">
+                <div class="text-teal-800 dark:text-teal-200 mr-2">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         stroke="currentColor" class="w-8 h-8" viewBox="-50 0 700 600">
                         <g transform="matrix(42.857142857142854,0,0,42.857142857142854,0,0)">
@@ -37,12 +37,12 @@ defineEmits(['retry']);
                         </g>
                     </svg>
                 </div>
-                <p class="font-bold text-2xl text-teal-900">
+                <p class="font-bold text-2xl text-teal-900 dark:text-teal-100">
                     Validating key…
                 </p>
             </div>
-            <div v-else-if="!form.hasErrors" class="bg-indigo-100 border-t-4 border-indigo-500 rounded-b mb-4 px-4 py-8 shadow-md dark:shadow-gray-700 flex">
-                <div class="text-indigo-800 mr-2">
+            <div v-else-if="!form.hasErrors" class="bg-indigo-100 dark:bg-indigo-900 border-t-4 border-indigo-500 rounded-b mb-4 px-4 py-8 shadow-md dark:shadow-gray-700 flex">
+                <div class="text-indigo-800 dark:text-indigo-200 mr-2">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         stroke="currentColor" class="w-8 h-8" viewBox="-50 0 700 600">
                         <g transform="matrix(42.857142857142854,0,0,42.857142857142854,0,0)">
@@ -54,7 +54,7 @@ defineEmits(['retry']);
                         </g>
                     </svg>
                 </div>
-                <p class="font-bold text-2xl text-indigo-900">
+                <p class="font-bold text-2xl text-indigo-900 dark:text-indigo-100">
                     Waiting for key…
                 </p>
             </div>
