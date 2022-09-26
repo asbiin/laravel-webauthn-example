@@ -990,8 +990,8 @@ yaml@^1.10.2:
   integrity sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==
 
 ziggy-js@^1.4.6:
-  version "1.4.6"
-  resolved "https://registry.yarnpkg.com/ziggy-js/-/ziggy-js-1.4.6.tgz#1b4bd0a9813fd833e7f14e0c354c40af8cd3ab8a"
-  integrity sha512-7bnzm+I9bDnlh98km8d43X8r99YXTfSbcIVWRRWZFBw+vtck3bhvUDmuvNoC/G7smblb0CFEFwwxZ+H0hLa1DA==
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/ziggy-js/-/ziggy-js-1.5.0.tgz#e7cbb944928582943278c7beed7a4c5749785658"
+  integrity sha512-whzY4H/EMEKrXbbqQbncrSy9WN8N6sjzbVPdBjhQMauvODWtNUTDMq6Po55hPDx43GRFtIF22zrs/m2Z3qOi4g==
   dependencies:
     qs "~6.9.7"
