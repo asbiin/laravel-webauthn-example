@@ -48,6 +48,16 @@ RUN set -ex; \
         pdo_pgsql \
     ; \
     \
+    \
+# pecl will claim success even if one install fails, so we need to perform each install separately
+    pecl install APCu; \
+    pecl install redis; \
+    \
+    docker-php-ext-enable \
+        apcu \
+        redis \
+    ; \
+    \
 # reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
     apt-mark auto '.*' > /dev/null; \
     apt-mark manual $savedAptMark; \
@@ -62,6 +72,37 @@ RUN set -ex; \
     apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
     rm -rf /var/lib/apt/lists/*
 
+# Set crontab for schedules
+RUN set -ex; \
+    \
+    mkdir -p /var/spool/cron/crontabs; \
+    rm -f /var/spool/cron/crontabs/root; \
+    echo '* * * * * php /var/www/html/artisan schedule:run -v' > /var/spool/cron/crontabs/www-data
+
+# Opcache
+ENV PHP_OPCACHE_VALIDATE_TIMESTAMPS="0" \
+    PHP_OPCACHE_MAX_ACCELERATED_FILES="20000" \
+    PHP_OPCACHE_MEMORY_CONSUMPTION="192" \
+    PHP_OPCACHE_MAX_WASTED_PERCENTAGE="10"
+RUN set -ex; \
+    \
+    docker-php-ext-enable opcache; \
+    { \
+        echo '[opcache]'; \
+        echo 'opcache.enable=1'; \
+        echo 'opcache.revalidate_freq=0'; \
+        echo 'opcache.validate_timestamps=${PHP_OPCACHE_VALIDATE_TIMESTAMPS}'; \
+        echo 'opcache.max_accelerated_files=${PHP_OPCACHE_MAX_ACCELERATED_FILES}'; \
+        echo 'opcache.memory_consumption=${PHP_OPCACHE_MEMORY_CONSUMPTION}'; \
+        echo 'opcache.max_wasted_percentage=${PHP_OPCACHE_MAX_WASTED_PERCENTAGE}'; \
+        echo 'opcache.interned_strings_buffer=16'; \
+        echo 'opcache.fast_shutdown=1'; \
+    } > $PHP_INI_DIR/conf.d/opcache-recommended.ini; \
+    \
+    echo 'apc.enable_cli=1' >> $PHP_INI_DIR/conf.d/docker-php-ext-apcu.ini; \
+    \
+    echo 'memory_limit=512M' > $PHP_INI_DIR/conf.d/memory-limit.ini
+
 RUN set -ex; \
     \
     a2enmod headers rewrite remoteip; \
@@ -74,6 +115,7 @@ RUN set -ex; \
     a2enconf remoteip
 
 RUN set -ex; \
+    \
     APACHE_DOCUMENT_ROOT=/var/www/html/public; \
     sed -ri -e "s!/var/www/html!${APACHE_DOCUMENT_ROOT}!g" $APACHE_CONFDIR/sites-available/*.conf; \
     sed -ri -e "s!/var/www/!${APACHE_DOCUMENT_ROOT}!g" $APACHE_CONFDIR/apache2.conf $APACHE_CONFDIR/conf-available/*.conf
