@@ -58,7 +58,7 @@ WebAuthn.prototype._registerCallback = function(publicKey, callback) {
     rawId: this._bufferEncode(publicKey.rawId),
     response: {
       /** @see https://www.w3.org/TR/webauthn/#authenticatorattestationresponse */
-      clientDataJSON: this._bufferEncode(publicKey.response.clientDataJSON),
+      clientDataJSON: this._bufferEncode(publicKey.response.clientDataJSON).trimEnd('='),
       attestationObject: this._bufferEncode(publicKey.response.attestationObject)
     }
   };
@@ -104,7 +104,7 @@ WebAuthn.prototype._signCallback = function(publicKey, callback) {
     response: {
       /** @see https://www.w3.org/TR/webauthn/#iface-authenticatorassertionresponse */
       authenticatorData: this._bufferEncode(publicKey.response.authenticatorData),
-      clientDataJSON: this._bufferEncode(publicKey.response.clientDataJSON),
+      clientDataJSON: this._bufferEncode(publicKey.response.clientDataJSON).trimEnd('='),
       signature: this._bufferEncode(publicKey.response.signature),
       userHandle: (publicKey.response.userHandle ? this._bufferEncode(publicKey.response.userHandle) : null),
     }
