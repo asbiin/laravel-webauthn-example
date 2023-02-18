@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use Illuminate\Console\ConfirmableTrait;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Schema;
+use Symfony\Component\Console\Output\OutputInterface;
 
 class Setup extends Command
 {
@@ -69,6 +70,8 @@ class Setup extends Command
     private function artisan(string $message, string $command, array $options = [])
     {
         $this->info($message);
-        Artisan::call($command, $options);
+        $this->getOutput()->getOutput()->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE
+            ? $this->call($command, $options)
+            : $this->callSilent($command, $options);
     }
 }
