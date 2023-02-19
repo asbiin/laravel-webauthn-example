@@ -24,6 +24,7 @@
         "laravel/jetstream": "^2.5",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.5",
+        "monicahq/laravel-cloudflare": "^3.5",
         "php-http/discovery": "^1.14",
         "psr/log": "^3.0",
         "sentry/sentry-laravel": "^3.2",

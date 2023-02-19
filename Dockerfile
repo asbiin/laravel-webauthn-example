@@ -5,7 +5,7 @@ WORKDIR /var/www/html
 COPY . ./
 RUN set -ex; \
     \
-    yarn install; \
+    yarn install --frozen-lockfile; \
     yarn run build
 
 
