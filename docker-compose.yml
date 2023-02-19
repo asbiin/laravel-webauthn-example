@@ -5,10 +5,9 @@ services:
     build: .
     restart: always
     environment:
-      - APP_ENV=production
-      - APP_KEY=
       - VIRTUAL_HOST=localhost
       - HSTS=off
+      - APP_TRUSTED_PROXIES=*
     volumes:
       - webauthn_data:/var/www/html/database
     networks:
@@ -16,7 +15,7 @@ services:
       - default
 
   proxy:
-    build: ./.docker/proxy
+    build: ./scripts/proxy
     restart: always
     ports:
       - 443:443

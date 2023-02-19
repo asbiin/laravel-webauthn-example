@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use Illuminate\Console\ConfirmableTrait;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Schema;
+use Symfony\Component\Console\Output\OutputInterface;
 
 class Setup extends Command
 {
@@ -58,6 +59,10 @@ class Setup extends Command
 
             $this->artisan('✓ Performing migrations', 'migrate', ['--force' => true]);
 
+            if (config('laravelcloudflare.enabled')) {
+                $this->artisan('✓ Reload cloudflare proxies', 'cloudflare:reload');
+            }
+
             // Cache config
             if ($this->getLaravel()->environment() == 'production'
                 && (config('cache.default') != 'database' || Schema::hasTable(config('cache.stores.database.table')))) {
@@ -69,6 +74,8 @@ class Setup extends Command
     private function artisan(string $message, string $command, array $options = [])
     {
         $this->info($message);
-        Artisan::call($command, $options);
+        $this->getOutput()->getOutput()->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE
+            ? $this->call($command, $options)
+            : $this->callSilent($command, $options);
     }
 }
