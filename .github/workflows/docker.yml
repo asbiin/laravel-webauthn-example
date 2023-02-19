@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - laravel-10
 
 concurrency:
   group: Docker ${{ github.ref }}
