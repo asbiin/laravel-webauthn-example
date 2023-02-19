@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('app:remove-accounts', ['--force'])->hourly();
+        $schedule->command('cloudflare:reload')->daily();
     }
 
     /**

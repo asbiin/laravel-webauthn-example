@@ -59,6 +59,10 @@ class Setup extends Command
 
             $this->artisan('✓ Performing migrations', 'migrate', ['--force' => true]);
 
+            if (config('laravelcloudflare.enabled')) {
+                $this->artisan('✓ Reload cloudflare proxies', 'cloudflare:reload');
+            }
+
             // Cache config
             if ($this->getLaravel()->environment() == 'production'
                 && (config('cache.default') != 'database' || Schema::hasTable(config('cache.stores.database.table')))) {
