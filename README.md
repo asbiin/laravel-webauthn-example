@@ -5,17 +5,13 @@ This is an example use of [asbiin/laravel-webauthn](https://github.com/asbiin/la
 
 # Demo
 
-Try this application on [this live demo app](https://laravel-webauthn-example.herokuapp.com/).
+Try this application on [this live demo app](https://webauthn.asbin.net/).
 
 - Just register with any email
 - Then add a WebAuthn key
 - Next login will ask to confirm the key
 
 **Accounts are automatically deleted after 24h on this demo instance.**
-
-## Deploy on heroku
-
-You can also [![deploy it to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/asbiin/laravel-webauthn-example/tree/main)
 
 
 # Installation
@@ -59,6 +55,6 @@ Got to `https://url.test/webauthn/register` to register a new key.
 
 Author: [Alexis Saettler](https://github.com/asbiin)
 
-Copyright © 2019–2022.
+Copyright © 2019–2023.
 
 Licensed under the MIT License. [View license](/LICENSE).
