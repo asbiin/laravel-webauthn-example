@@ -67,7 +67,7 @@ jobs:
 
     steps:
       - name: Post request
-        run: curl -u ":$TOKEN" -X POST -H "Content-type: application/json" "$URL" -d "$PAYLOAD"
+        run: curl -sSL -u ":$TOKEN" -X POST -H "Content-type: application/json" "$URL" -d "$PAYLOAD"
         env:
           URL: ${{ secrets.URL }}
           PAYLOAD: ${{ secrets.PAYLOAD }}
