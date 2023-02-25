@@ -56,3 +56,19 @@ jobs:
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
+
+
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy on staging
+    needs: docker-run
+
+    environment: staging
+
+    steps:
+      - name: Post request
+        run: curl -u ":$TOKEN" -X POST "$URL" -d "$PAYLOAD"
+        env:
+          URL: ${{ secrets.URL }}
+          PAYLOAD: ${{ secrets.PAYLOAD }}
+          TOKEN: ${{ secrets.TOKEN }}
