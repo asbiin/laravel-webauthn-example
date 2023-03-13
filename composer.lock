@@ -8564,7 +8564,7 @@
         },
         {
             "name": "web-token/jwt-core",
-            "version": "3.1.6",
+            "version": "3.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-core.git",
@@ -8628,7 +8628,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/web-token/jwt-core/tree/3.1.6"
+                "source": "https://github.com/web-token/jwt-core/tree/3.1.7"
             },
             "funding": [
                 {
@@ -8718,7 +8718,7 @@
         },
         {
             "name": "web-token/jwt-signature",
-            "version": "3.1.6",
+            "version": "3.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-signature.git",
@@ -8783,7 +8783,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/web-token/jwt-signature/tree/3.1.6"
+                "source": "https://github.com/web-token/jwt-signature/tree/3.1.7"
             },
             "funding": [
                 {
@@ -8935,7 +8935,7 @@
         },
         {
             "name": "web-token/jwt-signature-algorithm-rsa",
-            "version": "3.1.6",
+            "version": "3.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-signature-algorithm-rsa.git",
@@ -8998,7 +8998,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/web-token/jwt-signature-algorithm-rsa/tree/3.1.6"
+                "source": "https://github.com/web-token/jwt-signature-algorithm-rsa/tree/3.1.7"
             },
             "funding": [
                 {
