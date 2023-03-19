@@ -37,6 +37,8 @@ return [
     |
     */
 
+    'model' => \App\Models\WebauthnKey::class,
+
     'username' => 'email',
 
     /*
