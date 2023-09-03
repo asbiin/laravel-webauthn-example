@@ -8,6 +8,8 @@ on:
   schedule:
     - cron: '0 0 1 * *' #At 00:00 on day-of-month 1.
 
+  workflow_dispatch:
+
 concurrency:
   group: Docker ${{ github.ref }}
   cancel-in-progress: true
