@@ -19,6 +19,7 @@ RUN set -ex; \
     apt-get install -y --no-install-recommends \
         bash \
         busybox-static \
+        unzip \
     ; \
     rm -rf /var/lib/apt/lists/*
 
@@ -40,6 +41,7 @@ RUN set -ex; \
     docker-php-ext-configure gmp; \
     docker-php-ext-install -j$(nproc) \
         intl \
+        fileinfo \
         zip \
         bcmath \
         gmp \
