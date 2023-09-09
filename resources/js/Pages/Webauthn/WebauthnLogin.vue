@@ -1,12 +1,11 @@
-
 <script setup>
 import { ref, nextTick, watch, onMounted } from 'vue';
-import { useForm } from '@inertiajs/inertia-vue3';
-import { Inertia } from '@inertiajs/inertia';
+import { router, useForm } from '@inertiajs/vue3';
 import JetInputError from '@/Jetstream/InputError.vue';
 import JetButton from '@/Jetstream/Button.vue';
-import WaitForKey from './Partials/WaitForKey.vue';
-import WebAuthn from '../../webauthn.js';
+import WaitForKey from '@/Pages/Webauthn/Partials/WaitForKey.vue';
+import { webAuthnNotSupportedMessage } from '@/methods.js';
+import { startAuthentication, browserSupportsWebAuthn } from '@simplewebauthn/browser';
 
 const props = defineProps({
   publicKey: Object,
@@ -17,19 +16,20 @@ const isSupported = ref(true);
 const errorMessage = ref('');
 const processing = ref(false);
 
-const authForm = useForm();
+const authForm = useForm({});
 
-watch(() => props.publicKey, (value) => {
-  errorMessage.value = '';
-  nextTick().then(() => loginWaitForKey(value));
-});
+watch(
+  () => props.publicKey,
+  (value) => {
+    errorMessage.value = '';
+    loginWaitForKey(value);
+  },
+);
 
 onMounted(() => {
-  errorMessage.value = '';
-
-  if (! webauthn.webAuthnSupport()) {
+  if (!browserSupportsWebAuthn()) {
     isSupported.value = false;
-    errorMessage.value = notSupportedMessage();
+    errorMessage.value = webAuthnNotSupportedMessage();
   }
 
   if (props.publicKey) {
@@ -37,35 +37,20 @@ onMounted(() => {
   }
 });
 
-const webauthn = new WebAuthn((name, message) => {
-  errorMessage.value = _errorMessage(name, message);
-});
-
 const _errorMessage = (name, message) => {
   switch (name) {
-  case 'InvalidStateError':
-    return 'Unexpected error on login.';
-  case 'NotAllowedError':
-    return 'The operation either timed out or was not allowed.';
-  default:
-    return message;
-  }
-};
-
-const notSupportedMessage = () => {
-  switch (webauthn.notSupportedMessage()) {
-  case 'not_supported':
-    return 'Your browser doesn’t currently support WebAuthn.';
-  case 'not_secured':
-    return 'WebAuthn only supports secure connections. Please load this page with https scheme.';
-  default:
-    return '';
+    case 'InvalidStateError':
+      return 'Unexpected error on login.';
+    case 'NotAllowedError':
+      return 'The operation either timed out or was not allowed.';
+    default:
+      return message;
   }
 };
 
 const start = () => {
   errorMessage.value = '';
-  Inertia.reload({ only: ['publicKey'] });
+  router.reload({ only: ['publicKey'] });
 };
 
 const stop = () => {
@@ -74,48 +59,45 @@ const stop = () => {
 
 const loginWaitForKey = (publicKey) => {
   processing.value = true;
-  nextTick().then(() => webauthn.sign(
-    publicKey,
-    (data) => { webauthnLoginCallback(data); }
-  ));
+  nextTick()
+    .then(() => startAuthentication(publicKey))
+    .then((data) => webauthnLoginCallback(data))
+    .catch((error) => {
+      errorMessage.value = _errorMessage(error.name, error.message);
+    });
 };
 
 const webauthnLoginCallback = (data) => {
-  authForm.transform(() => ({
-    ...data,
-    remember: props.remember ? 'on' : ''
-  }))
+  authForm
+    .transform(() => ({
+      ...data,
+      remember: props.remember ? 'on' : '',
+    }))
     .post(route('webauthn.auth'), {
       preserveScroll: true,
       preserveState: true,
-      onSuccess: () => {
+      onSuccess: () => stop(),
+      onError: (error) => {
+        errorMessage.value = error.message ?? error.data.errors[0];
         stop();
       },
-      onError: (error) => {
-        errorMessage.value = error.message ? error.message : error.data.errors[0];
-        stop();
-      }
     });
 };
 </script>
 
 <template>
-    <div>
-        <div v-if="!isSupported">
-            {{ notSupportedMessage() }}
-        </div>
-        <div v-else>
-            <WaitForKey
-                :error-message="errorMessage"
-                :form="authForm"
-                @retry="start()"
-            />
-
-            <JetInputError :message="authForm.errors.data" class="mt-2" />
-
-            <JetButton class="ml-2" @click="start()" v-show="!processing">
-                Retry
-            </JetButton>
-        </div>
+  <div>
+    <div v-if="!isSupported">
+      {{ webAuthnNotSupportedMessage() }}
     </div>
+    <div v-else>
+      <WaitForKey :error-message="errorMessage" :form="authForm" @retry="start()" />
+
+      <JetInputError :message="authForm.errors.data" class="mt-2" />
+
+      <JetButton class="ms-2" @click="start()" v-show="!processing">
+        Retry
+      </JetButton>
+    </div>
+  </div>
 </template>

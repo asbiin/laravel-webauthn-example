@@ -1,6 +1,6 @@
 <script setup>
 import { ref, watch, nextTick } from 'vue';
-import { useForm } from '@inertiajs/inertia-vue3';
+import { useForm } from '@inertiajs/vue3';
 import JetLabel from '@/Jetstream/Label.vue';
 import JetInput from '@/Jetstream/Input.vue';
 import JetInputError from '@/Jetstream/InputError.vue';
@@ -31,35 +31,42 @@ const updateKey = () => {
   });
 };
 
-watch(() => props.nameUpdate, (value) => {
-  form.name = value;
-  setTimeout(() => nameInput.value ? nameInput.value.focus() : null, 200);
-}, {
-  immediate: true
-});
+watch(
+  () => props.nameUpdate,
+  (value) => {
+    form.name = value;
+    nextTick().then(() => nameInput.value.focus());
+  },
+  {
+    immediate: true,
+  },
+);
 </script>
 
 <template>
-    <form @submit.prevent="updateKey">
-        <div class="mt-4">
-            <JetLabel for="keyname" value="Key name" />
-            <JetInput type="text" class="mt-1 block"
-                id="keyname" ref="nameInput"
-                v-model="form.name"
-                required
-                @keyup.enter="updateKey" />
+  <form @submit.prevent="updateKey">
+    <div class="mt-4">
+      <JetLabel for="keyname" :value="'Key name'" />
+      <JetInput
+        type="text"
+        class="mt-1 block"
+        id="keyname"
+        ref="nameInput"
+        v-model="form.name"
+        required
+        @keyup.enter="updateKey" />
 
-            <JetInputError :message="form.errors.name" class="mt-2" />
-        </div>
+      <JetInputError :message="form.errors.name" class="mt-2" />
+    </div>
 
-        <div class="mt-5">
-            <JetSecondaryButton @click="$emit('close')">
-                Cancel
-            </JetSecondaryButton>
+    <div class="mt-5">
+      <JetSecondaryButton @click="$emit('close')">
+        Cancel
+      </JetSecondaryButton>
 
-            <JetButton class="ml-2" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                Update
-            </JetButton>
-        </div>
-    </form>
+      <JetButton class="ms-2" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+        Update
+      </JetButton>
+    </div>
+  </form>
 </template>
