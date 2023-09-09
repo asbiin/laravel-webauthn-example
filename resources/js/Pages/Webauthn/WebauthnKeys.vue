@@ -1,13 +1,13 @@
-
 <script setup>
 import { ref, nextTick, computed, onMounted } from 'vue';
-import { useForm, Link } from '@inertiajs/inertia-vue3';
+import { useForm, Link } from '@inertiajs/vue3';
 import JetSecondaryButton from '@/Jetstream/SecondaryButton.vue';
 import JetButton from '@/Jetstream/Button.vue';
-import RegisterKey from './Partials/RegisterKey.vue';
-import DeleteKeyModal from './Partials/DeleteKeyModal.vue';
-import UpdateKey from './Partials/UpdateKey.vue';
-import WebAuthn from '../../webauthn.js';
+import RegisterKey from '@/Pages/Webauthn/Partials/RegisterKey.vue';
+import DeleteKeyModal from '@/Pages/Webauthn/Partials/DeleteKeyModal.vue';
+import UpdateKey from '@/Pages/Webauthn/Partials/UpdateKey.vue';
+import { webAuthnNotSupportedMessage } from '@/methods.js';
+import { startRegistration, browserSupportsWebAuthn } from '@simplewebauthn/browser';
 
 const props = defineProps({
   webauthnKeys: Array,
@@ -24,51 +24,36 @@ const registerForm = useForm({
 const keyBeingDeleted = ref(null);
 const keyBeingUpdated = ref(null);
 
-const nameUpdate = computed(() => keyBeingUpdated.value > 0 ? props.webauthnKeys.find(key => key.id === keyBeingUpdated.value).name : '');
+const nameUpdate = computed(() =>
+  keyBeingUpdated.value > 0 ? props.webauthnKeys.find((key) => key.id === keyBeingUpdated.value).name : '',
+);
 
 onMounted(() => {
-  errorMessage.value = '';
-
-  if (! webauthn.webAuthnSupport()) {
+  if (!browserSupportsWebAuthn()) {
     isSupported.value = false;
-    errorMessage.value = notSupportedMessage();
+    errorMessage.value = webAuthnNotSupportedMessage();
   }
 
   if (props.publicKey) {
     showRegisterModal();
-    registerWaitForKey(props.publicKey);
+    nextTick().then(() => registerWaitForKey(props.publicKey));
   }
-});
-
-const webauthn = new WebAuthn((name, message) => {
-  errorMessage.value = _errorMessage(name, message);
 });
 
 const _errorMessage = (name, message) => {
   switch (name) {
-  case 'InvalidStateError':
-    return 'This key is already registered. It’s not necessary to register it again.';
-  case 'NotAllowedError':
-    return 'The operation either timed out or was not allowed.';
-  default:
-    return message;
-  }
-};
-
-const notSupportedMessage = () => {
-  switch (webauthn.notSupportedMessage()) {
-  case 'not_supported':
-    return 'Your browser doesn’t currently support WebAuthn.';
-  case 'not_secured':
-    return 'WebAuthn only supports secure connections. Please load this page with https scheme.';
-  default:
-    return '';
+    case 'InvalidStateError':
+      return 'This key is already registered. It’s not necessary to register it again.';
+    case 'NotAllowedError':
+      return 'The operation either timed out or was not allowed.';
+    default:
+      return message;
   }
 };
 
 const showRegisterModal = () => {
   errorMessage.value = '';
-  register.value  = true;
+  register.value = true;
 };
 
 const start = () => {
@@ -77,17 +62,19 @@ const start = () => {
 };
 
 const registerWaitForKey = (publicKey) => {
-  nextTick().then(() => webauthn.register(
-    publicKey,
-    (data) => { webauthnRegisterCallback(data); }
-  ));
+  startRegistration(publicKey)
+    .then((data) => webauthnRegisterCallback(data))
+    .catch((error) => {
+      errorMessage.value = _errorMessage(error.name, error.message);
+    });
 };
 
 const webauthnRegisterCallback = (data) => {
-  registerForm.transform((form) => ({
-    ...form,
-    ...data
-  }))
+  registerForm
+    .transform((form) => ({
+      ...form,
+      ...data,
+    }))
     .post(route('webauthn.store'), {
       preserveScroll: true,
       preserveState: true,
@@ -96,30 +83,35 @@ const webauthnRegisterCallback = (data) => {
         registerForm.reset();
       },
       onError: (error) => {
-        errorMessage.value = error.email ? error.email : error.data.errors.webauthn;
-      }
+        errorMessage.value = error.email ?? error.data.errors.webauthn;
+      },
     });
 };
 </script>
 
 <template>
     <div>
-        <div v-if="!isSupported">
-            {{ notSupportedMessage() }}
-        </div>
 
-        <div v-else-if="register" class="p-6 sm:px-20 bg-white dark:bg-slate-900 border-b border-gray-200 dark:border-slate-800">
-            <RegisterKey :errorMessage="errorMessage" :form="registerForm"
-                :name="registerForm.name" @update:name="registerForm.name = $event"
-                @start="start" @stop="register = false" @register="registerWaitForKey"
-            />
-        </div>
+      <div v-if="!isSupported">
+        {{ webAuthnNotSupportedMessage() }}
+      </div>
 
-        <div v-else-if="keyBeingUpdated > 0" class="p-6 sm:px-20 bg-white dark:bg-slate-900 border-b border-gray-200 dark:border-slate-800">
-            <UpdateKey :keyid="keyBeingUpdated" :name-update="nameUpdate" @close="keyBeingUpdated = null" />
-        </div>
+      <div v-else-if="register" class="p-6 sm:px-20 bg-white dark:bg-slate-900 border-b border-gray-200 dark:border-slate-800">
+        <RegisterKey
+          :error-message="errorMessage"
+          :form="registerForm"
+          :name="registerForm.name"
+          @update:name="registerForm.name = $event"
+          @start="start"
+          @stop="register = false"
+          @register="registerWaitForKey" />
+      </div>
 
-        <div v-else class="p-6 sm:px-20 bg-white dark:bg-slate-900 border-b border-gray-200 dark:border-slate-800">
+      <div v-else-if="keyBeingUpdated > 0" class="p-6 sm:px-20 bg-white dark:bg-slate-900 border-b border-gray-200 dark:border-slate-800">
+        <UpdateKey :keyid="keyBeingUpdated" :name-update="nameUpdate" @close="keyBeingUpdated = null" />
+      </div>
+
+      <div v-else class="p-6 sm:px-20 bg-white dark:bg-slate-900 border-b border-gray-200 dark:border-slate-800">
             <h1 class="font-semibold text-xl text-gray-900 dark:text-slate-100 leading-tight mb-8">
                 Manage your Webauthn Keys
             </h1>
@@ -161,14 +153,17 @@ const webauthnRegisterCallback = (data) => {
                                 </span>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <JetSecondaryButton class="pointer text-indigo-400 dark:text-indigo-600 hover:text-indigo-600 hover:dark:text-indigo-400" href="" @click="keyBeingUpdated = key.id">
-                                Update
-                            </JetSecondaryButton>
-                            <!-- <JetConfirmsPassword @confirmed="keyBeingDeleted = key.id"> -->
+                                <JetSecondaryButton class="pointer text-indigo-400 dark:text-indigo-600 hover:text-indigo-600 hover:dark:text-indigo-400" href="" @click="keyBeingUpdated = key.id">
+                                    Update
+                                </JetSecondaryButton>
+                                <!-- <JetConfirmsPassword @confirmed="keyBeingDeleted = key.id">
+                                    <JetSecondaryButton class="ml-2 pointer text-indigo-400 dark:text-indigo-600 hover:text-indigo-600 hover:dark:text-indigo-400">
+                                        Delete
+                                    </JetSecondaryButton>
+                                </JetConfirmsPassword> -->
                                 <JetSecondaryButton class="ml-2 pointer text-indigo-400 dark:text-indigo-600 hover:text-indigo-600 hover:dark:text-indigo-400" @click="keyBeingDeleted = key.id">
                                     Delete
                                 </JetSecondaryButton>
-                            <!-- </JetConfirmsPassword> -->
                             </td>
                         </tr>
                     </tbody>
@@ -176,14 +171,16 @@ const webauthnRegisterCallback = (data) => {
             </div>
 
             <div class="mt-8 text-2xl">
-                <!-- <JetConfirmsPassword @confirmed="showRegisterModal"> -->
-                    <JetButton type="button" @click="showRegisterModal">
+                <!-- <JetConfirmsPassword @confirmed="showRegisterModal">
+                    <JetButton type="button">
                         Register a new key
                     </JetButton>
-                <!-- </JetConfirmsPassword> -->
+                </JetConfirmsPassword> -->
+                <JetButton type="button" @click="showRegisterModal">
+                    Register a new key
+                </JetButton>
             </div>
         </div>
-
-        <DeleteKeyModal :keyid="keyBeingDeleted" @close="keyBeingDeleted = null" />
+      <DeleteKeyModal :keyid="keyBeingDeleted" @close="keyBeingDeleted = null" />
     </div>
 </template>

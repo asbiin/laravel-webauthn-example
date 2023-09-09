@@ -1,10 +1,10 @@
 <script setup>
-import { useForm } from '@inertiajs/inertia-vue3';
+import { useForm } from '@inertiajs/vue3';
 import JetConfirmationModal from '@/Jetstream/ConfirmationModal.vue';
 import JetDangerButton from '@/Jetstream/DangerButton.vue';
 import JetSecondaryButton from '@/Jetstream/SecondaryButton.vue';
 
-const form = useForm();
+const form = useForm({});
 
 const props = defineProps({
   keyid: Number,

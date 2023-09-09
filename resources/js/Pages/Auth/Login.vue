@@ -1,7 +1,7 @@
 <script setup>
 import { ref, watch, onMounted } from 'vue';
-import { Inertia } from '@inertiajs/inertia';
-import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
+import { router } from '@inertiajs/vue3';
+import { Head, Link, useForm } from '@inertiajs/vue3';
 import JetAuthenticationCard from '@/Jetstream/AuthenticationCard.vue';
 import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo.vue';
 import JetButton from '@/Jetstream/Button.vue';
@@ -47,7 +47,7 @@ const submit = () => {
 const reload = () => {
   publicKeyRef.value = null;
   webauthn.value = true;
-  Inertia.reload({only: ['publicKey']});
+  router.reload({only: ['publicKey']});
 };
 </script>
 
