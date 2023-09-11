@@ -1406,8 +1406,8 @@ yaml@^2.1.1:
   integrity sha512-N/lyzTPaJasoDmfV7YTrYCI0G/3ivm/9wdG0aHuheKowWQwGTsK0Eoiw6utmzAnI6pkJa0DUVygvp3spqqEKXg==
 
 ziggy-js@^1.4.6:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/ziggy-js/-/ziggy-js-1.5.0.tgz#e7cbb944928582943278c7beed7a4c5749785658"
-  integrity sha512-whzY4H/EMEKrXbbqQbncrSy9WN8N6sjzbVPdBjhQMauvODWtNUTDMq6Po55hPDx43GRFtIF22zrs/m2Z3qOi4g==
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/ziggy-js/-/ziggy-js-1.6.2.tgz#000cd0b1ceae1b891e7bb1df3c3295f67e093f5c"
+  integrity sha512-abUqQ1hatBLZnxqfgytxB+Rd3uey+ivPxU5alKxB8GS1xbc0mtntxHX/+tZ9q9UjFGxAUHd4IGGkhg5TboxulQ==
   dependencies:
     qs "~6.9.7"
