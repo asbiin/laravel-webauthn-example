@@ -1242,9 +1242,9 @@ side-channel@^1.0.4:
     object-inspect "^1.9.0"
 
 snyk@^1.797.0:
-  version "1.1211.0"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.1211.0.tgz#ac75056e6b6feb1371fd87ff822eeffc3954d42a"
-  integrity sha512-8Ker6O6k9mmBmiXY20droksfvUIwDLf1+kF0VSB5xh9BMMCXFoqgmtv1fQiBt+ix0BI/wPV5gdkuH7dZBZ9FiQ==
+  version "1.1216.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.1216.0.tgz#8c431aa4fc14ab013aad3e7f27804cd07665cae5"
+  integrity sha512-xVEiPPyVenHZ2DKSK/tbHolatcMDlW0QCs/0ZNPhNqxSYzX65mKkL9+R4rxRXyeYckfq69gSDMTTuBf9c5zFqQ==
   dependencies:
     "@sentry/node" "^7.36.0"
     global-agent "^3.0.0"
