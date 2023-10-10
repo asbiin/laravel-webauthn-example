@@ -3,7 +3,7 @@ import { renderToString } from '@vue/server-renderer';
 import { createInertiaApp } from '@inertiajs/vue3';
 import createServer from '@inertiajs/vue3/server';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
-import { ZiggyVue } from 'ziggy-js/src/js/vue.js';
+import { ZiggyVue } from 'ziggy-js/dist/vue.m.js';
 
 const appName = 'Laravel';
 
