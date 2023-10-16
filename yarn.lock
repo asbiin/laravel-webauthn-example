@@ -141,9 +141,9 @@
     tslib "^2.4.1 || ^1.9.3"
 
 "@simplewebauthn/browser@^8.0.2":
-  version "8.0.2"
-  resolved "https://registry.yarnpkg.com/@simplewebauthn/browser/-/browser-8.0.2.tgz#a46497084a79c9504cedf0fdbec4f5b13d7ffb67"
-  integrity sha512-VZ/PZuRErAP2P95f3l1do9XcyB4tSwuSFPSaPCB/YTFQ+/IuTdBv5j44KG1fLxHF3CI8IPyHAmD5//17GCaxLg==
+  version "8.3.1"
+  resolved "https://registry.yarnpkg.com/@simplewebauthn/browser/-/browser-8.3.1.tgz#f5c1aed6313d61944a9e13f16ae4495750bddf93"
+  integrity sha512-bMW7oOkxX4ydRAkkPtJ1do2k9yOoIGc/hZYebcuEOVdJoC6wwVpu97mYY7Mz8B9hLlcaR5WFgBsLl5tSJVzm8A==
   dependencies:
     "@simplewebauthn/typescript-types" "^8.0.0"
 
