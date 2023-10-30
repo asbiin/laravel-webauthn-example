@@ -27,10 +27,10 @@
   resolved "https://registry.yarnpkg.com/@esbuild/linux-loong64/-/linux-loong64-0.15.18.tgz#128b76ecb9be48b60cf5cfc1c63a4f00691a3239"
   integrity sha512-L4jVKS82XVhw2nvzLg/19ClLWg0y27ulRwuP7lcyL6AbUWB5aPglXY3M21mauDQMDfRLs8cQmeT03r/+X3cZYQ==
 
-"@inertiajs/core@1.0.12":
-  version "1.0.12"
-  resolved "https://registry.yarnpkg.com/@inertiajs/core/-/core-1.0.12.tgz#6c8424ddeb55a076437191acc99a6a86112481eb"
-  integrity sha512-N9RBmkL7p6N81NT4pBJpU6CmLqO1/VrTdVjIoEjnOpqTjNJnX6Zyq4j8ld2tqLDEd7FZ2tITY30AV1ncvI7B6g==
+"@inertiajs/core@1.0.13":
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/@inertiajs/core/-/core-1.0.13.tgz#d15cb05b43ded05bea40393c3f8bfbeca05ae139"
+  integrity sha512-xPvogbRgAXbogP16EBnGduEmVtImdncEBNQF9etRFF5Ne2nrJafeFgM0FZHqsSqCDvA4jjk8b8Ezt6gZRPK9hg==
   dependencies:
     axios "^1.2.0"
     deepmerge "^4.0.0"
@@ -38,11 +38,11 @@
     qs "^6.9.0"
 
 "@inertiajs/vue3@^1.0.11":
-  version "1.0.12"
-  resolved "https://registry.yarnpkg.com/@inertiajs/vue3/-/vue3-1.0.12.tgz#377d950854c40c90cbc092e31214afb3351da571"
-  integrity sha512-ycMtiCequV/IyPhzXQAnS0uFXTBVkmaXqygAADrLNtkLczGqpCuazULXp3lIArJfotjtx10kEQ8ojTHcQ4bg1g==
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/@inertiajs/vue3/-/vue3-1.0.13.tgz#724837e109953e36b3c846e8cb9b999d0c6a287e"
+  integrity sha512-KtUZBP0qRjAHX+ZKpBRFrAwwxUpq51eNhfxxp8A7NAn0OpajfQB8cwVkB4368JGOdjkGFLhDJkMpzfxe0qlPPg==
   dependencies:
-    "@inertiajs/core" "1.0.12"
+    "@inertiajs/core" "1.0.13"
     lodash.clonedeep "^4.5.0"
     lodash.isequal "^4.5.0"
 
