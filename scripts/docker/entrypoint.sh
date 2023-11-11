@@ -4,11 +4,11 @@ set -Eeo pipefail
 
 if expr "$1" : "apache" 1>/dev/null || [ "$1" = "php-fpm" ]; then
 
-    MONICADIR=/var/www/html
-    ARTISAN="php ${MONICADIR}/artisan"
+    ROOT=/var/www/html
+    ARTISAN="php ${ROOT}/artisan"
 
     # Ensure storage directories are present
-    STORAGE=${MONICADIR}/storage
+    STORAGE=${ROOT}/storage
     mkdir -p ${STORAGE}/logs
     mkdir -p ${STORAGE}/app/public
     mkdir -p ${STORAGE}/framework/views
@@ -35,6 +35,7 @@ if expr "$1" : "apache" 1>/dev/null || [ "$1" = "php-fpm" ]; then
     fi
 
     # Run migrations
+    ${ARTISAN} waitfordb
     ${ARTISAN} setup --force -vv
 
 fi
