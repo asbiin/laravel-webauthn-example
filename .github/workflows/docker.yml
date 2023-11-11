@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    types: [opened, synchronize, reopened]
 
   schedule:
     - cron: '0 0 1 * *' #At 00:00 on day-of-month 1.
@@ -30,7 +32,7 @@ jobs:
 
       - name: Docker meta
         id: docker_meta
-        uses: crazy-max/ghaction-docker-meta@v5
+        uses: docker/metadata-action@v5
         with:
           images: ghcr.io/${{ github.repository }}
 
@@ -49,7 +51,7 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v5
         with:
-          push: true
+          push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           cache-from: type=registry,ref=ghcr.io/${{ github.repository }}:main
           labels: ${{ steps.docker_meta.outputs.labels }}
@@ -64,6 +66,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Deploy on staging
     needs: docker-run
+    if: github.event_name != 'pull_request'
 
     environment: staging
 
