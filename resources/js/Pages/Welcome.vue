@@ -1,13 +1,15 @@
 <script setup>
+import { useAttrs } from 'vue';
 import { Head, Link } from '@inertiajs/vue3';
+import Footer from '@/Layouts/Footer.vue';
 import Sponsor from '@/Layouts/Sponsor.vue';
 
 defineProps({
     canLogin: Boolean,
     canRegister: Boolean,
-    laravelVersion: String,
-    phpVersion: String,
 });
+
+const laravelWebauthnVersion = useAttrs().laravelWebauthn.version;
 </script>
 
 <template>
@@ -76,4 +78,9 @@ defineProps({
             </div>
         </div>
     </div>
+
+    <div class="flex justify-center bg-gray-100 dark:bg-gray-800 sm:items-center">
+        <Footer :version="laravelWebauthnVersion" />
+    </div>
+
 </template>

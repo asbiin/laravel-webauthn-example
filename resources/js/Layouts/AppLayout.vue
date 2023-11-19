@@ -1,17 +1,18 @@
 <script setup>
 import { ref } from 'vue';
-import { router } from '@inertiajs/vue3';
-import { Head, Link } from '@inertiajs/vue3';
+import { router, Head, Link } from '@inertiajs/vue3';
 import JetApplicationMark from '@/Jetstream/ApplicationMark.vue';
 import JetBanner from '@/Jetstream/Banner.vue';
 import JetDropdown from '@/Jetstream/Dropdown.vue';
 import JetDropdownLink from '@/Jetstream/DropdownLink.vue';
 import JetNavLink from '@/Jetstream/NavLink.vue';
 import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink.vue';
+import Footer from '@/Layouts/Footer.vue';
 import Sponsor from '@/Layouts/Sponsor.vue';
 
 defineProps({
     title: String,
+    version: String,
 });
 
 const showingNavigationDropdown = ref(false);
@@ -191,6 +192,8 @@ const logout = () => {
             <main>
                 <slot />
             </main>
+
+            <Footer :version="version" />
         </div>
     </div>
 </template>

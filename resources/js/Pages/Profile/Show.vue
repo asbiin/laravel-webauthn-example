@@ -1,4 +1,5 @@
 <script setup>
+import { useAttrs } from 'vue';
 import AppLayout from '@/Layouts/AppLayout.vue';
 import DeleteUserForm from '@/Pages/Profile/Partials/DeleteUserForm.vue';
 import JetSectionBorder from '@/Jetstream/SectionBorder.vue';
@@ -11,10 +12,12 @@ defineProps({
     confirmsTwoFactorAuthentication: Boolean,
     sessions: Array,
 });
+
+const laravelWebauthnVersion = useAttrs().laravelWebauthn.version;
 </script>
 
 <template>
-    <AppLayout title="Profile">
+    <AppLayout title="Profile" :version="laravelWebauthnVersion">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 dark:text-slate-200 leading-tight">
                 Profile
