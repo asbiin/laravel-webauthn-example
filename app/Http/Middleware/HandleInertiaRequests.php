@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use Composer\InstalledVersions;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
@@ -35,10 +36,13 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request)
     {
         return array_merge(parent::share($request), [
-            'ziggy' => fn () =>
-                array_merge((new Ziggy)->toArray(), [
-                    'location' => $request->url(),
-                ]),
+            'laravelWebauthn' => fn () => [
+                'version' => InstalledVersions::getPrettyVersion('asbiin/laravel-webauthn'),
+            ]
+            // 'ziggy' => fn () =>
+            //     array_merge((new Ziggy)->toArray(), [
+            //         'location' => $request->url(),
+            //     ]),
         ]);
     }
 }
