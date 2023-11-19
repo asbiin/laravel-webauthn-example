@@ -1,6 +1,5 @@
 <script setup>
-import { ref, watch, onMounted } from 'vue';
-import { router } from '@inertiajs/vue3';
+import { ref, watch, onMounted, computed } from 'vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 import JetAuthenticationCard from '@/Jetstream/AuthenticationCard.vue';
 import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo.vue';
@@ -18,8 +17,10 @@ const props = defineProps({
     publicKey: Object,
     userName: String,
 });
-const webauthn = ref(true);
+const webauthn = ref(false);
 const publicKeyRef = ref(null);
+const errorMessage = ref(null);
+const userNameRef = ref(props.userName);
 
 const form = useForm({
     email: '',
@@ -28,12 +29,33 @@ const form = useForm({
 });
 
 watch(() => props.publicKey, (value) => {
-  publicKeyRef.value = value;
+    publicKeyRef.value = value;
 });
 
 onMounted(() => {
-  publicKeyRef.value = props.publicKey;
+    publicKeyRef.value = props.publicKey;
 });
+
+const useSecurityKey = computed(() => publicKeyRef.value !== null && webauthn.value === true);
+
+const getKey = () => {
+    errorMessage.value = null;
+    axios
+        .post(route('webauthn.auth.options'), {
+            email: form.email,
+        })
+        .then((response) => {
+            userNameRef.value = null;
+            if (response.data !== undefined) {
+                publicKeyRef.value = response.data.publicKey;
+            } else {
+                publicKeyRef.value = response.props.publicKey;
+            }
+        })
+        .catch((e) => {
+            errorMessage.value = e.response.data.message;
+        });
+};
 
 const submit = () => {
     form.transform(data => ({
@@ -45,9 +67,8 @@ const submit = () => {
 };
 
 const reload = () => {
-  publicKeyRef.value = null;
-  webauthn.value = true;
-  router.reload({only: ['publicKey']});
+    form.reset();
+    webauthn.value = true;
 };
 </script>
 
@@ -65,15 +86,37 @@ const reload = () => {
             {{ status }}
         </div>
 
-        <div v-if="publicKey && webauthn">
-            <div class="mb-4 text-lg text-gray-900 dark:text-slate-100 text-center">
-                {{ userName }}
-            </div>
+        <div v-if="useSecurityKey">
             <div class="mb-4 max-w-xl text-gray-600 dark:text-gray-400">
                 Connect with your security key
             </div>
 
-            <WebauthnLogin :remember="true" :public-key="publicKeyRef" />
+            <div v-if="userNameRef" class="mb-4 text-lg text-gray-900 dark:text-slate-100 text-center">
+                {{ userNameRef }}
+            </div>
+            <form @submit.prevent="getKey">
+                <div>
+                    <JetLabel for="email" value="Email" />
+                    <JetInput
+                        id="email"
+                        v-model="form.email"
+                        type="email"
+                        class="mt-1 block w-full"
+                        required
+                        autofocus
+                    />
+                </div>
+                <div class="flex items-center justify-end mt-4">
+                    <span>{{ errorMessage }}</span>
+                    <JetButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                        Log in
+                    </JetButton>
+                </div>
+            </form>
+
+            <div v-if="publicKeyRef">
+                <WebauthnLogin :remember="true" :public-key="publicKeyRef" />
+            </div>
 
             <JetSecondaryButton class="mr-2 mt-4" @click.prevent="webauthn = false">
                 Use your password
@@ -122,7 +165,7 @@ const reload = () => {
                 </JetButton>
             </div>
 
-            <div v-if="publicKeyRef" class="block mt-4">
+            <div class="block mt-4">
                 <JetSecondaryButton class="mr-2" @click.prevent="reload">
                     Use your security key
                 </JetSecondaryButton>
