@@ -679,25 +679,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.2.0":
-  version: 1.5.0
-  resolution: "axios@npm:1.5.0"
+"axios@npm:^1.2.0, axios@npm:^1.5.0":
+  version: 1.6.2
+  resolution: "axios@npm:1.6.2"
   dependencies:
     follow-redirects: "npm:^1.15.0"
     form-data: "npm:^4.0.0"
     proxy-from-env: "npm:^1.1.0"
-  checksum: a3e11e53ff10fa02defb17c82672599a5ef31f8a6f2b0ea1564a61271226a924baef3a899a03c6850bddb0e9a614acdf615e07b30f382403b5e1fc7ec2eef464
-  languageName: node
-  linkType: hard
-
-"axios@npm:^1.5.0":
-  version: 1.6.1
-  resolution: "axios@npm:1.6.1"
-  dependencies:
-    follow-redirects: "npm:^1.15.0"
-    form-data: "npm:^4.0.0"
-    proxy-from-env: "npm:^1.1.0"
-  checksum: ca2c6f56659a7f19e4a99082f549fe151952f6fd8aa72ed148559ab2d6a32ce37cd5dc72ce6d4d3cd91f0c1e2617c7c95c20077e5e244a79f319a6c0ce41204f
+  checksum: 9b77e030e85e4f9cbcba7bb52fbff67d6ce906c92d213e0bd932346a50140faf83733bf786f55bd58301bd92f9973885c7b87d6348023e10f7eaf286d0791a1d
   languageName: node
   linkType: hard
 
