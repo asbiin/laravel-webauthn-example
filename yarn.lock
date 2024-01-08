@@ -2361,14 +2361,14 @@ __metadata:
   linkType: hard
 
 "snyk@npm:^1.797.0":
-  version: 1.1250.0
-  resolution: "snyk@npm:1.1250.0"
+  version: 1.1268.0
+  resolution: "snyk@npm:1.1268.0"
   dependencies:
     "@sentry/node": "npm:^7.36.0"
     global-agent: "npm:^3.0.0"
   bin:
     snyk: bin/snyk
-  checksum: 7ba9c66b8b3007061b967769715f9cbae4e65a1af95e4458aca6fade8f1b8c157e974ea68f3a2464b3083e8930481c9222701f0579fa1ef21d626bede2d89957
+  checksum: d3ff6ccb45424a5c60eef8a6c35f834392467ad658ecd2d481e038849d18d727646209057644e0a8b54881e5f50007b0d307b97ecd56755246b9175cba49f016
   languageName: node
   linkType: hard
 
