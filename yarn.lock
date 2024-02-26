@@ -2272,7 +2272,7 @@ __metadata:
     tailwindcss: "npm:^3.1.0"
     vite: "npm:^4.4.9"
     vue: "npm:^3.2.31"
-    ziggy-js: "npm:^1.8.1"
+    ziggy-js: "npm:1.8.2"
   languageName: unknown
   linkType: soft
 
@@ -2757,11 +2757,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ziggy-js@npm:^1.8.1":
-  version: 1.8.1
-  resolution: "ziggy-js@npm:1.8.1"
+"ziggy-js@npm:1.8.2":
+  version: 1.8.2
+  resolution: "ziggy-js@npm:1.8.2"
   dependencies:
     qs: "npm:~6.9.7"
-  checksum: 2a5fd19fb6f9e117f2cba05d77020e0f20e335a70b07e8e0633ca9d7282f8c8532d9b67f303698367d3da38a1b7fb09e1dc469678e9fd56d48dda8813f651738
+  checksum: cfd69f6153126b60326386737e7fc52739b632829b835bf8391293681d0efa78bc89a56c4ee79400ea1460fdcea8993bdb5c6eca7a59ea3a93e590e5527b536f
   languageName: node
   linkType: hard

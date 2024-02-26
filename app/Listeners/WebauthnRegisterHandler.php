@@ -5,7 +5,7 @@ namespace App\Listeners;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Log;
 use LaravelWebauthn\Events\WebauthnRegister;
-use VincentBean\LaravelPlausible\PlausibleEvent;
+use VincentBean\Plausible\Events\PlausibleEvent;
 
 class WebauthnRegisterHandler
 {
