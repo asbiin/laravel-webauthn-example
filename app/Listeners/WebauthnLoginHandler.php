@@ -6,7 +6,7 @@ use App\Notifications\KeyLoginAlert;
 use LaravelWebauthn\Events\WebauthnLogin;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Notification;
-use VincentBean\LaravelPlausible\PlausibleEvent;
+use VincentBean\Plausible\Events\PlausibleEvent;
 
 class WebauthnLoginHandler
 {

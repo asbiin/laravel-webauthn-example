@@ -6,7 +6,7 @@ use App\Notifications\NewUserAlert;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Notification;
-use VincentBean\LaravelPlausible\PlausibleEvent;
+use VincentBean\Plausible\Events\PlausibleEvent;
 
 class RegisteredHandler
 {
