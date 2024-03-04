@@ -40,6 +40,7 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\HandleInertiaRequests::class,
             \VincentBean\Plausible\Middleware\TrackPlausiblePageviews::class,
+            \Pirsch\Http\Middleware\TrackPageview::class,
         ],
 
         'api' => [

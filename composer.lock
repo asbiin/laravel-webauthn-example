@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "21f67590d73bb6bc4ba82cbaa1a9501e",
+    "content-hash": "62024a50661d18cabe7684132980e6b5",
     "packages": [
         {
             "name": "asbiin/laravel-webauthn",
@@ -3869,6 +3869,90 @@
             "time": "2024-02-23T16:05:55+00:00"
         },
         {
+            "name": "pirsch-analytics/laravel-pirsch",
+            "version": "0.4.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pirsch-analytics/laravel-pirsch.git",
+                "reference": "374532b27311342d847e30e37455e6514c10bab0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pirsch-analytics/laravel-pirsch/zipball/374532b27311342d847e30e37455e6514c10bab0",
+                "reference": "374532b27311342d847e30e37455e6514c10bab0",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^9.0|^10.0",
+                "illuminate/http": "^9.0|^10.0",
+                "php": "^8.1",
+                "spatie/laravel-package-tools": "^1.9.2"
+            },
+            "require-dev": {
+                "laravel/pint": "^0.2.2",
+                "nunomaduro/collision": "^6.0",
+                "nunomaduro/larastan": "^2.0.1",
+                "orchestra/testbench": "^7.0",
+                "pestphp/pest": "^1.21",
+                "pestphp/pest-plugin-laravel": "^1.1",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^1.0",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "phpunit/phpunit": "^9.5",
+                "spatie/laravel-ray": "^1.26"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Pirsch\\PirschServiceProvider"
+                    ],
+                    "aliases": {
+                        "Pirsch": "Pirsch\\Facades\\Pirsch"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Pirsch\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marvin Blum",
+                    "email": "marvin.blum@emvi.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Zep Fietje",
+                    "email": "hey@zepfietje.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Official Laravel integration for Pirsch Analytics.",
+            "homepage": "https://github.com/pirsch-analytics/laravel-pirsch",
+            "keywords": [
+                "laravel",
+                "laravel-pirsch",
+                "pirsch-analytics"
+            ],
+            "support": {
+                "issues": "https://github.com/pirsch-analytics/laravel-pirsch/issues",
+                "source": "https://github.com/pirsch-analytics/laravel-pirsch/tree/0.4.8"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/zepfietje",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-09-22T11:21:59+00:00"
+        },
+        {
             "name": "pragmarx/google2fa",
             "version": "v8.0.1",
             "source": {
@@ -4862,6 +4946,66 @@
                 }
             ],
             "time": "2024-01-29T17:08:18+00:00"
+        },
+        {
+            "name": "spatie/laravel-package-tools",
+            "version": "1.16.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-package-tools.git",
+                "reference": "e62eeb1fe8a8a0b2e83227a6c279c8c59f7d3a15"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/e62eeb1fe8a8a0b2e83227a6c279c8c59f7d3a15",
+                "reference": "e62eeb1fe8a8a0b2e83227a6c279c8c59f7d3a15",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^9.28|^10.0|^11.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.5",
+                "orchestra/testbench": "^7.7|^8.0",
+                "pestphp/pest": "^1.22",
+                "phpunit/phpunit": "^9.5.24",
+                "spatie/pest-plugin-test-time": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\LaravelPackageTools\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Tools for creating Laravel packages",
+            "homepage": "https://github.com/spatie/laravel-package-tools",
+            "keywords": [
+                "laravel-package-tools",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-package-tools/issues",
+                "source": "https://github.com/spatie/laravel-package-tools/tree/1.16.2"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-01-11T08:43:00+00:00"
         },
         {
             "name": "spomky-labs/cbor-php",

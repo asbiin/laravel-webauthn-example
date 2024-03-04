@@ -6,6 +6,7 @@ use App\Notifications\KeyLoginAlert;
 use LaravelWebauthn\Events\WebauthnLogin;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Notification;
+use Pirsch\Facades\Pirsch;
 use VincentBean\Plausible\Events\PlausibleEvent;
 
 class WebauthnLoginHandler
@@ -23,6 +24,9 @@ class WebauthnLoginHandler
             Log::info("Webauthn login: {$user->name} {$user->email}");
 
             PlausibleEvent::fire('webauthn-login', [
+                'username' => $user->name
+            ]);
+            Pirsch::track('webauthn-login', [
                 'username' => $user->name
             ]);
 
