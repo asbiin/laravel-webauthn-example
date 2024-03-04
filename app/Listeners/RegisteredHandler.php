@@ -6,6 +6,7 @@ use App\Notifications\NewUserAlert;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Notification;
+use Pirsch\Facades\Pirsch;
 use VincentBean\Plausible\Events\PlausibleEvent;
 
 class RegisteredHandler
@@ -22,6 +23,9 @@ class RegisteredHandler
             Log::info("Webauthn register: {$event->user->name} {$event->user->email}");
 
             PlausibleEvent::fire('register', [
+                'username' => $event->user->name
+            ]);
+            Pirsch::track('register', [
                 'username' => $event->user->name
             ]);
         }
