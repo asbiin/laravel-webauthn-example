@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Log;
 use LaravelWebauthn\Events\WebauthnRegister;
 use Pirsch\Facades\Pirsch;
-use VincentBean\Plausible\Events\PlausibleEvent;
+use VincentBean\Plausible\Facades\PlausibleEvent;
 
 class WebauthnRegisterHandler
 {
@@ -20,9 +20,11 @@ class WebauthnRegisterHandler
     {
         Log::info("Webauthn register: {$event->webauthnKey->name}");
 
-        PlausibleEvent::fire('webauthn-register', [
-            'username' => $event->webauthnKey->user->name
-        ]);
+        if (config('plausible.plausible_domain')) {
+            PlausibleEvent::fire('webauthn-register', [
+                'username' => $event->webauthnKey->user->name
+            ]);
+        }
         Pirsch::track('webauthn-register', [
             'username' => $event->webauthnKey->user->name
         ]);

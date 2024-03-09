@@ -24,7 +24,7 @@
         "pirsch-analytics/laravel-pirsch": "^0",
         "psr/log": "^3.0",
         "sentry/sentry-laravel": "^4.2",
-        "tightenco/ziggy": "1.8.2",
+        "tightenco/ziggy": "2.0.4",
         "vincentbean/laravel-plausible": "^2.0"
     },
     "require-dev": {
