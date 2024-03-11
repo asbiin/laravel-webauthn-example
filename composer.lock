@@ -2375,16 +2375,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "3.24.0",
+            "version": "3.25.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "b25a361508c407563b34fac6f64a8a17a8819675"
+                "reference": "4c44347133618cccd9b3df1729647a1577b4ad99"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/b25a361508c407563b34fac6f64a8a17a8819675",
-                "reference": "b25a361508c407563b34fac6f64a8a17a8819675",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/4c44347133618cccd9b3df1729647a1577b4ad99",
+                "reference": "4c44347133618cccd9b3df1729647a1577b4ad99",
                 "shasum": ""
             },
             "require": {
@@ -2412,7 +2412,7 @@
                 "friendsofphp/php-cs-fixer": "^3.5",
                 "google/cloud-storage": "^1.23",
                 "microsoft/azure-storage-blob": "^1.1",
-                "phpseclib/phpseclib": "^3.0.34",
+                "phpseclib/phpseclib": "^3.0.36",
                 "phpstan/phpstan": "^1.10",
                 "phpunit/phpunit": "^9.5.11|^10.0",
                 "sabre/dav": "^4.6.0"
@@ -2449,7 +2449,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/3.24.0"
+                "source": "https://github.com/thephpleague/flysystem/tree/3.25.0"
             },
             "funding": [
                 {
@@ -2461,7 +2461,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-02-04T12:10:17+00:00"
+            "time": "2024-03-09T17:06:45+00:00"
         },
         {
             "name": "league/flysystem-local",
@@ -8126,16 +8126,16 @@
         },
         {
             "name": "vincentbean/laravel-plausible",
-            "version": "2.1.1",
+            "version": "2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/VincentBean/laravel-plausible.git",
-                "reference": "3bd3a75119c864b7d36278fbb89722e7924668b7"
+                "reference": "9f9226b69c5cb78146e7f8330be9acece87baff8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/VincentBean/laravel-plausible/zipball/3bd3a75119c864b7d36278fbb89722e7924668b7",
-                "reference": "3bd3a75119c864b7d36278fbb89722e7924668b7",
+                "url": "https://api.github.com/repos/VincentBean/laravel-plausible/zipball/9f9226b69c5cb78146e7f8330be9acece87baff8",
+                "reference": "9f9226b69c5cb78146e7f8330be9acece87baff8",
                 "shasum": ""
             },
             "require": {
@@ -8184,7 +8184,7 @@
             ],
             "support": {
                 "issues": "https://github.com/VincentBean/laravel-plausible/issues",
-                "source": "https://github.com/VincentBean/laravel-plausible/tree/2.1.1"
+                "source": "https://github.com/VincentBean/laravel-plausible/tree/2.1.2"
             },
             "funding": [
                 {
@@ -8192,7 +8192,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-08T09:48:14+00:00"
+            "time": "2024-03-09T14:06:15+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -12035,5 +12035,5 @@
         "ext-intl": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
