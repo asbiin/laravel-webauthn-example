@@ -1,5 +1,5 @@
 ## Build assets
-FROM node:18 AS yarn
+FROM node:20 AS yarn
 
 WORKDIR /var/www/html
 COPY . ./
