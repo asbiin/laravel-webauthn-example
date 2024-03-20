@@ -1,5 +1,5 @@
 ## Build assets
-FROM node:20 AS yarn
+FROM node:20 AS node
 
 WORKDIR /var/www/html
 COPY . ./
@@ -166,8 +166,14 @@ RUN set -ex; \
     composer clear-cache; \
     rm -rf .composer
 
+# Install node
+COPY --from=node /usr/local/bin/node /usr/local/bin/node
+COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
+RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
+
 # Install assets
-COPY --from=yarn --chown=www-data:www-data /var/www/html/public/build ./public/build
+COPY --from=node --chown=www-data:www-data /var/www/html/public/build ./public/build
+COPY --from=node /var/www/html/node_modules ./node_modules
 
 COPY --chown=www-data:www-data scripts/docker/.env.production .env
 COPY scripts/docker/entrypoint.sh \

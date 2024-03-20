@@ -37,6 +37,7 @@ if expr "$1" : "apache" 1>/dev/null || [ "$1" = "php-fpm" ]; then
     # Run migrations
     ${ARTISAN} waitfordb
     ${ARTISAN} setup --force -vv
+    ${ARTISAN} inertia:stop-ssr
 
 fi
 
