@@ -49,7 +49,6 @@ class HandleInertiaRequests extends Middleware
                 'location' => $request->url(),
             ],
             'sentry' => fn () => [
-                'test' => 0,
                 'dsn' => config('sentry.dsn'),
                 'environment' => config('sentry.environment'),
                 'sendDefaultPii' => config('sentry.send_default_pii'),

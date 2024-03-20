@@ -5,7 +5,11 @@ WORKDIR /var/www/html
 COPY . ./
 RUN set -ex; \
     \
-    yarn install --frozen-lockfile; \
+    { \
+        echo "VITE_SENTRY_RELEASE=$GITHUB_SHA"; \
+    } | tee .env; \
+    \
+    yarn install --immutable; \
     yarn run build
 
 

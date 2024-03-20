@@ -7,7 +7,7 @@ on:
     types: [created]
 
 env:
-  node-version: 18
+  node-version: 20
 
 jobs:
   #############
@@ -31,6 +31,6 @@ jobs:
           node-version: ${{ env.node-version }}
           cache: yarn
       - name: Install yarn dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
       - name: Build assets
         run: yarn run build
