@@ -35,14 +35,22 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request)
     {
-        return array_merge(parent::share($request), [
+        return [
+            ...parent::share($request),
             'laravelWebauthn' => fn () => [
                 'version' => InstalledVersions::getPrettyVersion('asbiin/laravel-webauthn'),
-            ]
-            // 'ziggy' => fn () =>
-            //     array_merge((new Ziggy)->toArray(), [
-            //         'location' => $request->url(),
-            //     ]),
-        ]);
+            ],
+            'ziggy' => fn () => [
+                ...(new Ziggy)->toArray(),
+                'location' => $request->url(),
+            ],
+            'sentry' => fn () => [
+                'test' => 0,
+                'dsn' => config('sentry.dsn'),
+                'environment' => config('sentry.environment'),
+                'sendDefaultPii' => config('sentry.send_default_pii'),
+                'tracesSampleRate' => config('sentry.traces_sample_rate'),
+            ],
+        ];
     }
 }

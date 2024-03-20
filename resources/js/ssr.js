@@ -4,22 +4,29 @@ import { createInertiaApp } from '@inertiajs/vue3';
 import createServer from '@inertiajs/vue3/server';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from 'ziggy-js';
+import { sentry } from './sentry';
 
-const appName = 'Laravel';
+const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
 createServer((page) =>
-    createInertiaApp({
-        page,
-        render: renderToString,
-        title: (title) => `${title} - ${appName}`,
-        resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
-        setup({ App, props, plugin }) {
-            return createSSRApp({ render: () => h(App, props) })
-                .use(plugin)
-                .use(ZiggyVue, {
-                    ...page.props.ziggy,
-                    location: new URL(page.props.ziggy.location),
-                });
-        },
-    })
+  createInertiaApp({
+    page,
+    render: renderToString,
+    title: (title) => `${title} - ${appName}`,
+    resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
+    setup({ App, props, plugin }) {
+      return createSSRApp({
+        render: () => h(App, props)
+      })
+        .use(plugin)
+        .use(ZiggyVue, {
+          ...page.props.ziggy,
+          location: new URL(page.props.ziggy.location),
+        })
+        .use(sentry, {
+          ...page.props.sentry,
+          release: import.meta.env.VITE_SENTRY_RELEASE,
+        });
+    }
+  })
 );

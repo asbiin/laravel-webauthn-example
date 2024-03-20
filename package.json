@@ -7,6 +7,8 @@
     },
     "devDependencies": {
         "@inertiajs/vue3": "^1.0.15",
+        "@sentry/browser": "^7.107.0",
+        "@sentry/vue": "^7.107.0",
         "@simplewebauthn/browser": "^9.0.1",
         "@tailwindcss/forms": "^0.5.7",
         "@tailwindcss/typography": "^0.5.10",

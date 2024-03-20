@@ -10,6 +10,7 @@
         "ext-fileinfo": "*",
         "ext-gmp": "*",
         "ext-intl": "*",
+        "asbiin/laravel-sentry-tunnel": "^2.2",
         "asbiin/laravel-webauthn": "^4.3",
         "doctrine/dbal": "^4.0",
         "inertiajs/inertia-laravel": "^1.0",

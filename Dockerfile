@@ -173,6 +173,7 @@ COPY --chown=www-data:www-data scripts/docker/.env.production .env
 COPY scripts/docker/entrypoint.sh \
     scripts/docker/cron.sh \
     scripts/docker/queue.sh \
+    scripts/docker/ssr.sh \
     /usr/local/bin/
 
 ENTRYPOINT [ "entrypoint.sh" ]
