@@ -1,5 +1,4 @@
 import * as Sentry from '@sentry/vue';
-import { BrowserTracing } from '@sentry/browser';
 import { createTransport } from '@sentry/core';
 import { router } from '@inertiajs/vue3';
 
@@ -33,7 +32,7 @@ const install = (app, options) => {
       release: options.release || '',
       sendDefaultPii: options.sendDefaultPii || false,
       tracesSampleRate: options.tracesSampleRate || 0.0,
-      integrations: options.tracesSampleRate > 0 ? [new BrowserTracing()] : [],
+      integrations: options.tracesSampleRate > 0 ? [Sentry.browserTracingIntegration()] : [],
       transport: myTransport,
     });
     app.mixin(Sentry.createTracingMixins({ trackComponents: true }));
@@ -44,7 +43,10 @@ const install = (app, options) => {
 const setContext = (vm) => {
   if (activated && typeof vm.$page !== 'undefined') {
     if (vm.$page.props.auth.user) {
-      Sentry.setUser({ id: vm.$page.props.auth.user.id });
+      Sentry.setUser({
+        name: vm.$page.props.auth.user.name,
+        email: vm.$page.props.auth.user.email
+      });
     }
     Sentry.setTag('page.component', vm.$page.component);
     vm.$once(

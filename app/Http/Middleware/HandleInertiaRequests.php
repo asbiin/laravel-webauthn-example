@@ -37,6 +37,10 @@ class HandleInertiaRequests extends Middleware
     {
         return [
             ...parent::share($request),
+            'appName' => fn() => config('app.name', 'Laravel'),
+            'auth' => fn() => [
+                'user' => auth()->user(),
+            ],
             'laravelWebauthn' => fn () => [
                 'version' => InstalledVersions::getPrettyVersion('asbiin/laravel-webauthn'),
             ],
