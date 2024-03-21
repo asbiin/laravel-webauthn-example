@@ -27,4 +27,7 @@ export default defineConfig({
     ssr: {
         noExternal: ['@inertiajs/server'],
     },
+    build: {
+      sourcemap: env.VITE_PROD_SOURCE_MAPS,
+    },
 });
