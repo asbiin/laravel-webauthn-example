@@ -42,7 +42,7 @@ jobs:
           echo "release=$(git describe --abbrev=0 --tags --exact-match $GITHUB_SHA 2>/dev/null || git log --pretty="%h" -n1 $GITHUB_SHA)" >> $GITHUB_OUTPUT
 
       - name: Set environment variables
-        if: github.event_name == 'push' && env.SENTRY_AUTH_TOKEN != ''
+        # if: github.event_name == 'push' && env.SENTRY_AUTH_TOKEN != ''
         run: |
           { \
             echo "VITE_PROD_SOURCE_MAPS=true"; \
@@ -59,8 +59,3 @@ jobs:
 
       - name: Build assets
         run: yarn run build
-        env:
-          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-          SENTRY_ORG: ${{ vars.SENTRY_ORG }}
-          SENTRY_PROJECT: ${{ vars.SENTRY_PROJECT }}
-          SENTRY_RELEASE: ${{ steps.version.outputs.release }}
