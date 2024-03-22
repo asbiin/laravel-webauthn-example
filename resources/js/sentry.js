@@ -34,6 +34,8 @@ const install = (app, options) => {
       tracesSampleRate: options.tracesSampleRate || 0.0,
       integrations: options.tracesSampleRate > 0 ? [Sentry.browserTracingIntegration()] : [],
       transport: myTransport,
+      ignoreTransactions: ['/sentry/tunnel'],
+      ignoreErrors: ['/sentry/tunnel'],
     });
     app.mixin(Sentry.createTracingMixins({ trackComponents: true }));
     activated = true;
