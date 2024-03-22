@@ -18,14 +18,12 @@ class DashboardController extends Controller
     {
         $webauthnKeys = $request->user()->webauthnKeys()
             ->get()
-            ->map(function ($key) {
-                return [
-                    'id' => $key->id,
-                    'name' => $key->name,
-                    'type' => $key->type,
-                    'last_active' => $key->updated_at->diffForHumans(),
-                ];
-            })
+            ->map(fn ($key) => [
+                'id' => $key->id,
+                'name' => $key->name,
+                'type' => $key->type,
+                'last_active' => $key->updated_at->diffForHumans(),
+            ])
             ->toArray();
 
         return Inertia::render('Dashboard', [

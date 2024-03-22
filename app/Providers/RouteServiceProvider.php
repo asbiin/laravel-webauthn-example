@@ -33,6 +33,10 @@ class RouteServiceProvider extends ServiceProvider
             URL::forceScheme('https');
         }
 
+        if (config('app.force_root_url') === true) {
+            URL::forceRootUrl(config('app.url'));
+        }
+
         $this->configureRateLimiting();
 
         $this->routes(function () {

@@ -1,13 +1,15 @@
 name: Build assets
 
 on:
+  push:
+    branches: [main]
   pull_request:
     types: [opened, synchronize, reopened]
   release:
     types: [created]
 
 env:
-  node-version: 18
+  node-version: 20
 
 jobs:
   #############
@@ -30,7 +32,31 @@ jobs:
         with:
           node-version: ${{ env.node-version }}
           cache: yarn
+
       - name: Install yarn dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
+
+      - name: Get version
+        id: version
+        run: |
+          echo "release=$(git describe --abbrev=0 --tags --exact-match $GITHUB_SHA 2>/dev/null || git log --pretty="%h" -n1 $GITHUB_SHA)" >> $GITHUB_OUTPUT
+
+      - name: Set environment variables
+        # if: github.event_name == 'push' && env.SENTRY_AUTH_TOKEN != ''
+        run: |
+          { \
+            echo "VITE_PROD_SOURCE_MAPS=true"; \
+            echo "SENTRY_ORG=$SENTRY_ORG"; \
+            echo "SENTRY_PROJECT=$SENTRY_PROJECT"; \
+            echo "SENTRY_RELEASE=${{ steps.version.outputs.release }}"; \
+          } > .env
+        env:
+          SENTRY_ORG: ${{ vars.SENTRY_ORG }}
+          SENTRY_PROJECT: ${{ vars.SENTRY_PROJECT }}
+          SENTRY_RELEASE: ${{ steps.version.outputs.release }}
+
       - name: Build assets
         run: yarn run build
+        env:
+          SENTRY_AUTH_TOKEN: ${{ github.event_name == 'push' && secrets.SENTRY_AUTH_TOKEN || '' }}
+          SENTRY_RELEASE: ${{ steps.version.outputs.release }}

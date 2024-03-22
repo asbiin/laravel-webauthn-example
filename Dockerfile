@@ -1,11 +1,11 @@
 ## Build assets
-FROM node:20 AS yarn
+FROM node:20 AS node
 
 WORKDIR /var/www/html
 COPY . ./
 RUN set -ex; \
     \
-    yarn install --frozen-lockfile; \
+    yarn install --immutable; \
     yarn run build
 
 
@@ -145,8 +145,10 @@ WORKDIR /var/www/html
 # correctly
 COPY --chown=www-data:www-data . ./
 
+ARG SENTRY_RELEASE
 RUN set -ex; \
     \
+    if [ -n "$SENTRY_RELEASE" ]; then echo -n "$SENTRY_RELEASE" > config/.release; fi; \
     mkdir -p bootstrap/cache; \
     mkdir -p storage; \
     chown -R www-data:www-data bootstrap/cache storage; \
@@ -166,13 +168,20 @@ RUN set -ex; \
     composer clear-cache; \
     rm -rf .composer
 
+# Install node
+COPY --from=node /usr/local/bin/node /usr/local/bin/node
+COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
+RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
+
 # Install assets
-COPY --from=yarn --chown=www-data:www-data /var/www/html/public/build ./public/build
+COPY --from=node --chown=www-data:www-data /var/www/html/public/build ./public/build
+COPY --from=node /var/www/html/node_modules ./node_modules
 
 COPY --chown=www-data:www-data scripts/docker/.env.production .env
 COPY scripts/docker/entrypoint.sh \
     scripts/docker/cron.sh \
     scripts/docker/queue.sh \
+    scripts/docker/ssr.sh \
     /usr/local/bin/
 
 ENTRYPOINT [ "entrypoint.sh" ]

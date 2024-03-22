@@ -8,6 +8,10 @@ services:
       - VIRTUAL_HOST=localhost
       - HSTS=off
       - APP_TRUSTED_PROXIES=*
+      - LARAVEL_CLOUDFLARE_ENABLED=false
+      - APP_URL=https://localhost:443
+      - ASSET_URL=https://localhost:443
+      - FORCE_ROOT_URL=true
     volumes:
       - webauthn_data:/var/www/html/database
     networks:

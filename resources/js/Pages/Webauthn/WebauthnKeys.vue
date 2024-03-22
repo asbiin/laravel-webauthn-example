@@ -117,7 +117,7 @@ const webauthnRegisterCallback = (data) => {
             </h1>
 
             <p v-if="webauthnKeys.length > 0" class="dark:text-gray-100 text-lg bg-teal-50 dark:bg-teal-800 border-t-2 border-teal-200 dark:border-teal-500 rounded-b mb-4 px-4 py-8 shadow-md">
-                Try <Link :href="route('logout')" method="post" class="underline">logging out</Link> and logging back in without password, just using your registered key!
+                Try <Link :href="route('logout')" method="post" class="underline" as="button">logging out</Link> and logging back in without password, just using your registered key!
             </p>
 
             <div class="shadow dark:shadow-gray-700 overflow-hidden border-b border-gray-200 dark:border-gray-800 sm:rounded-lg">

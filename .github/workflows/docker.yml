@@ -8,13 +8,16 @@ on:
     types: [opened, synchronize, reopened]
 
   schedule:
-    - cron: '0 0 1 * *' #At 00:00 on day-of-month 1.
+    - cron: '0 0 1 * *' # At 00:00 on day-of-month 1.
 
   workflow_dispatch:
 
 concurrency:
   group: Docker ${{ github.ref }}
   cancel-in-progress: true
+
+env:
+  registry: ghcr.io
 
 jobs:
   docker-run:
@@ -34,7 +37,7 @@ jobs:
         id: docker_meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/${{ github.repository }}
+          images: ${{ env.registry }}/${{ github.repository }}
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -42,9 +45,14 @@ jobs:
       - name: Login to GitHub container registry
         uses: docker/login-action@v3
         with:
-          registry: ghcr.io
+          registry: ${{ env.registry }}
           username: ${{ secrets.CR_USER }}
           password: ${{ secrets.CR_PAT }}
+
+      - name: Get version
+        id: version
+        run: |
+          echo "release=$(git describe --abbrev=0 --tags --exact-match $GITHUB_SHA 2>/dev/null || git log --pretty="%h" -n1 $GITHUB_SHA)" >> $GITHUB_OUTPUT
 
     # Build docker
       - name: Docker build
@@ -53,10 +61,12 @@ jobs:
         with:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
-          cache-from: type=registry,ref=ghcr.io/${{ github.repository }}:main
+          cache-from: type=registry,ref=${{ env.registry }}/${{ github.repository }}:main
           labels: ${{ steps.docker_meta.outputs.labels }}
           file: Dockerfile
           context: .
+          build-args:
+            SENTRY_RELEASE=${{ steps.version.outputs.release }}
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
