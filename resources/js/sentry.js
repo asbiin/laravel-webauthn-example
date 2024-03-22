@@ -27,15 +27,14 @@ const install = (app, options) => {
     Sentry.init({
       app,
       dsn: options.dsn,
-      tunnel: '/sentry/tunnel',
+      tunnel: options.tunnel,
       environment: options.environment || null,
       release: options.release || '',
       sendDefaultPii: options.sendDefaultPii || false,
       tracesSampleRate: options.tracesSampleRate || 0.0,
       integrations: options.tracesSampleRate > 0 ? [Sentry.browserTracingIntegration()] : [],
       transport: myTransport,
-      ignoreTransactions: ['/sentry/tunnel'],
-      ignoreErrors: ['/sentry/tunnel'],
+      ignoreTransactions: [options.tunnel],
     });
     app.mixin(Sentry.createTracingMixins({ trackComponents: true }));
     activated = true;

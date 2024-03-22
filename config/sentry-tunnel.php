@@ -51,7 +51,7 @@ return [
     |
     */
 
-    'tunnel-url' => env('SENTRY_TUNNEL_URL', '/sentry/tunnel'),
+    'tunnel-url' => env('SENTRY_TUNNEL_URL', '/up'),
 
     /*
     |--------------------------------------------------------------------------
