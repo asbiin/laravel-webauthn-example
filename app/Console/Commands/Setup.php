@@ -67,6 +67,9 @@ class Setup extends Command
                 && (config('cache.default') != 'database' || Schema::hasTable(config('cache.stores.database.table')))) {
                 $this->artisan('✓ Cache configuraton', 'config:cache'); // @codeCoverageIgnore
             }
+
+            $this->artisan('✓ Restart queues', 'queue:restart');
+            $this->artisan('✓ Restart SSR server', 'inertia:stop-ssr');
         }
     }
 
