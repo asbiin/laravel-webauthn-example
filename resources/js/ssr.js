@@ -13,7 +13,14 @@ createServer((page) =>
     title: (title) => `${title} - ${page.props.appName}`,
     resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
     setup({ App, props, plugin }) {
-      return createSSRApp({ render: () => h(App, props) })
+      return createSSRApp({
+        render: () => h(App, props),
+        mounted() {
+          this.$nextTick(() => {
+            sentry.setContext(this);
+          });
+        },
+      })
         .use(plugin)
         .use(ZiggyVue, {
           ...page.props.ziggy,

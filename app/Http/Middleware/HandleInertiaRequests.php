@@ -50,6 +50,7 @@ class HandleInertiaRequests extends Middleware
             ],
             'sentry' => fn () => [
                 'dsn' => config('sentry.dsn'),
+                'tunnel' => config('sentry-tunnel.tunnel-url'),
                 'release' => config('sentry.release'),
                 'environment' => config('sentry.environment'),
                 'sendDefaultPii' => config('sentry.send_default_pii'),

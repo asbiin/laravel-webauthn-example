@@ -16,7 +16,14 @@ createInertiaApp({
   title: (title) => `${title} - ${appName}`,
   resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
   setup({ el, App, props, plugin }) {
-    return createSSRApp({ render: () => h(App, props) })
+    return createSSRApp({
+      render: () => h(App, props),
+      mounted() {
+        this.$nextTick(() => {
+          sentry.setContext(this);
+        });
+      },
+    })
       .use(plugin)
       .use(ZiggyVue, Ziggy)
       .use(sentry, props.initialPage.props.sentry)
