@@ -175,6 +175,7 @@ RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
 
 # Install assets
 COPY --from=node --chown=www-data:www-data /var/www/html/public/build ./public/build
+COPY --from=node --chown=www-data:www-data /var/www/html/bootstrap/ssr ./bootstrap/ssr
 COPY --from=node /var/www/html/node_modules ./node_modules
 
 COPY --chown=www-data:www-data scripts/docker/.env.production .env
