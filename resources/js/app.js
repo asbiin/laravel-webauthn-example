@@ -19,10 +19,7 @@ createInertiaApp({
     return createSSRApp({ render: () => h(App, props) })
       .use(plugin)
       .use(ZiggyVue, Ziggy)
-      .use(sentry, {
-        ...props.initialPage.props.sentry,
-        release: import.meta.env.VITE_SENTRY_RELEASE,
-      })
+      .use(sentry, props.initialPage.props.sentry)
       .mount(el);
   },
 });

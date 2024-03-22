@@ -19,10 +19,7 @@ createServer((page) =>
           ...page.props.ziggy,
           location: new URL(page.props.ziggy.location),
         })
-        .use(sentry, {
-          ...page.props.sentry,
-          release: import.meta.env.VITE_SENTRY_RELEASE,
-        });
+        .use(sentry, page.props.sentry);
     }
   })
 );

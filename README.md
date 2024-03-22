@@ -23,8 +23,8 @@ In order to test the application, you need to:
 * Install packages and configuration:
     ```sh
     composer install
-    npm install
-    npm prod
+    yarn install
+    yarn run build
     cp .env.example .env
     php artisan key:generate
     ```
@@ -34,6 +34,11 @@ You can use an sqlite database, just put `DB_CONNECTION=sqlite` in the `.env` fi
     ```sh
     sed -i 's/\(DB_CONNECTION\)=.*/\1=sqlite/' .env
     touch database/database.sqlite
+    ```
+
+* Migrate database and setup the environment.
+    ```sh
+    php artisan setup
     ```
 
 * Run a webserver
@@ -55,6 +60,6 @@ Got to `https://url.test/webauthn/register` to register a new key.
 
 Author: [Alexis Saettler](https://github.com/asbiin)
 
-Copyright © 2019–2023.
+Copyright © 2019–2024.
 
 Licensed under the MIT License. [View license](/LICENSE).
