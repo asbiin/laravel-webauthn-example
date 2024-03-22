@@ -49,6 +49,11 @@ jobs:
           username: ${{ secrets.CR_USER }}
           password: ${{ secrets.CR_PAT }}
 
+      - name: Get version
+        id: version
+        run: |
+          echo "release=$(git describe --abbrev=0 --tags --exact-match $GITHUB_SHA 2>/dev/null || git log --pretty="%h" -n1 $GITHUB_SHA)" >> $GITHUB_OUTPUT
+
     # Build docker
       - name: Docker build
         id: docker_build
@@ -60,6 +65,8 @@ jobs:
           labels: ${{ steps.docker_meta.outputs.labels }}
           file: Dockerfile
           context: .
+          build-args:
+            SENTRY_RELEASE=${{ steps.version.outputs.release }}
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}

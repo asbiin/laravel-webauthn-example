@@ -2,6 +2,7 @@ import { defineConfig, loadEnv } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import vue from '@vitejs/plugin-vue';
 import basicSsl from '@vitejs/plugin-basic-ssl';
+import { sentryVitePlugin } from "@sentry/vite-plugin";
 
 export default defineConfig(({ mode }) => {
   // Load env file based on `mode` in the current working directory.
@@ -23,6 +24,11 @@ export default defineConfig(({ mode }) => {
         },
       }),
       basicSsl(),
+      sentryVitePlugin({
+        disable: !env.SENTRY_ORG || !env.SENTRY_PROJECT,
+        org: env.SENTRY_ORG,
+        project: env.SENTRY_PROJECT,
+      })
     ],
     server: {
       https: true,

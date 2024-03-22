@@ -5,10 +5,6 @@ WORKDIR /var/www/html
 COPY . ./
 RUN set -ex; \
     \
-    { \
-        echo "VITE_SENTRY_RELEASE=$GITHUB_SHA"; \
-    } | tee .env; \
-    \
     yarn install --immutable; \
     yarn run build
 
@@ -149,8 +145,10 @@ WORKDIR /var/www/html
 # correctly
 COPY --chown=www-data:www-data . ./
 
+ARG SENTRY_RELEASE
 RUN set -ex; \
     \
+    if [ -n "$SENTRY_RELEASE" ]; then echo -n "$SENTRY_RELEASE" > config/.release; fi; \
     mkdir -p bootstrap/cache; \
     mkdir -p storage; \
     chown -R www-data:www-data bootstrap/cache storage; \
