@@ -5,7 +5,6 @@ import createServer from '@inertiajs/vue3/server';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from 'ziggy-js';
 import { sentry } from './sentry';
-import methods from './methods';
 
 createServer((page) =>
   createInertiaApp({
@@ -27,8 +26,7 @@ createServer((page) =>
           ...page.props.ziggy,
           location: new URL(page.props.ziggy.location),
         })
-        .use(sentry, page.props.sentry)
-        .mixin({ methods: Object.assign({ route }, methods) });
+        .use(sentry, page.props.sentry);
       }
   })
 );

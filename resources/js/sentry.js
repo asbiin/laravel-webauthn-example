@@ -1,6 +1,7 @@
 import * as Sentry from '@sentry/vue';
 import { createTransport } from '@sentry/core';
 import { router } from '@inertiajs/vue3';
+import Emitter from 'tiny-emitter';
 
 let activated = false;
 
@@ -42,18 +43,22 @@ const install = (app, options) => {
 };
 
 const setContext = (vm) => {
-  if (activated && typeof vm.$page !== 'undefined') {
-    if (vm.$page.props.auth.user) {
+  const setCtx = (page)  => {
+    if (page.props.auth.user) {
       Sentry.setUser({
-        name: vm.$page.props.auth.user.name,
-        email: vm.$page.props.auth.user.email
+        name: page.props.auth.user.name,
+        email: page.props.auth.user.email
       });
     }
-    Sentry.setTag('page.component', vm.$page.component);
-    vm.$once(
+    Sentry.setTag('page.component', page.component);
+  }
+
+  if (activated && typeof vm.$page !== 'undefined') {
+    setCtx(vm.$page);
+    (new Emitter()).once(
       'hook:destroyed',
       router.on('success', (event) => {
-        Sentry.setTag('page.component', event.detail.page.component);
+        setCtx(event.detail.page);
       }),
     );
   }
