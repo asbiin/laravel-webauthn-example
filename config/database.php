@@ -91,6 +91,20 @@ return [
             'prefix_indexes' => true,
         ],
 
+        'testing' => [
+            'driver' => env('DB_TEST_DRIVER', 'sqlite'),
+            'url' => env('TEST_DATABASE_URL'),
+            'host' => env('DB_TEST_HOST', 'localhost'),
+            'port' => env('DB_TEST_PORT', '3306'),
+            'database' => env('DB_TEST_DATABASE', database_path('database-test.sqlite')),
+            'username' => env('DB_TEST_USERNAME'),
+            'password' => env('DB_TEST_PASSWORD'),
+            'charset' => env('DB_TEST_DRIVER') === 'pgsql' ? 'utf8' : 'utf8mb4',
+            'collation' => env('DB_TEST_DRIVER') === 'pgsql' ? '' : 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+        ],
+
     ],
 
     /*

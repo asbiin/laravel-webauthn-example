@@ -1,0 +1,137 @@
+name: E2E tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+env:
+  php-version: 8.2
+  node-version: 20
+  connection: mysql
+  database_name: webauthn
+  testsuite: ''
+
+jobs:
+
+  dusk-php:
+    name: Dusk tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+
+      - name: Setup PHP ${{ env.php-version }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.php-version }}
+          extensions: mbstring, dom, fileinfo, ${{ env.connection }}
+          coverage: none
+
+      - name: Check PHP Version
+        run: php -v
+      - name: Check Composer Version
+        run: composer -V
+      - name: Check PHP Extensions
+        run: php -m
+      - name: Setup problem matchers for PHP
+        run: echo "::add-matcher::${{ runner.tool_cache }}/php.json"
+
+    # Composer
+      - name: Validate composer.json and composer.lock
+        run: composer validate
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+      - name: Cache composer files
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ env.php-version }}-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-${{ env.php-version }}-${{ hashFiles('**/composer.lock') }}
+            ${{ runner.os }}-composer-${{ env.php-version }}
+            ${{ runner.os }}-composer-
+
+      - name: Install composer dependencies
+        run: composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader
+
+    # Yarn
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.node-version }}
+          cache: yarn
+      - name: Install yarn dependencies
+        run: yarn install --immutable
+      - name: Build assets
+        run: yarn run build
+
+
+    # Prepare
+      - name: Prepare environment
+        run: |
+          cp tests/.env.ci.dusk .env
+
+      - name: Create mysql database
+        if: env.connection == 'mysql'
+        run: |
+          sudo systemctl start mysql.service
+          mysql --protocol=tcp -u root -proot -e "CREATE DATABASE IF NOT EXISTS ${{ env.database_name }} CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+
+      - name: Generate key
+        run: php artisan key:generate
+
+      - name: Run migrations
+        run: php artisan migrate --no-interaction -vvv
+      - name: Cache route
+        run: php artisan route:cache
+
+      - name: Upgrade Chrome Driver
+        run: |
+          php artisan dusk:chrome-driver --detect
+          chmod -R 0755 vendor/laravel/dusk/bin/
+      - name: Run Inertia ssr
+        run: php artisan inertia:start-ssr &
+      - name: Run Laravel Server
+        run: php artisan serve --no-reload &
+
+      - name: Set results artifact name
+        id: artifact
+        run: echo "name=${{ env.connection }}_${{ env.php-version }}_${{ env.testsuite }}" | sed -e "s/*//g" >> $GITHUB_OUTPUT
+
+    # Test
+      - name: Setup problem matchers for PHPUnit
+        run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+      - name: Run Dusk Tests
+        run: php artisan dusk --log-junit results/junit/dusk.xml
+        env:
+          DB_CONNECTION: ${{ env.connection }}
+
+      - name: Fix results files
+        run: sed -i -e "s%$GITHUB_WORKSPACE/%%g" **/*.xml
+        working-directory: results
+        if: success() || failure()
+
+      - name: Store results
+        if: success() || failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: results_${{ steps.artifact.outputs.name }}
+          path: results
+
+      - name: Upload Screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots
+          path: tests/Browser/screenshots
+      - name: Upload Console Logs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: console
+          path: tests/Browser/console

@@ -1,0 +1,34 @@
+name: Build and test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+  release:
+    types: [created]
+
+concurrency:
+  group: Build ${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  checks: write
+  id-token: write
+
+jobs:
+  tests:
+    name: Run tests
+    uses: monicahq/workflows/.github/workflows/laravel.yml@assets
+    with:
+      php-versions: "['8.2']"
+      connections: "['sqlite']"
+      default-php-version: '8.2'
+      default-connection: sqlite
+      project: asbiin_laravel-webauthn-example
+      mock-assets: false
+      node-version: '20'
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
