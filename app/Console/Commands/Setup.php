@@ -5,8 +5,10 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Console\ConfirmableTrait;
 use Illuminate\Support\Facades\Schema;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Output\OutputInterface;
 
+#[AsCommand(name: 'setup')]
 class Setup extends Command
 {
     use ConfirmableTrait;
@@ -43,11 +45,13 @@ class Setup extends Command
                 $this->artisan('✓ Clear config cache', 'config:clear');
                 $this->artisan('✓ Resetting route cache', 'route:cache');
                 $this->artisan('✓ Resetting view cache', 'view:clear');
+                $this->artisan('✓ Resetting event cache', 'event:cache');
                 // @codeCoverageIgnoreEnd
             } else {
                 $this->artisan('✓ Clear config cache', 'config:clear');
                 $this->artisan('✓ Clear route cache', 'route:clear');
                 $this->artisan('✓ Clear view cache', 'view:clear');
+                $this->artisan('✓ Clear event cache', 'event:clear');
             }
 
             if ($this->option('skip-storage-link') !== true

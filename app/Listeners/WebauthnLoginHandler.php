@@ -7,7 +7,6 @@ use LaravelWebauthn\Events\WebauthnLogin;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Notification;
 use Pirsch\Facades\Pirsch;
-use VincentBean\Plausible\Facades\PlausibleEvent;
 
 class WebauthnLoginHandler
 {
@@ -23,11 +22,6 @@ class WebauthnLoginHandler
         if ($user instanceof \App\Models\User) {
             Log::info("Webauthn login: {$user->name} {$user->email}");
 
-            if (config('plausible.plausible_domain')) {
-                PlausibleEvent::fire('webauthn-login', [
-                    'username' => $user->name
-                ]);
-            }
             Pirsch::track('webauthn-login', [
                 'username' => $user->name
             ]);
