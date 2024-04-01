@@ -30,10 +30,6 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'webauthn' => \LaravelWebauthn\Http\Middleware\WebauthnMiddleware::class,
         ]);
-        $middleware->group('mfa', [
-            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            'webauthn',
-        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         Integration::handles($exceptions);

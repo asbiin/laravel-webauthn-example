@@ -34,7 +34,7 @@ return [
     // @see: https://docs.sentry.io/platforms/php/guides/laravel/configuration/options/#ignore-transactions
     'ignore_transactions' => [
         // Ignore Laravel's default health URL
-        env('SENTRY_TUNNEL_URL', '/up'),
+        env('SENTRY_TUNNEL_URL', '/sentry/tunnel'),
     ],
 
     // Breadcrumb specific configuration

@@ -1,7 +1,6 @@
 <?php
 
-use Illuminate\Foundation\Inspiring;
-use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Schedule;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +12,6 @@ use Illuminate\Support\Facades\Artisan;
 | simple approach to interacting with each command's IO methods.
 |
 */
-use Illuminate\Support\Facades\Schedule;
 
 Schedule::command('cloudflare:reload')->daily();
 Schedule::command('app:remove-accounts', ['--force'])->hourly();
