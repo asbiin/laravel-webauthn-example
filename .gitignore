@@ -24,4 +24,5 @@ yarn-error.log
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+.phpunit.cache/test-results
 config/.release
