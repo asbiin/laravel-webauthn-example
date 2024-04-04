@@ -24,7 +24,7 @@ jobs:
     uses: monicahq/workflows/.github/workflows/laravel.yml@assets
     with:
       php-versions: "['8.2']"
-      connections: "['sqlite']"
+      connections: "['sqlite','mysql']"
       default-php-version: '8.2'
       default-connection: sqlite
       project: asbiin_laravel-webauthn-example
