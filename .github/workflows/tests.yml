@@ -28,6 +28,7 @@ jobs:
       default-php-version: '8.2'
       default-connection: sqlite
       project: asbiin_laravel-webauthn-example
+      organization: asbiin-github
       mock-assets: false
       node-version: '20'
     secrets:
