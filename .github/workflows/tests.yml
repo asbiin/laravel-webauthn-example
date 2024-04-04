@@ -27,6 +27,7 @@ jobs:
       connections: "['sqlite','mysql']"
       default-php-version: '8.2'
       default-connection: sqlite
+      database_name: webauthn
       project: asbiin_laravel-webauthn-example
       organization: asbiin-github
       mock-assets: false
