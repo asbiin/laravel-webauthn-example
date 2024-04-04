@@ -94,6 +94,12 @@ return [
             'processors' => [PsrLogMessageProcessor::class],
         ],
 
+        'sentry' => [
+            'driver' => 'sentry',
+            'level'  => env('LOG_LEVEL', 'error'),
+            'bubble' => true,
+        ],
+
         'stderr' => [
             'driver' => 'monolog',
             'level' => env('LOG_LEVEL', 'debug'),

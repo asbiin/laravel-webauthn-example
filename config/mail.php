@@ -119,4 +119,6 @@ return [
         ],
     ],
 
+    'notifier' => env('MAIL_NOTIFIER', null),
+    
 ];
