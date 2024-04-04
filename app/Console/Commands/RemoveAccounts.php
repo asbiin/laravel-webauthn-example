@@ -5,7 +5,9 @@ namespace App\Console\Commands;
 use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Console\ConfirmableTrait;
+use Symfony\Component\Console\Attribute\AsCommand;
 
+#[AsCommand(name: 'app:remove-accounts')]
 class RemoveAccounts extends Command
 {
     use ConfirmableTrait;

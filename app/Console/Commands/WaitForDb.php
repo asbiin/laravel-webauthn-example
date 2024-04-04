@@ -5,7 +5,9 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Database\Connectors\ConnectionFactory;
 use Illuminate\Database\SQLiteDatabaseDoesNotExistException;
+use Symfony\Component\Console\Attribute\AsCommand;
 
+#[AsCommand(name: 'waitfordb')]
 class WaitForDb extends Command
 {
     /**

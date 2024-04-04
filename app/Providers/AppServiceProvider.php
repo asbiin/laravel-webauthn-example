@@ -4,17 +4,22 @@ namespace App\Providers;
 
 use App\Http\Responses\LoginViewResponse;
 use App\Http\Responses\RegisterViewResponse;
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\URL;
+use LaravelWebauthn\Listeners\LoginViaRemember;
 use LaravelWebauthn\Services\Webauthn;
 
 class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         Webauthn::loginViewResponseUsing(LoginViewResponse::class);
         Webauthn::registerViewResponseUsing(RegisterViewResponse::class);
@@ -22,11 +27,33 @@ class AppServiceProvider extends ServiceProvider
 
     /**
      * Bootstrap any application services.
+     */
+    public function boot(): void
+    {
+        // WebAuthn requires https
+        if (App::environment('production')) {
+            URL::forceScheme('https');
+        }
+
+        if (config('app.force_root_url') === true) {
+            URL::forceRootUrl(config('app.url'));
+        }
+
+        Event::subscribe(LoginViaRemember::class);
+        // Event::listen(\Illuminate\Auth\Events\Login::class, LoginViaRemember::class);
+
+        $this->configureRateLimiting();
+    }
+
+    /**
+     * Configure the rate limiters for the application.
      *
      * @return void
      */
-    public function boot()
+    protected function configureRateLimiting()
     {
-        //
+        RateLimiter::for('api', function (Request $request) {
+            return Limit::perMinute(60)->by(optional($request->user())->id ?: $request->ip());
+        });
     }
 }
