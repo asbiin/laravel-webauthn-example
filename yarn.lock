@@ -511,7 +511,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jridgewell/sourcemap-codec@npm:^1.4.10, @jridgewell/sourcemap-codec@npm:^1.4.13, @jridgewell/sourcemap-codec@npm:^1.4.14, @jridgewell/sourcemap-codec@npm:^1.4.15":
+"@jridgewell/sourcemap-codec@npm:^1.4.10, @jridgewell/sourcemap-codec@npm:^1.4.14, @jridgewell/sourcemap-codec@npm:^1.4.15":
   version: 1.4.15
   resolution: "@jridgewell/sourcemap-codec@npm:1.4.15"
   checksum: 10c0/0c6b5ae663087558039052a626d2d7ed5208da36cfd707dcc5cea4a07cfc918248403dcb5989a8f7afaf245ce0573b7cc6fd94c4a30453bd10e44d9363940ba5
@@ -674,10 +674,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/babel-plugin-component-annotate@npm:2.16.0":
-  version: 2.16.0
-  resolution: "@sentry/babel-plugin-component-annotate@npm:2.16.0"
-  checksum: 10c0/90e20fb70125e886cf21797784c00782179aa1e5611ab939e9175dd56536270debf86bdc93ca2f6ed396e90f268d01c46a0bdbf2a24dd09ba5f32f86618ae3bc
+"@sentry/babel-plugin-component-annotate@npm:2.20.0":
+  version: 2.20.0
+  resolution: "@sentry/babel-plugin-component-annotate@npm:2.20.0"
+  checksum: 10c0/80d31d818275b310da5ad9aaf07291943e55dc21a8ae0f94fed2295a2237281eb0a526d8dc8ff61967f3631df0d93ff799c725a922420b8cdb7559c8e3a7adba
   languageName: node
   linkType: hard
 
@@ -711,19 +711,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/bundler-plugin-core@npm:2.16.0":
-  version: 2.16.0
-  resolution: "@sentry/bundler-plugin-core@npm:2.16.0"
+"@sentry/bundler-plugin-core@npm:2.20.0":
+  version: 2.20.0
+  resolution: "@sentry/bundler-plugin-core@npm:2.20.0"
   dependencies:
     "@babel/core": "npm:^7.18.5"
-    "@sentry/babel-plugin-component-annotate": "npm:2.16.0"
+    "@sentry/babel-plugin-component-annotate": "npm:2.20.0"
     "@sentry/cli": "npm:^2.22.3"
     dotenv: "npm:^16.3.1"
     find-up: "npm:^5.0.0"
     glob: "npm:^9.3.2"
-    magic-string: "npm:0.27.0"
+    magic-string: "npm:0.30.8"
     unplugin: "npm:1.0.1"
-  checksum: 10c0/dae16b721bec3a3829a650656ae588501f9cc8248256103894ff743606b69a12a70724926c08ffe72445107af97a22440b85c5384073346f8da45c80dda4932d
+  checksum: 10c0/782c00156168268ceead6ee6d41453045fd46fd5e1852d948bd41659f5a2a6c3990821d9baccf4d2d6f3cdc3340bb67f8b9e241b8c6562c7ecd593cad8d0dc89
   languageName: node
   linkType: hard
 
@@ -934,12 +934,12 @@ __metadata:
   linkType: hard
 
 "@sentry/vite-plugin@npm:^2.16.0":
-  version: 2.16.0
-  resolution: "@sentry/vite-plugin@npm:2.16.0"
+  version: 2.20.0
+  resolution: "@sentry/vite-plugin@npm:2.20.0"
   dependencies:
-    "@sentry/bundler-plugin-core": "npm:2.16.0"
+    "@sentry/bundler-plugin-core": "npm:2.20.0"
     unplugin: "npm:1.0.1"
-  checksum: 10c0/b9562305f79368f8eb2ede966c4c08110ea602b04334942a52740239db0e60170d0c8321c648894e1c305b4b136ff0de989903e9e39fc00902e46674a479b602
+  checksum: 10c0/5128efb59f6e0c330d4a7eead4d086a18fcd84c054768b27d6d6e79e7204daf667efafbe0d3381ee1d7c42558d9a9091b1ebef0af16b83a641491de830994f77
   languageName: node
   linkType: hard
 
@@ -2349,16 +2349,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"magic-string@npm:0.27.0":
-  version: 0.27.0
-  resolution: "magic-string@npm:0.27.0"
-  dependencies:
-    "@jridgewell/sourcemap-codec": "npm:^1.4.13"
-  checksum: 10c0/cddacfea14441ca57ae8a307bc3cf90bac69efaa4138dd9a80804cffc2759bf06f32da3a293fb13eaa96334b7d45b7768a34f1d226afae25d2f05b05a3bb37d8
-  languageName: node
-  linkType: hard
-
-"magic-string@npm:^0.30.7":
+"magic-string@npm:0.30.8, magic-string@npm:^0.30.7":
   version: 0.30.8
   resolution: "magic-string@npm:0.30.8"
   dependencies:
