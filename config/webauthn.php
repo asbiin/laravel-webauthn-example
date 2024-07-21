@@ -284,6 +284,6 @@ return [
     |
     */
 
-    'userless' => null,
+    'userless' => "preferred",
 
 ];
