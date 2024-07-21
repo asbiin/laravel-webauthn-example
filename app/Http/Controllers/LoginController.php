@@ -23,18 +23,22 @@ class LoginController extends Controller
     {
         $webauthnRemember = $request->cookie('webauthn_remember');
         $data = [];
-        if ($webauthnRemember) {
+        if ($webauthnRemember && config('webauthn.userless') !== 'required') {
             if (($user = User::find($webauthnRemember)) && $user->webauthnKeys()->count() > 0) {
                 $data['publicKey'] = Webauthn::prepareAssertion($user);
                 $data['userName'] = $user->name;
             } else {
                 Cookie::expire('webauthn_remember');
             }
+        } elseif (in_array(config('webauthn.userless'), ['required', 'preferred'], true)) {
+            $data['publicKey'] = Webauthn::prepareAssertion(null);
+            Cookie::expire('webauthn_remember');
         }
 
         return Inertia::render('Auth/Login', $data + [
             'canResetPassword' => Route::has('password.request'),
             'status' => session('status'),
+            'userless' => config('webauthn.userless'),
         ]);
     }
 }

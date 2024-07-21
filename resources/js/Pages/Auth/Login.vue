@@ -16,6 +16,7 @@ const props = defineProps({
     status: String,
     publicKey: Object,
     userName: String,
+    userless: String,
 });
 const webauthn = ref(false);
 const publicKeyRef = ref(null);
@@ -94,7 +95,7 @@ const reload = () => {
             <div v-if="userNameRef" class="mb-4 text-lg text-gray-900 dark:text-slate-100 text-center">
                 {{ userNameRef }}
             </div>
-            <form @submit.prevent="getKey">
+            <form v-if="userless !== 'required'" @submit.prevent="getKey">
                 <div>
                     <JetLabel for="email" value="Email" />
                     <JetInput
