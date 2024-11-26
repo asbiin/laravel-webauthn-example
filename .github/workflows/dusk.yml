@@ -94,6 +94,8 @@ jobs:
         run: |
           php artisan dusk:chrome-driver --detect
           chmod -R 0755 vendor/laravel/dusk/bin/
+      - name: Start Chrome Driver
+        run: ./vendor/laravel/dusk/bin/chromedriver-linux --port=9515 &
       - name: Run Inertia ssr
         run: php artisan inertia:start-ssr &
       - name: Run Laravel Server
