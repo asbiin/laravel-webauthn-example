@@ -27,6 +27,12 @@ jobs:
     strategy:
       fail-fast: false
 
+    permissions:
+      contents: read
+      packages: write
+      attestations: write
+      id-token: write
+  
     steps:
       - name: Checkout sources
         uses: actions/checkout@v4
