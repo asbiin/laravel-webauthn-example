@@ -123,7 +123,7 @@ RUN set -ex; \
     a2enconf remoteip
 
 # set apache config LimitRequestBody
-ENV APACHE_BODY_LIMIT 1073741824
+ENV APACHE_BODY_LIMIT=1073741824
 RUN set -ex; \
     \
     { \
