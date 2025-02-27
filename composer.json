@@ -22,7 +22,7 @@
         "pirsch-analytics/laravel-pirsch": "^0",
         "psr/log": "^3.0",
         "sentry/sentry-laravel": "^4.2",
-        "tightenco/ziggy": "2.0.4"
+        "tightenco/ziggy": "2.5.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",
