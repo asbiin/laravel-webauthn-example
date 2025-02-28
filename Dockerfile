@@ -1,5 +1,5 @@
 ## Build assets
-FROM node:20 AS node
+FROM node:22 AS node
 
 WORKDIR /var/www/html
 COPY . ./
@@ -10,7 +10,7 @@ RUN set -ex; \
 
 
 ## Image
-FROM php:8.2-apache
+FROM php:8.4-apache
 
 # entrypoint.sh dependencies
 RUN set -ex; \

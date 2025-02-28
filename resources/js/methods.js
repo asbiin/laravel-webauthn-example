@@ -10,3 +10,6 @@ export const webAuthnNotSupportedMessage = computed(() =>
     ? 'WebAuthn only supports secure connections. Please load this page with https scheme.'
     : 'Your browser doesn’t currently support WebAuthn.'
 );
+
+export default {
+}

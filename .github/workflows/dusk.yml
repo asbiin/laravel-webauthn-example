@@ -7,8 +7,8 @@ on:
     types: [opened, synchronize, reopened]
 
 env:
-  php-version: 8.2
-  node-version: 20
+  php-version: 8.4
+  node-version: 22
   connection: mysql
   database_name: webauthn
   testsuite: ''
