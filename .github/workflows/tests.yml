@@ -23,14 +23,14 @@ jobs:
     name: Run tests
     uses: monicahq/workflows/.github/workflows/laravel.yml@v2
     with:
-      php-versions: "['8.2']"
+      php-versions: "['8.4']"
       connections: "['sqlite','mysql']"
-      default-php-version: '8.2'
+      default-php-version: '8.4'
       default-connection: sqlite
       database_name: webauthn
       project: asbiin_laravel-webauthn-example
       organization: asbiin-github
       mock-assets: false
-      node-version: '20'
+      node-version: '22'
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

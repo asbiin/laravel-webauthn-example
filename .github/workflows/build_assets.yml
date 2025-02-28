@@ -9,7 +9,7 @@ on:
     types: [created]
 
 env:
-  node-version: 20
+  node-version: 22
 
 jobs:
   #############

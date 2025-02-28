@@ -13,7 +13,7 @@
         "asbiin/laravel-sentry-tunnel": "^2.2",
         "asbiin/laravel-webauthn": "^4.4",
         "doctrine/dbal": "^4.0",
-        "inertiajs/inertia-laravel": "^1.0",
+        "inertiajs/inertia-laravel": "^2.0",
         "laravel/framework": "^11.0",
         "laravel/jetstream": "^5.0",
         "laravel/sanctum": "^4.0",
@@ -22,7 +22,7 @@
         "pirsch-analytics/laravel-pirsch": "^0",
         "psr/log": "^3.0",
         "sentry/sentry-laravel": "^4.2",
-        "tightenco/ziggy": "2.5.1"
+        "tightenco/ziggy": "2.5.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",

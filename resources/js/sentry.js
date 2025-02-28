@@ -1,7 +1,7 @@
 import * as Sentry from '@sentry/vue';
 import { createTransport } from '@sentry/core';
 import { router } from '@inertiajs/vue3';
-import Emitter from 'tiny-emitter';
+import emitter from 'tiny-emitter/instance';
 
 let activated = false;
 
@@ -55,7 +55,7 @@ const setContext = (vm) => {
 
   if (activated && typeof vm.$page !== 'undefined') {
     setCtx(vm.$page);
-    (new Emitter()).once(
+    emitter.once(
       'hook:destroyed',
       router.on('success', (event) => {
         setCtx(event.detail.page);
