@@ -62,10 +62,11 @@ const start = () => {
 };
 
 const registerWaitForKey = (publicKey) => {
-  startRegistration({ optionsJSON: publicKey })
+  startRegistration({ optionsJSON: publicKey, useAutoRegister: true })
     .then((data) => webauthnRegisterCallback(data))
     .catch((error) => {
       errorMessage.value = _errorMessage(error.name, error.message);
+      throw error;
     });
 };
 
