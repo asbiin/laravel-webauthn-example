@@ -57,7 +57,7 @@ defineProps({
                 Please confirm access to your account by validating your security key.
             </h1>
 
-            <WebauthnLogin :remember="remember" :publicKey="publicKey" />
+            <WebauthnLogin :remember="remember" :publicKey="publicKey" :autofill="false" />
         </div>
 
         <div v-if="two_factor">
