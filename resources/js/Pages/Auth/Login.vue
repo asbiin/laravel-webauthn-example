@@ -18,7 +18,7 @@ const props = defineProps({
     userName: String,
     userless: String,
 });
-const webauthn = ref(false);
+const webauthn = ref(true);
 const publicKeyRef = ref(null);
 const errorMessage = ref(null);
 const userNameRef = ref(props.userName);
@@ -103,6 +103,7 @@ const reload = () => {
                         v-model="form.email"
                         type="email"
                         class="mt-1 block w-full"
+                        autocomplete="webauthn"
                         required
                         autofocus
                     />
@@ -116,7 +117,7 @@ const reload = () => {
             </form>
 
             <div v-if="publicKeyRef">
-                <WebauthnLogin :remember="true" :public-key="publicKeyRef" />
+                <WebauthnLogin :remember="true" :public-key="publicKeyRef" :autofill="true" />
             </div>
 
             <JetSecondaryButton class="mr-2 mt-4" @click.prevent="webauthn = false">
