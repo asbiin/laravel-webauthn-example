@@ -21,7 +21,7 @@ return Application::configure(basePath: dirname(__DIR__))
             \App\Http\Middleware\SentryContext::class,
             \App\Http\Middleware\HandleInertiaRequests::class,
             \Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets::class,
-            \Pirsch\Http\Middleware\TrackPageview::class,
+            \App\Http\Middleware\TrackPageview::class,
         ]);
         $middleware->api(prepend: [
             \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,

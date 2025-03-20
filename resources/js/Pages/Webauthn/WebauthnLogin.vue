@@ -60,7 +60,7 @@ const stop = () => {
 const loginWaitForKey = (publicKey) => {
   processing.value = true;
   nextTick()
-    .then(() => startAuthentication({ optionsJSON: publicKey }))
+    .then(() => startAuthentication({ optionsJSON: publicKey, useBrowserAutofill: true }))
     .then((data) => webauthnLoginCallback(data))
     .catch((error) => {
       errorMessage.value = _errorMessage(error.name, error.message);
