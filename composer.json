@@ -4,12 +4,6 @@
     "description": "Example application for asbiin/laravel-webauthn",
     "keywords": ["laravel", "webauthn"],
     "license": "MIT",
-    "repositories": [
-      {
-        "type": "vcs",
-        "url": "https://github.com/laravel-shift/laravel-pirsch"
-      }
-    ],
     "require": {
         "php": "^8.2",
         "ext-bcmath": "*",
@@ -25,7 +19,7 @@
         "laravel/sanctum": "^4.0",
         "monicahq/laravel-cloudflare": "^3.7",
         "php-http/discovery": "^1.14",
-        "pirsch-analytics/laravel-pirsch": "dev-l12-compatibility",
+        "pirsch-analytics/laravel-pirsch": "^1.0",
         "sentry/sentry-laravel": "^4.3",
         "tightenco/ziggy": "2.5.2"
     },
