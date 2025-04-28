@@ -780,12 +780,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry-internal/browser-utils@npm:9.14.0":
+  version: 9.14.0
+  resolution: "@sentry-internal/browser-utils@npm:9.14.0"
+  dependencies:
+    "@sentry/core": "npm:9.14.0"
+  checksum: 10c0/4c5907b210ba1cc4add98294146348baedcee67c5339d61fc8c8a5e57add478292f72cef8dc82064aa197381fae089926b9de4a9915bc86ac81ea09b3496633f
+  languageName: node
+  linkType: hard
+
 "@sentry-internal/browser-utils@npm:9.2.0":
   version: 9.2.0
   resolution: "@sentry-internal/browser-utils@npm:9.2.0"
   dependencies:
     "@sentry/core": "npm:9.2.0"
   checksum: 10c0/ef8a9f75cbc222f0c9c7f22d0c7c45b840397e8b88ab29af721b4ce637821ee3c23ea9330da41e7b72b70c0e7c07613f0a96f9d7b50c7246a47241409d57d535
+  languageName: node
+  linkType: hard
+
+"@sentry-internal/feedback@npm:9.14.0":
+  version: 9.14.0
+  resolution: "@sentry-internal/feedback@npm:9.14.0"
+  dependencies:
+    "@sentry/core": "npm:9.14.0"
+  checksum: 10c0/5a78d458c76e95772938aeb88da00260007b7a1b6b51e0ca60bdf17f848df3828daba8b658021d0e842f7365c0d13e648ce26a0d4057880c1735e4644dabecb3
   languageName: node
   linkType: hard
 
@@ -798,6 +816,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry-internal/replay-canvas@npm:9.14.0":
+  version: 9.14.0
+  resolution: "@sentry-internal/replay-canvas@npm:9.14.0"
+  dependencies:
+    "@sentry-internal/replay": "npm:9.14.0"
+    "@sentry/core": "npm:9.14.0"
+  checksum: 10c0/73d8b6d56677f393969e74aaf780377d06b7bbc56f7e8c94482b23697a9449bf362bd2f56cf9b9243ac228082a75a02e92f283db395ba0fd424f1f16c4a1e29b
+  languageName: node
+  linkType: hard
+
 "@sentry-internal/replay-canvas@npm:9.2.0":
   version: 9.2.0
   resolution: "@sentry-internal/replay-canvas@npm:9.2.0"
@@ -805,6 +833,16 @@ __metadata:
     "@sentry-internal/replay": "npm:9.2.0"
     "@sentry/core": "npm:9.2.0"
   checksum: 10c0/0cdba06701201d2881b0801866d9569dec8cfd55d6aae5c48b393a1b588440be516a265dac7219f8e079596c64d1e8e64d101b5a351ab67dacf9f98a34441988
+  languageName: node
+  linkType: hard
+
+"@sentry-internal/replay@npm:9.14.0":
+  version: 9.14.0
+  resolution: "@sentry-internal/replay@npm:9.14.0"
+  dependencies:
+    "@sentry-internal/browser-utils": "npm:9.14.0"
+    "@sentry/core": "npm:9.14.0"
+  checksum: 10c0/c6c455bfbc3ea9280878fa4c49d56b61658b04355265487bbd1156d2c628b02dbf60aec950d1adfafd1e4f48aad50cbe3e003231ba0b0456ad572a9cf63a0cef
   languageName: node
   linkType: hard
 
@@ -837,7 +875,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/browser@npm:9.2.0, @sentry/browser@npm:^9.2.0":
+"@sentry/browser@npm:9.2.0":
   version: 9.2.0
   resolution: "@sentry/browser@npm:9.2.0"
   dependencies:
@@ -847,6 +885,19 @@ __metadata:
     "@sentry-internal/replay-canvas": "npm:9.2.0"
     "@sentry/core": "npm:9.2.0"
   checksum: 10c0/ab285b66683f4433fc053d446ab6400d3cd431a907fb16a5274a58151cd54ebf35aeca362e61d200ca63ced9e564387204b904180f5d80afc13595a885c00ec8
+  languageName: node
+  linkType: hard
+
+"@sentry/browser@npm:^9.2.0":
+  version: 9.14.0
+  resolution: "@sentry/browser@npm:9.14.0"
+  dependencies:
+    "@sentry-internal/browser-utils": "npm:9.14.0"
+    "@sentry-internal/feedback": "npm:9.14.0"
+    "@sentry-internal/replay": "npm:9.14.0"
+    "@sentry-internal/replay-canvas": "npm:9.14.0"
+    "@sentry/core": "npm:9.14.0"
+  checksum: 10c0/4ac0d0e236052668c630429b0ec4dc9ca6576ec9042295d7ab5cababe4f9ecedc4ce53b86d2b17cadb7639f5b5a6d4286279fe1a6d96851167601494f2478f45
   languageName: node
   linkType: hard
 
@@ -960,6 +1011,13 @@ __metadata:
     "@sentry/utils": "npm:7.66.0"
     tslib: "npm:^2.4.1 || ^1.9.3"
   checksum: 10c0/70174ac6a7b576a371176a4a4aab0ceb22cced78204c9cfcd27bcc77ec810f39749e17df2a6cbc9a50a2cdf5f79751ad02a07bf733983486cd958aa1d43cf1a9
+  languageName: node
+  linkType: hard
+
+"@sentry/core@npm:9.14.0":
+  version: 9.14.0
+  resolution: "@sentry/core@npm:9.14.0"
+  checksum: 10c0/9008e876d6f1b863852380013466f7dfaed19f864aa840d8cc3b65f22f2347abf0a02d7048cdd0ab746f0648931f375748891b68103d69e48e54ead11e199e1d
   languageName: node
   linkType: hard
 
