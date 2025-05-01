@@ -2,8 +2,9 @@
 
 namespace App\Listeners;
 
-use Illuminate\Support\Facades\Cookie;
+use App\Notifications\NewKeyRegisteredAlert;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Notification;
 use LaravelWebauthn\Events\WebauthnRegister;
 use Pirsch\Facades\Pirsch;
 
@@ -23,11 +24,9 @@ class WebauthnRegisterHandler
             'username' => $event->webauthnKey->user->name
         ]);
 
-        Cookie::queue('webauthn_remember', $event->webauthnKey->user_id, 60 * 24 * 30);
-
-        // if (($notifier = config('mail.notifier')) !== null) {
-        //     Notification::route('mail', $notifier)
-        //         ->notify(new NewKeyRegisteredAlert($event->webauthnKey));
-        // }
+        if (($notifier = config('mail.notifier')) !== null) {
+            Notification::route('mail', $notifier)
+                ->notify(new NewKeyRegisteredAlert($event->webauthnKey));
+        }
     }
 }

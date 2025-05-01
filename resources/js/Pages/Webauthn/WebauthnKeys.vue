@@ -157,11 +157,6 @@ const webauthnRegisterCallback = (data) => {
                                 <JetSecondaryButton class="pointer text-indigo-400 dark:text-indigo-600 hover:text-indigo-600 hover:dark:text-indigo-400" href="" @click="keyBeingUpdated = key.id">
                                     Update
                                 </JetSecondaryButton>
-                                <!-- <JetConfirmsPassword @confirmed="keyBeingDeleted = key.id">
-                                    <JetSecondaryButton class="ml-2 pointer text-indigo-400 dark:text-indigo-600 hover:text-indigo-600 hover:dark:text-indigo-400">
-                                        Delete
-                                    </JetSecondaryButton>
-                                </JetConfirmsPassword> -->
                                 <JetSecondaryButton class="ml-2 pointer text-indigo-400 dark:text-indigo-600 hover:text-indigo-600 hover:dark:text-indigo-400" @click="keyBeingDeleted = key.id">
                                     Delete
                                 </JetSecondaryButton>
@@ -172,16 +167,12 @@ const webauthnRegisterCallback = (data) => {
             </div>
 
             <div class="mt-8 text-2xl">
-                <!-- <JetConfirmsPassword @confirmed="showRegisterModal">
-                    <JetButton type="button">
-                        Register a new key
-                    </JetButton>
-                </JetConfirmsPassword> -->
                 <JetButton type="button" @click="showRegisterModal">
                     Register a new key
                 </JetButton>
             </div>
         </div>
+        
       <DeleteKeyModal :keyid="keyBeingDeleted" @close="keyBeingDeleted = null" />
     </div>
 </template>

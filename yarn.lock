@@ -2481,6 +2481,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lucide-vue-next@npm:^0.503.0":
+  version: 0.503.0
+  resolution: "lucide-vue-next@npm:0.503.0"
+  peerDependencies:
+    vue: ">=3.0.1"
+  checksum: 10c0/124440087c86bf2a8932480349e2c49c3fae796169831df40840d96a3c404b1501235683f74cfeb082c57ecb7f391b63b22d1ef619aa5dd1f83772d11f7e0ff7
+  languageName: node
+  linkType: hard
+
 "magic-string@npm:0.30.8":
   version: 0.30.8
   resolution: "magic-string@npm:0.30.8"
@@ -3281,6 +3290,7 @@ __metadata:
     axios: "npm:^1.8.1"
     laravel-vite-plugin: "npm:^1.2.0"
     lodash: "npm:^4.17.21"
+    lucide-vue-next: "npm:^0.503.0"
     postcss: "npm:^8.5.3"
     postcss-import: "npm:^16.1.0"
     snyk: "npm:^1.1295.4"
