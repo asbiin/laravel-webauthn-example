@@ -8,10 +8,8 @@ use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\URL;
-use LaravelWebauthn\Listeners\LoginViaRemember;
 use LaravelWebauthn\Services\Webauthn;
 
 class AppServiceProvider extends ServiceProvider
@@ -38,9 +36,6 @@ class AppServiceProvider extends ServiceProvider
         if (config('app.force_root_url') === true) {
             URL::forceRootUrl(config('app.url'));
         }
-
-        Event::subscribe(LoginViaRemember::class);
-        // Event::listen(\Illuminate\Auth\Events\Login::class, LoginViaRemember::class);
 
         $this->configureRateLimiting();
     }

@@ -20,6 +20,7 @@
         "axios": "^1.8.1",
         "laravel-vite-plugin": "^1.2.0",
         "lodash": "^4.17.21",
+        "lucide-vue-next": "^0.503.0",
         "postcss": "^8.5.3",
         "postcss-import": "^16.1.0",
         "snyk": "^1.1295.4",
