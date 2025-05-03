@@ -121,7 +121,7 @@ const webauthnRegisterCallback = (data) => {
                 Try <Link :href="route('logout')" method="post" class="underline" as="button">logging out</Link> and logging back in without password, just using your registered key!
             </p>
 
-            <div class="shadow dark:shadow-gray-700 overflow-hidden border-b border-gray-200 dark:border-gray-800 sm:rounded-lg">
+            <div class="shadow-sm dark:shadow-gray-700 overflow-hidden border-b border-gray-200 dark:border-gray-800 sm:rounded-lg">
                 <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-800">
                     <thead class="bg-gray-50 dark:bg-slate-800">
                         <tr>
@@ -154,10 +154,10 @@ const webauthnRegisterCallback = (data) => {
                                 </span>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                <JetSecondaryButton class="pointer text-indigo-400 dark:text-indigo-600 hover:text-indigo-600 hover:dark:text-indigo-400" href="" @click="keyBeingUpdated = key.id">
+                                <JetSecondaryButton class="pointer text-indigo-400 dark:text-indigo-600 hover:text-indigo-600 dark:hover:text-indigo-400" href="" @click="keyBeingUpdated = key.id">
                                     Update
                                 </JetSecondaryButton>
-                                <JetSecondaryButton class="ml-2 pointer text-indigo-400 dark:text-indigo-600 hover:text-indigo-600 hover:dark:text-indigo-400" @click="keyBeingDeleted = key.id">
+                                <JetSecondaryButton class="ml-2 pointer text-indigo-400 dark:text-indigo-600 hover:text-indigo-600 dark:hover:text-indigo-400" @click="keyBeingDeleted = key.id">
                                     Delete
                                 </JetSecondaryButton>
                             </td>

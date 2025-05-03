@@ -1,8 +1,7 @@
 <script setup>
-import { ref, nextTick, reactive } from 'vue';
-import JetButton from '@/Jetstream/Button.vue';
+import { nextTick, reactive } from 'vue';
 import WaitForKey from '@/Pages/Webauthn/Partials/WaitForKey.vue';
-import { startAuthentication, browserSupportsWebAuthn } from '@simplewebauthn/browser';
+import { startAuthentication } from '@simplewebauthn/browser';
 import axios from 'axios';
 
 const emit = defineEmits(['success']);
@@ -13,7 +12,6 @@ const form = reactive({
     started: false,
     processing: false,
 });
-
 
 const start = () => {
   form.started = true;

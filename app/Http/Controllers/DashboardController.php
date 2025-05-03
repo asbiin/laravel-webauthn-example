@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use LaravelWebauthn\Facades\Webauthn;
-use LaravelWebauthn\Models\WebauthnKey;
 
 class DashboardController extends Controller
 {
@@ -29,7 +27,6 @@ class DashboardController extends Controller
 
         return Inertia::render('Dashboard', [
             'webauthnKeys' => $webauthnKeys,
-            'publicKey' => Webauthn::prepareAssertion($request->user()),
         ]);
     }
 }

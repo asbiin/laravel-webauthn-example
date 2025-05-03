@@ -1,21 +1,23 @@
 <script setup>
-import { ref, reactive, nextTick } from 'vue';
+import { ref, reactive, nextTick, computed } from 'vue';
+import { usePage } from '@inertiajs/vue3';
 import JetButton from './Button.vue';
 import JetDialogModal from './DialogModal.vue';
 import JetInput from './Input.vue';
 import JetInputError from './InputError.vue';
 import JetSecondaryButton from './SecondaryButton.vue';
+import WebauthnTest from '@/Pages/Webauthn/WebauthnTest.vue';
 
 const emit = defineEmits(['confirmed']);
 
 defineProps({
     title: {
         type: String,
-        default: 'Confirm Password',
+        default: 'Confirm access',
     },
     content: {
         type: String,
-        default: 'For your security, please confirm your password to continue.',
+        default: 'For your security, please confirm the access to continue.',
     },
     button: {
         type: String,
@@ -32,6 +34,8 @@ const form = reactive({
 });
 
 const passwordInput = ref(null);
+const webauthn = ref('webauthn');
+const webauthnEnabled = computed(() => usePage().props.hasKey === true);
 
 const startConfirmingPassword = () => {
     axios.get(route('password.confirmation')).then(response => {
@@ -53,14 +57,18 @@ const confirmPassword = () => {
     }).then(() => {
         form.processing = false;
 
-        closeModal();
-        nextTick().then(() => emit('confirmed'));
+        confirm();
 
     }).catch(error => {
         form.processing = false;
         form.error = error.response.data.errors.password[0];
         passwordInput.value.focus();
     });
+};
+
+const confirm = () => {
+    closeModal();
+    nextTick().then(() => emit('confirmed'));
 };
 
 const closeModal = () => {
@@ -84,7 +92,26 @@ const closeModal = () => {
             <template #content>
                 {{ content }}
 
+                <div v-if="webauthnEnabled" class="mt-4">
+                    <p>
+                        When you are ready, authenticate using the button below:
+                    </p>
+
+                    <JetButton class="mt-2 block" @click.prevent="webauthn.start()">
+                        Confirm your passkey
+                    </JetButton>
+
+                    <WebauthnTest ref="webauthn" @success="confirm()" />
+                </div>
+
+                <fieldset v-if="webauthnEnabled" class="mt-5 border-t border-gray-300 dark:border-gray-700">
+                  <legend class="mx-auto px-4 text-l italic text-gray-600 dark:text-gray-200">
+                    Or
+                  </legend>
+                </fieldset>
+
                 <div class="mt-4">
+                    Authenticate using your password:
                     <JetInput
                         ref="passwordInput"
                         v-model="form.password"

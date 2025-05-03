@@ -62,12 +62,12 @@ const logout = () => {
                             <div class="ml-3 relative">
                                 <JetDropdown align="right" width="48">
                                     <template #trigger>
-                                        <button v-if="$page.props.jetstream.managesProfilePhotos" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 focus:dark:border-gray-700 transition">
+                                        <button v-if="$page.props.jetstream.managesProfilePhotos" class="flex text-sm border-2 border-transparent rounded-full focus:outline-hidden focus:border-gray-300 dark:focus:border-gray-700 transition">
                                             <img class="h-8 w-8 rounded-full object-cover" :src="$page.props.auth.user.profile_photo_url" :alt="$page.props.auth.user.name">
                                         </button>
 
                                         <span v-else class="inline-flex rounded-md">
-                                            <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-slate-500 bg-white dark:bg-slate-900 hover:text-gray-700 focus:outline-none transition">
+                                            <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-slate-500 bg-white dark:bg-slate-900 hover:text-gray-700 focus:outline-hidden transition">
                                                 {{ $page.props.auth.user.name }}
 
                                                 <svg
@@ -107,7 +107,7 @@ const logout = () => {
 
                         <!-- Hamburger -->
                         <div class="-mr-2 flex items-center sm:hidden">
-                            <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 dark:text-slate-500 hover:bg-gray-100 hover:dark:bg-slate-900 focus:outline-none focus:bg-gray-100 focus:dark:bg-slate-900 focus:text-gray-500 focus:dark:text-slate-500 transition" @click="showingNavigationDropdown = ! showingNavigationDropdown">
+                            <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 dark:text-slate-500 hover:bg-gray-100 dark:hover:bg-slate-900 focus:outline-hidden focus:bg-gray-100 dark:focus:bg-slate-900 focus:text-gray-500 dark:focus:text-slate-500 transition" @click="showingNavigationDropdown = ! showingNavigationDropdown">
                                 <svg
                                     class="h-6 w-6"
                                     stroke="currentColor"
@@ -182,7 +182,7 @@ const logout = () => {
             </nav>
 
             <!-- Page Heading -->
-            <header v-if="$slots.header" class="bg-white dark:bg-slate-900 shadow hidden sm:block">
+            <header v-if="$slots.header" class="bg-white dark:bg-slate-900 shadow-sm hidden sm:block">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     <slot name="header" />
                 </div>

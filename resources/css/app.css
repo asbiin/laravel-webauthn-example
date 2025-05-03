@@ -1,3 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@import 'charts.css/dist/charts.css' layer(base);
+@plugin '@tailwindcss/forms';
+
+@theme {
+  --default-font-family: Nunito, var(--font-sans);
+}

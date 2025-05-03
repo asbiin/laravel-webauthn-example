@@ -2,6 +2,7 @@ import { defineConfig, loadEnv } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import vue from '@vitejs/plugin-vue';
 import basicSsl from '@vitejs/plugin-basic-ssl';
+import tailwindcss from "@tailwindcss/vite";
 import { sentryVitePlugin } from "@sentry/vite-plugin";
 
 export default defineConfig(({ mode }) => {
@@ -23,6 +24,7 @@ export default defineConfig(({ mode }) => {
           },
         },
       }),
+      tailwindcss(),
       basicSsl(),
       sentryVitePlugin({
         disable: !env.SENTRY_ORG || !env.SENTRY_PROJECT,
