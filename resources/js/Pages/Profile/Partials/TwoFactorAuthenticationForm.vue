@@ -1,7 +1,6 @@
 <script setup>
 import { ref, computed, watch } from 'vue';
-import { router } from '@inertiajs/vue3';
-import { useForm, usePage } from '@inertiajs/vue3';
+import { router, useForm, usePage } from '@inertiajs/vue3';
 import JetActionSection from '@/Jetstream/ActionSection.vue';
 import JetButton from '@/Jetstream/Button.vue';
 import JetConfirmsPassword from '@/Jetstream/ConfirmsPassword.vue';

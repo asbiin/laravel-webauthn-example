@@ -14,7 +14,7 @@ defineEmits(['retry']);
   <div>
     <div v-if="errorMessage !== ''" class="form-error-message mb3">
       <div
-        class="relative rounded-sm border border-red-400/30 bg-red-100/10 px-4 py-3 dark:border-red-600/30 dark:bg-red-900/10"
+        class="relative rounded-xs border border-red-400/30 bg-red-100/10 px-4 py-3 dark:border-red-600/30 dark:bg-red-900/10"
         role="alert">
         <span class="flex font-bold text-red-700/80 dark:text-red-300/80">
           <TriangleAlert class="me-2" /> {{ errorMessage }}

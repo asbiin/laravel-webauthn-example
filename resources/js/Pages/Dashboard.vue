@@ -8,7 +8,6 @@ import JetButton from '@/Jetstream/Button.vue';
 
 defineProps({
     webauthnKeys: Array,
-    publicKey: Object,
 });
 
 const laravelWebauthnVersion = useAttrs().laravelWebauthn.version;
@@ -59,7 +58,7 @@ const start = () => {
                             Test your passkey
                           </JetButton>
 
-                          <WebauthnTest ref="webauthn" :public-key="publicKey" @success="success" />
+                          <WebauthnTest ref="webauthn" @success="success" />
                         </div>
                     </div>
 
