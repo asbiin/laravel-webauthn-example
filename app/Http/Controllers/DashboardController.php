@@ -21,7 +21,7 @@ class DashboardController extends Controller
                 'id' => $key->id,
                 'name' => $key->name,
                 'type' => $key->type,
-                'last_active' => $key->updated_at->diffForHumans(),
+                'used_at' => optional($key->used_at)->diffForHumans(),
             ])
             ->toArray();
 

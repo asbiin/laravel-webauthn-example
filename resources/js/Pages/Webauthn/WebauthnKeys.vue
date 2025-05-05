@@ -149,8 +149,8 @@ const webauthnRegisterCallback = (data) => {
                                 </strong>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap time hidden md:block">
-                                <span class="text-sm text-gray-500 dark:text-gray-300">
-                                    {{ key.last_active }}
+                                <span class="text-sm text-gray-500 dark:text-gray-300" v-if="key.used_at">
+                                    {{ key.used_at }}
                                 </span>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
@@ -172,7 +172,7 @@ const webauthnRegisterCallback = (data) => {
                 </JetButton>
             </div>
         </div>
-        
+
       <DeleteKeyModal :keyid="keyBeingDeleted" @close="keyBeingDeleted = null" />
     </div>
 </template>

@@ -11,7 +11,7 @@
         "ext-gmp": "*",
         "ext-intl": "*",
         "asbiin/laravel-sentry-tunnel": "^2.2",
-        "asbiin/laravel-webauthn": "^5.2",
+        "asbiin/laravel-webauthn": "^5.3",
         "doctrine/dbal": "^4.1",
         "inertiajs/inertia-laravel": "^2.0",
         "laravel/framework": "^12.0",
