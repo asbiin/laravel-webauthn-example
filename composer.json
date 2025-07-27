@@ -16,6 +16,7 @@
         "inertiajs/inertia-laravel": "^2.0",
         "laravel/framework": "^12.0",
         "laravel/jetstream": "^5.0",
+        "laravel/nightwatch": "^1.11",
         "laravel/sanctum": "^4.0",
         "monicahq/laravel-cloudflare": "^3.7",
         "php-http/discovery": "^1.14",
