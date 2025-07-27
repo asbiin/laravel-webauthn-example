@@ -5,7 +5,7 @@ This is an example use of [asbiin/laravel-webauthn](https://github.com/asbiin/la
 
 # Demo
 
-Try this application on [this live demo app](https://webauthn.asbin.net/).
+Try this application on [this live demo app](https://webauthn.laravel.cloud/).
 
 - Just register with any email
 - Then add a WebAuthn key
