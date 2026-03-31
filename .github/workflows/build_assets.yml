@@ -19,22 +19,19 @@ jobs:
     runs-on: ubuntu-latest
     name: Build Assets
 
-    strategy:
-      fail-fast: false
-
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       # Yarn
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: ${{ env.node-version }}
-          cache: yarn
+          cache: npm
 
-      - name: Install yarn dependencies
-        run: yarn install --immutable
+      - name: Install npm dependencies
+        run: npm install
 
       - name: Get version
         id: version
@@ -56,7 +53,7 @@ jobs:
           SENTRY_RELEASE: ${{ steps.version.outputs.release }}
 
       - name: Build assets
-        run: yarn run build
+        run: npm run build
         env:
           SENTRY_AUTH_TOKEN: ${{ github.event_name == 'push' && secrets.SENTRY_AUTH_TOKEN || '' }}
           SENTRY_RELEASE: ${{ steps.version.outputs.release }}

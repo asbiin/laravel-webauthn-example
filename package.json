@@ -28,7 +28,7 @@
         "tiny-emitter": "^2.1.0",
         "vite": "^6.3.4",
         "vue": "^3.5.13",
-        "ziggy-js": "2.5.2"
+        "ziggy-js": "2.6.2"
     },
     "snyk": true,
     "packageManager": "yarn@4.6.0"
