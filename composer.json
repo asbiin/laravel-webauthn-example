@@ -20,6 +20,7 @@
         "laravel/sanctum": "^4.0",
         "monicahq/laravel-cloudflare": "^4.0",
         "php-http/discovery": "^1.14",
+        "phpdocumentor/reflection-docblock": "^6.0",
         "pirsch-analytics/laravel-pirsch": "^1.0",
         "sentry/sentry-laravel": "^4.3",
         "tightenco/ziggy": "2.6.2"
