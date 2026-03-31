@@ -82,6 +82,7 @@ jobs:
           subject-digest: ${{ steps.docker_build.outputs.digest }}
           push-to-registry: true
 
+          
   deploy:
     runs-on: ubuntu-latest
     name: Deploy on staging
