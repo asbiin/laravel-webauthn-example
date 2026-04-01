@@ -23,4 +23,3 @@ storage/framework/sessions/*
 storage/framework/views/*
 storage/logs/*
 vendor/
-yarn-error.log

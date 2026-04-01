@@ -20,7 +20,6 @@ class RegistrationTest extends TestCase
 
         $response = $this->get('/register');
 
-        $response->dump();
         $response->assertStatus(200);
     }
 

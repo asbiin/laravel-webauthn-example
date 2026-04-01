@@ -1,12 +1,12 @@
 ## Build assets
-FROM node:22 AS node
+FROM node:24 AS node
 
 WORKDIR /var/www/html
 COPY . ./
 RUN set -ex; \
     \
-    yarn install --immutable; \
-    yarn run build
+    npm install --prefer-offline --no-audit --progress=false --loglevel=error; \
+    npm run build
 
 
 ## Image
